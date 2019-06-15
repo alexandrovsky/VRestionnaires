@@ -62,7 +62,7 @@ namespace VRestionnaire {
 				layout.preferredHeight = textSize.y;
 
 				textObj.transform.parent = itemsUI;
-				RadioGroup radioGroup = new RadioGroup(question.q_text[i].text);
+				RadioGroup radioGroup = new RadioGroup(question.q_text[i].text, false);
 				radioGroup.OnGroupSelected += OnItemSelected;
 				for(int j = 0; j < question.labels.Length; j++) {
 					GameObject item = Instantiate(radioItemPrefab);
@@ -80,10 +80,6 @@ namespace VRestionnaire {
 		void OnItemSelected(string questionId, int itemID)
 		{
 			isAnswered = true;
-			//print("answers,"+ answers.Count);
-			//int[] selected = answers.Values.Where((x) => x == int.MaxValue).ToArray();
-			//if(selected.Length > 0)
-			//print(i);
 			answers[questionId] = itemID;
 
 		}

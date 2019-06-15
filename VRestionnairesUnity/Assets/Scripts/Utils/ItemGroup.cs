@@ -11,13 +11,47 @@ namespace VRestionnaire {
 		public string questionId;
 		public ToggleGroup toggleGroup;
 
+		bool allowSwitchOff;
 		public delegate void OnGroupSelectedDelegate(string qId,int itemId);
 		public event OnGroupSelectedDelegate OnGroupSelected;
 
-		public abstract void AddToggle(Toggle toggle);
-		public abstract void Init();
 
-		protected void OnToggleValueChanged(bool value)
+		protected ItemGroup(string questionId, bool allowSwitchOff)
+		{
+			this.questionId = questionId;
+			this.allowSwitchOff = allowSwitchOff;
+
+			toggles = new List<Toggle>();
+		}
+
+		public virtual void AddToggle(Toggle toggle)
+		{
+			if(toggles.Count == 0) {
+				toggleGroup = toggle.gameObject.AddComponent<ToggleGroup>();
+				toggleGroup.allowSwitchOff = allowSwitchOff;
+			}
+			toggle.group = toggleGroup;
+			toggleGroup.RegisterToggle(toggle);
+			//toggleGroup.NotifyToggleOn(toggle,false);
+
+			toggles.Add(toggle);
+		}
+
+
+		public virtual void Init()
+		{
+
+			toggleGroup.SetAllTogglesOff();
+
+
+			foreach(Toggle toggle in toggles) {
+				toggle.onValueChanged.AddListener(OnToggleValueChanged);
+			}
+
+		}
+
+
+		public virtual void OnToggleValueChanged(bool value)
 		{
 			List<Toggle> active = toggleGroup.ActiveToggles().ToList();
 			int idx = -1;

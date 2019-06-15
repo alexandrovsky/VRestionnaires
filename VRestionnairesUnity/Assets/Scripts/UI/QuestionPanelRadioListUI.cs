@@ -29,7 +29,7 @@ namespace VRestionnaire {
 
 			answers = new Dictionary<string,int>();
 
-			radioGroup = new RadioGroup(question.id);
+			radioGroup = new RadioGroup(question.id, false);
 			radioGroup.OnGroupSelected += OnGroupSelected;
 
 			if(question.horizontal) {

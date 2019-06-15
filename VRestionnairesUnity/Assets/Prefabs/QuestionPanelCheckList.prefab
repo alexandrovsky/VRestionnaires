@@ -13,6 +13,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAnswered: 0
+  itemsUI: {fileID: 1783047294027519035}
+  gridLayout: {fileID: 3858411852042172744}
+  instructionsText: {fileID: 1735854311854317779}
+  idText: {fileID: 1735854312901840254}
+  labeledCheckItemPrefab: {fileID: 477632376608112170, guid: af0ffe7535c974f1499b719bfde16110,
+    type: 3}
+  question:
+    id: 
+    questiontype: 0
+    instructions: 
+    required: 0
+    shuffle: 0
+    datatype: 0
+    labels: []
+    horizontal: 0
+    questions: []
 --- !u!1 &9009190250883380747
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,3 +261,27 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7529060146122811261}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1735854311854317779 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8100399044357736366, guid: 734f067944e80494e9d6470c7c17f6ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 7529060146122811261}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1735854312901840254 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8100399043259886083, guid: 734f067944e80494e9d6470c7c17f6ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 7529060146122811261}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

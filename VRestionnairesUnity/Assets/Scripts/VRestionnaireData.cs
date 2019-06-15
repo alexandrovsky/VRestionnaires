@@ -171,13 +171,23 @@ namespace VRestionnaire {
 	[System.Serializable]
 	public class CheckListQuestion:Question {
 
-		public string[] labels;
-		bool horizontal;
+		public bool horizontal;
 		public QuestionItem[] questions;
 
 		public CheckListQuestion(JSONObject json) : base(json)
 		{
 			questiontype = QuestionType.CheckList;
+			horizontal = json["horizontal"].Boolean;
+
+			JSONArray qJSON = json["questions"].Array;
+			questions = new QuestionItem[qJSON.Length];
+			for(int i = 0; i < questions.Length; i++) {
+				QuestionItem item = new QuestionItem {
+					id = qJSON[i].Obj["id"].Str,
+					text = qJSON[i].Obj["text"].Str
+				};
+				questions[i] = item;
+			}
 		}
 	}
 
