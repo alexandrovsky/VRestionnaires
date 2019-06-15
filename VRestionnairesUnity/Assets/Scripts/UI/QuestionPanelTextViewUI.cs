@@ -11,7 +11,7 @@ namespace VRestionnaire {
 		public TMP_Text title;
 		public TMP_Text text;
 
-		TextViewQuestion question;
+		[SerializeField] TextViewQuestion question;
 
 
 		public void SetQuestion(Question q)
@@ -19,6 +19,8 @@ namespace VRestionnaire {
 			question = q as TextViewQuestion;
 			title.text = question.title;
 			text.text = question.text;
+
+			
 		}
 	}
 }

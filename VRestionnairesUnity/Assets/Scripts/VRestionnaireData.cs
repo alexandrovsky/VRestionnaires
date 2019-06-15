@@ -201,6 +201,16 @@ namespace VRestionnaire {
 		public SliderQuestion(JSONObject json) : base(json)
 		{
 			questiontype = QuestionType.Slider;
+			datatype = QuestionDatatype.Integer;
+
+			if(json.ContainsKey("datatype")) {
+				datatype = json["datatype"].Str == "integer" ? QuestionDatatype.Integer : QuestionDatatype.Float;
+			}
+
+			left = json["left"].Str;
+			right = json["right"].Str;
+
+			tick_count = (int) json["tick_count"].Number;
 		}
 	}
 
