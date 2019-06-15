@@ -60,7 +60,7 @@ namespace VRestionnaire {
 				layout.preferredHeight = textSize.y;
 
 				textObj.transform.parent = itemsUI;
-				RadioGroup radioGroup = new RadioGroup(question.q_text[i].text, false);
+				RadioGroup radioGroup = new RadioGroup(question.q_text[i].id, false);
 				radioGroup.OnGroupSelected += OnItemSelected;
 				for(int j = 0; j < question.labels.Length; j++) {
 					GameObject item = Instantiate(radioItemPrefab);
@@ -74,11 +74,12 @@ namespace VRestionnaire {
 		}
 
 
-		void OnItemSelected(string questionId, int itemID)
+		void OnItemSelected(string questionId, int itemId)
 		{
 			question.isAnswered = true;
-			int idx = Array.IndexOf(question.labels,questionId);
-			question.answers[idx] = itemID;
+			QuestionItem item = question.q_text.First((q) => { return q.id == questionId; });
+			int idx = Array.IndexOf(question.q_text, item);
+			question.answers[idx] = itemId;
 		}
 	}
 }

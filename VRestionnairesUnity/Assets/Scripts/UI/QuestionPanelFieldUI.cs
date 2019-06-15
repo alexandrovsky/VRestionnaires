@@ -20,12 +20,12 @@ namespace VRestionnaire {
 
 			placeholder.text = question.placeholder;
 
-			inputField.onSubmit.AddListener(OnFieledSubmited);
-			inputField.onDeselect.AddListener(OnFieledSubmited);
+			inputField.onSubmit.AddListener(OnFieldSubmited);
+			inputField.onDeselect.AddListener(OnFieldSubmited);
 		}
 
 
-		void OnFieledSubmited(string value)
+		void OnFieldSubmited(string value)
 		{
 			question.isAnswered = true;
 			question.answer = value;

@@ -320,8 +320,14 @@ namespace VRestionnaire {
 		public TextViewQuestion(JSONObject json) : base(json)
 		{
 			questiontype = QuestionType.TextView;
-			title = json["title"].Str;
-			text = json["text"].Str;
+			if(json.ContainsKey("title")) {
+				title = json["title"].Str;
+			}
+			if(json.ContainsKey("text")) {
+				text = json["text"].Str;
+			}
+
+
 		}
 	}
 	#endregion
