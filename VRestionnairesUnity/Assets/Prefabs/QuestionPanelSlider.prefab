@@ -684,6 +684,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAnswered: 0
+  instructionsText: {fileID: 2145918363143813109}
+  idText: {fileID: 2145918364241664600}
   slider: {fileID: 6135132171846363159}
   incrementValueButton: {fileID: 6992725733491057413}
   decrementValueButton: {fileID: 3859133122917637206}
@@ -1263,6 +1265,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 734f067944e80494e9d6470c7c17f6ac, type: 3}
+--- !u!114 &2145918364241664600 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8100399043259886083, guid: 734f067944e80494e9d6470c7c17f6ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 7903170158384377947}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2145918363143813109 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8100399044357736366, guid: 734f067944e80494e9d6470c7c17f6ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 7903170158384377947}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2145918364068345566 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8100399043096610437, guid: 734f067944e80494e9d6470c7c17f6ac,

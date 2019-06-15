@@ -7,6 +7,9 @@ using TMPro;
 namespace VRestionnaire {
 	public class QuestionPanelSliderUI:QuestionPanelUI, IQuestionPanelUI {
 
+		public TMP_Text instructionsText;
+		public TMP_Text idText;
+
 		[SerializeField] Slider slider;
 		[SerializeField] Button incrementValueButton;
 		[SerializeField] Button decrementValueButton;
@@ -18,6 +21,10 @@ namespace VRestionnaire {
 		public void SetQuestion(Question q)
 		{
 			question = q as SliderQuestion;
+
+			instructionsText.text = question.instructions;
+			idText.text = question.id;
+
 			minLabel.text = question.left;
 			maxLabel.text = question.right;
 
@@ -32,6 +39,7 @@ namespace VRestionnaire {
 
 		void OnSliderValueChanged(float value)
 		{
+			isAnswered = true;
 			answers[question.id] = (int)value;
 			print(question.id + " " + answers[question.id]);
 		}

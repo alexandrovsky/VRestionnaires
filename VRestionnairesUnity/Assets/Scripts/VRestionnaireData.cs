@@ -251,7 +251,7 @@ namespace VRestionnaire {
 
 	[System.Serializable]
 	public class DropDownQuestion:Question {
-		public string[] items;
+		public List<string> items;
 		public int width = 200;
 		public int dropwidth;
 		public int dropheight;
@@ -259,6 +259,11 @@ namespace VRestionnaire {
 		public DropDownQuestion(JSONObject json) : base(json)
 		{
 			questiontype = QuestionType.DropDown;
+			JSONArray itemsJson = json["items"].Array;
+			items = new List<string>();
+			for(int i = 0; i < itemsJson.Length; i++) {
+				items.Add(itemsJson[i].Str);
+			}
 		}
 	}
 
