@@ -9,8 +9,8 @@ namespace VRestionnaire {
 	}
 
 	public abstract class QuestionPanelUI:MonoBehaviour {
-		public bool isAnswered;
-		public Dictionary<string,int> answers;
+		//public bool isAnswered;
+		//public Dictionary<string,int> answers;
 	}
 
 

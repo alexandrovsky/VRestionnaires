@@ -27,8 +27,6 @@ namespace VRestionnaire {
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
 
-			answers = new Dictionary<string,int>();
-
 			radioGroup = new RadioGroup(question.id, false);
 			radioGroup.OnGroupSelected += OnGroupSelected;
 
@@ -48,16 +46,15 @@ namespace VRestionnaire {
 				label.text = question.labels[i];
 				radioItem.transform.parent = itemsUI;
 			}
-			answers.Add(question.id,int.MaxValue);
 
 			radioGroup.Init();
 		}
 
 		void OnGroupSelected(string qId,int itemId)
 		{
-			isAnswered = true;
-			answers[qId] = itemId;
-			print("answered: " + qId + " item: " + itemId);
+			question.isAnswered = true;
+			question.answer = question.labels[itemId];
+			print("answered: " + qId + " item: " + question.answer);
 		}
 
 	}

@@ -91,6 +91,7 @@ namespace VRestionnaire {
 		public bool required;
 		public bool shuffle;
 		public QuestionDatatype datatype;
+		public bool isAnswered;
 
 		public Question(JSONObject json) {
 			if(json.ContainsKey("id")) {
@@ -122,7 +123,7 @@ namespace VRestionnaire {
 		public string[] labels;
 
 		public QuestionItem[] q_text;
-
+		public int[] answers;
 
 		public RadioGridQuestion(JSONObject json) : base(json)
 		{	
@@ -131,6 +132,8 @@ namespace VRestionnaire {
 
 			JSONArray labelsJson = json["labels"].Array;
 			labels = new string[labelsJson.Length];
+
+			answers = new int[labelsJson.Length];
 
 			for(int i = 0; i < labelsJson.Length; i++) {
 				labels[i] = labelsJson[i].Str;
@@ -154,7 +157,7 @@ namespace VRestionnaire {
 
 		public string[] labels;
 		public bool horizontal;
-
+		public string answer;
 		public RadioListQuestion(JSONObject json) : base(json)
 		{
 			questiontype = QuestionType.RadioList;
@@ -173,6 +176,7 @@ namespace VRestionnaire {
 
 		public bool horizontal;
 		public QuestionItem[] questions;
+		public bool[] answers;
 
 		public CheckListQuestion(JSONObject json) : base(json)
 		{
@@ -181,6 +185,7 @@ namespace VRestionnaire {
 
 			JSONArray qJSON = json["questions"].Array;
 			questions = new QuestionItem[qJSON.Length];
+			answers = new bool[qJSON.Length];
 			for(int i = 0; i < questions.Length; i++) {
 				QuestionItem item = new QuestionItem {
 					id = qJSON[i].Obj["id"].Str,
@@ -197,6 +202,7 @@ namespace VRestionnaire {
 		public string right;
 		public int tick_count;
 		public int width = 400;
+		public float answer;
 
 		public SliderQuestion(JSONObject json) : base(json)
 		{
@@ -217,12 +223,13 @@ namespace VRestionnaire {
 	[System.Serializable]
 	public class FieldQuestion:Question {
 		public string placeholder;
-
+		public string answer;
 
 		public FieldQuestion(JSONObject json) : base(json)
 		{
 			questiontype = QuestionType.Field;
 			datatype = QuestionDatatype.String;
+			placeholder = json["placeholder"].Str;
 		}
 	}
 
@@ -234,9 +241,46 @@ namespace VRestionnaire {
 		public float max;
 		public int width = 200;
 
+		public float answer;
+
 		public NumFieldQuestion(JSONObject json) : base(json)
 		{
 			questiontype = QuestionType.NumField;
+			if(json.ContainsKey("spinbutton")) {
+				spinbutton = json["spinbutton"].Boolean;
+			}
+
+			switch(json["datatype"].Str) {
+			case "integer":
+				datatype = QuestionDatatype.Integer;
+				break;
+			case "float":
+				datatype = QuestionDatatype.Float;
+				break;
+			}
+			if(json.ContainsKey("displaytype")) {
+				switch(json["displaytype"].Str) {
+				case "integer":
+					displaytype = QuestionDisplaytype.Integer;
+					break;
+				case "float":
+					displaytype = QuestionDisplaytype.Float;
+					break;
+				case "percentage":
+					displaytype = QuestionDisplaytype.Percentage;
+					break;
+				}
+			}
+			if(json.ContainsKey("min")) {
+				min = (float) json["min"].Number;
+			} else {
+				min = float.MinValue;
+			}
+			if(json.ContainsKey("max")) {
+				max = (float)json["max"].Number;
+			} else {
+				max = float.MaxValue;
+			}
 		}
 	}
 
@@ -246,6 +290,7 @@ namespace VRestionnaire {
 		public MultiFieldQuestion(JSONObject json) : base(json)
 		{
 			questiontype = QuestionType.MultField;
+			height = (int)json["height"].Number;
 		}
 	}
 
@@ -255,6 +300,7 @@ namespace VRestionnaire {
 		public int width = 200;
 		public int dropwidth;
 		public int dropheight;
+		public string answer;
 
 		public DropDownQuestion(JSONObject json) : base(json)
 		{

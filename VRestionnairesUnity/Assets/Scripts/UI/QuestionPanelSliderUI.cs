@@ -32,16 +32,14 @@ namespace VRestionnaire {
 			slider.maxValue = question.tick_count;
 			slider.wholeNumbers = question.datatype == QuestionDatatype.Integer;
 
-			answers = new Dictionary<string,int>();
-			answers.Add(question.id,int.MaxValue);
 			slider.onValueChanged.AddListener(OnSliderValueChanged);
 		}
 
 		void OnSliderValueChanged(float value)
 		{
-			isAnswered = true;
-			answers[question.id] = (int)value;
-			print(question.id + " " + answers[question.id]);
+			question.isAnswered = true;
+			question.answer = value;
+			print(question.id + " " + question.answer);
 		}
 
 	}

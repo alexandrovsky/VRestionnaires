@@ -22,10 +22,6 @@ namespace VRestionnaire {
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
 
-			answers = new Dictionary<string,int>();
-
-			answers.Add(question.id,int.MaxValue);
-
 			dropdown.ClearOptions();
 			dropdown.AddOptions(question.items);
 
@@ -34,9 +30,9 @@ namespace VRestionnaire {
 
 		void OnDropDownValueChanged(int itemId)
 		{
-			isAnswered = true;
-			answers[question.id] = itemId;
-			print(question.id + " " + answers[question.id]);
+			question.isAnswered = true;
+			question.answer = question.items[itemId];
+			print(question.id + " " + question.answer);
 		}
 
 	}

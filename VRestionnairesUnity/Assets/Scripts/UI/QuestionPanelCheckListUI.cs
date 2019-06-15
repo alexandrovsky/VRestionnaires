@@ -30,8 +30,6 @@ namespace VRestionnaire {
 
 			toggles = new List<Toggle>();
 
-			answers = new Dictionary<string,int>();
-
 			if(question.horizontal) {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedRowCount;
 				gridLayout.constraintCount = 1;
@@ -49,15 +47,14 @@ namespace VRestionnaire {
 				TMP_Text label = checkItem.transform.Find("Label").GetComponent<TMP_Text>();
 				label.text = question.questions[i].text;
 				checkItem.transform.parent = itemsUI;
-				answers.Add(question.questions[i].id,int.MaxValue);
 			}
 		}
 
 		void HandleToggleValueChanged(bool arg0)
 		{
-			isAnswered = true;
-			for(int i = 0; i < answers.Count; i++) {
-				answers[question.questions[i].id] = toggles[i].isOn ? 1 : 0;
+			question.isAnswered = true;
+			for(int i = 0; i < question.answers.Length; i++) {
+				question.answers[i] = toggles[i].isOn;
 				print("answered: " + i + " item: " + toggles[i].isOn);
 			}
 		}

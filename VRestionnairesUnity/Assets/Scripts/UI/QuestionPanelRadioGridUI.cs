@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
-
+using System;
 
 
 namespace VRestionnaire {
@@ -32,8 +32,6 @@ namespace VRestionnaire {
 
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
-
-			answers = new Dictionary<string,int>();
 
 			gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedColumnCount;
 			gridLayout.constraintCount = question.labels.Length + 1; // + 1 for the questions
@@ -70,7 +68,6 @@ namespace VRestionnaire {
 					radioGroup.AddToggle(toggle);
 					item.transform.parent = itemsUI;
 				}
-				answers.Add(question.q_text[i].id, int.MaxValue);
 				radioGroup.Init();
 				questionItems.Add(radioGroup);
 			}
@@ -79,21 +76,9 @@ namespace VRestionnaire {
 
 		void OnItemSelected(string questionId, int itemID)
 		{
-			isAnswered = true;
-			answers[questionId] = itemID;
-
-		}
-
-		// Start is called before the first frame update
-		void Start()
-		{
-
-		}
-
-		// Update is called once per frame
-		void Update()
-		{
-
+			question.isAnswered = true;
+			int idx = Array.IndexOf(question.labels,questionId);
+			question.answers[idx] = itemID;
 		}
 	}
 }
