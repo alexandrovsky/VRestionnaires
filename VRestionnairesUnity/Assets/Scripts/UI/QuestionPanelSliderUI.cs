@@ -18,6 +18,8 @@ namespace VRestionnaire {
 
 		[SerializeField] SliderQuestion question;
 
+		float inputValue;
+
 		public void SetQuestion(Question q)
 		{
 			question = q as SliderQuestion;
@@ -33,6 +35,8 @@ namespace VRestionnaire {
 			slider.wholeNumbers = question.datatype == QuestionDatatype.Integer;
 
 			slider.onValueChanged.AddListener(OnSliderValueChanged);
+			incrementValueButton.onClick.AddListener(IncrementValue);
+			decrementValueButton.onClick.AddListener(DecrementValue);
 		}
 
 		void OnSliderValueChanged(float value)
@@ -40,6 +44,21 @@ namespace VRestionnaire {
 			question.isAnswered = true;
 			question.answer = value;
 			print(question.id + " " + question.answer);
+		}
+
+
+		void IncrementValue()
+		{
+			inputValue++;
+			inputValue = Mathf.Clamp(inputValue, 0, question.tick_count);
+			slider.value = inputValue;
+		}
+
+		void DecrementValue()
+		{
+			inputValue--;
+			inputValue = Mathf.Clamp(inputValue, 0,question.tick_count);
+			slider.value = inputValue;
 		}
 
 	}
