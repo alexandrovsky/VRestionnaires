@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a93f5e7d1d04abba0f669965a40dc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAnswered: 0
   itemsUI: {fileID: 1783047294027519035}
   gridLayout: {fileID: 3858411852042172744}
   instructionsText: {fileID: 1735854311854317779}
@@ -26,9 +25,10 @@ MonoBehaviour:
     required: 0
     shuffle: 0
     datatype: 0
-    labels: []
+    isAnswered: 0
     horizontal: 0
     questions: []
+    answers: 
 --- !u!1 &9009190250883380747
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellAlignment: 0
