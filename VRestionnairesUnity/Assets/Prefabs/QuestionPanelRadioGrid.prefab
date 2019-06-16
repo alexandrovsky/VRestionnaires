@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Spacing: {x: 5, y: 2}
   m_Constraint: 0
   m_ConstraintCount: 3
-  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
 --- !u!114 &5583310415229010495
 MonoBehaviour:
@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d15019a928b3d461596ffe266ab5618a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layoutElement: {fileID: 7236174140985535900}
   itemsUI: {fileID: 3623461960498155046}
   gridLayout: {fileID: 370062731789573729}
   instructionsText: {fileID: 4374800870383730389}
@@ -249,6 +250,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2931845827257079015, guid: 734f067944e80494e9d6470c7c17f6ac,
+        type: 3}
+      propertyPath: m_PreferredHeight
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 734f067944e80494e9d6470c7c17f6ac, type: 3}
 --- !u!1 &4374800871773569023 stripped
@@ -263,6 +269,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5538315067215444347}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7236174140985535900 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2931845827257079015, guid: 734f067944e80494e9d6470c7c17f6ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 5538315067215444347}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4374800871773569023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1679637790, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4374800870383730389 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8100399044357736366, guid: 734f067944e80494e9d6470c7c17f6ac,

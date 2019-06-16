@@ -11,6 +11,7 @@ namespace VRestionnaire {
 
 
 	public class QuestionPanelRadioGridUI:QuestionPanelUI, IQuestionPanelUI {
+		public LayoutElement layoutElement;
 		public RectTransform itemsUI;
 		public VariableGridLayoutGroup gridLayout;
 
@@ -70,6 +71,19 @@ namespace VRestionnaire {
 				}
 				radioGroup.Init();
 				questionItems.Add(radioGroup);
+			}
+
+
+			Invoke("LayoutGridElements",0.16f);
+
+			
+		}
+
+		void LayoutGridElements() {
+			for(int i = 0; i < gridLayout.rows; i++) {
+				float rh = gridLayout.GetRowHeight(i);
+				print(rh);
+				layoutElement.preferredHeight += rh;
 			}
 		}
 
