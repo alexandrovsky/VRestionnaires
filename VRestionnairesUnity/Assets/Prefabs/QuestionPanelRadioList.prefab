@@ -92,11 +92,11 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellAlignment: 0
-  m_Spacing: {x: 0, y: 0}
+  m_Spacing: {x: 5, y: 5}
   m_Constraint: 0
   m_ConstraintCount: 3
   m_ChildForceExpandWidth: 1
@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc3cf4543ac042b3a23be77a887a0eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAnswered: 0
   itemsUI: {fileID: 8449352738456450696}
   gridLayout: {fileID: 7041349892614722113}
   instructionsText: {fileID: 6326905612309289635}
@@ -127,8 +126,10 @@ MonoBehaviour:
     required: 0
     shuffle: 0
     datatype: 0
+    isAnswered: 0
     labels: []
     horizontal: 0
+    answer: 
 --- !u!1001 &2857473633583209741
 PrefabInstance:
   m_ObjectHideFlags: 0
