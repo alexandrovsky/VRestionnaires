@@ -961,6 +961,11 @@ PrefabInstance:
       propertyPath: m_Pivot.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5481309640814912561, guid: 26c07cf6774214b49acad40868cfab42,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1058440589063632403, guid: 26c07cf6774214b49acad40868cfab42,
         type: 3}
       propertyPath: m_AnchorMin.y

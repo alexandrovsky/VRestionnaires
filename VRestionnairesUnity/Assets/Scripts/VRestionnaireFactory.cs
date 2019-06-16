@@ -91,6 +91,8 @@ namespace VRestionnaire {
 			questionnairePanelUI.contentScrollbarVertical.value = 1;
 			Canvas.ForceUpdateCanvases();
 
+			questionnairePanelUI.ApplySkin();
+
 		}
 
 		void GenerateQuestionnaire(JSONObject json)
