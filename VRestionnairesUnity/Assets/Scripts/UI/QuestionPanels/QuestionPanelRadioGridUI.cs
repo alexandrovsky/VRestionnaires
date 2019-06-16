@@ -73,10 +73,12 @@ namespace VRestionnaire {
 				questionItems.Add(radioGroup);
 			}
 
+			Canvas.ForceUpdateCanvases();
+			LayoutGridElements(); //Invoke("LayoutGridElements",0.16f);
+			Canvas.ForceUpdateCanvases();
 
-			Invoke("LayoutGridElements",0.16f);
 
-			
+
 		}
 
 		void LayoutGridElements() {

@@ -22,9 +22,6 @@ namespace VRestionnaire {
 
 		public QuestionTypePrefabsDictionary questionTypePrefabsDict;
 
-		[Tooltip("used just as a button to trigger OnValidate")]
-		public bool click;
-
 
 		void Start()
 		{
@@ -32,14 +29,13 @@ namespace VRestionnaire {
 		}
 
 		public void BuildDefault() {
-			string[] filenames = new string[] { dir + "/example.json" };
+			string[] filenames = { dir + "/example.json" };
 			OpenAction(filenames);
 		}
 
 
 		public void OnFileOpenClicked()
 		{
-
 			FileBrowser.OpenFilesAsync(OpenAction,"open questionnaire file",dir,false,fileExtensions);
 		}
 
@@ -52,7 +48,6 @@ namespace VRestionnaire {
 
 				GenerateQuestionnaire(json);
 				GenerateQuestionnaireUI();
-
 			}
 		}
 
@@ -82,17 +77,19 @@ namespace VRestionnaire {
 						//} else if(question is MultiFieldQuestion) {
 						//} else if(question is DropDownQuestion) {
 						//} else if(question is TextViewQuestion) {
-
 						//}
 
 						panelUI.SetQuestion(question);
-
 					}
 				}
-
-
-
 			}
+			//RectTransform firstChild = questionnairePanelUI.GetComponentsInChildren<QuestionPanelUI>()[0].GetComponent<RectTransform>();
+			//questionnairePanelUI.contentScrollRect.content.localPosition =
+			//questionnairePanelUI.contentScrollRect.GetSnapToPositionToBringChildIntoView(firstChild);
+
+			Canvas.ForceUpdateCanvases();
+			questionnairePanelUI.contentScrollbarVertical.value = 1;
+			Canvas.ForceUpdateCanvases();
 
 		}
 
@@ -120,7 +117,6 @@ namespace VRestionnaire {
 					}
 					break;
 				}
-
 				Debug.Log("key : value -> " + pair.Key + " : " + pair.Value);
 			}
 			print(questionnaire);
