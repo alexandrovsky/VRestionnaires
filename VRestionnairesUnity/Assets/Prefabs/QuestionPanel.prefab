@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8100399043096610437}
   - component: {fileID: 8100399043096610435}
   - component: {fileID: 8100399043096610434}
+  - component: {fileID: 2931845827257079015}
   m_Layer: 5
   m_Name: QuestionPanel
   m_TagString: Untagged
@@ -76,6 +77,26 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &2931845827257079015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8100399043096610436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1679637790, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: 640
+  m_MinHeight: 100
+  m_PreferredWidth: 720
+  m_PreferredHeight: 500
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &8100399043259886085
 GameObject:
   m_ObjectHideFlags: 0
