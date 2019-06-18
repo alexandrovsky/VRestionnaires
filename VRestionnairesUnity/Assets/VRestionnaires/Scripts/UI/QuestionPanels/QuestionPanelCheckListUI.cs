@@ -11,7 +11,8 @@ namespace VRestionnaire {
 		public RectTransform itemsUI;
 		public VariableGridLayoutGroup gridLayout;
 
-		public GameObject labeledCheckItemPrefab;
+		public GameObject labelPrefab;
+		public GameObject checkItemPrefab;
 
 
 		[SerializeField] CheckListQuestion question;
@@ -30,20 +31,27 @@ namespace VRestionnaire {
 			if(question.horizontal) {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedRowCount;
 				gridLayout.constraintCount = 1;
+				gridLayout.childAlignment = TextAnchor.MiddleCenter;
 			} else {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedColumnCount;
-				gridLayout.constraintCount = 1;
+				gridLayout.constraintCount = 2;
+				gridLayout.childAlignment = TextAnchor.UpperCenter;
 			}
 
 			for(int i = 0; i < question.questions.Length; i++) {
-				GameObject checkItem = Instantiate(labeledCheckItemPrefab);
+				GameObject label = Instantiate(labelPrefab);
+				TMP_Text text = label.GetComponent<TMP_Text>();
+				text.text = question.questions[i].text;
+				label.transform.parent = itemsUI;
+				label.transform.localPosition = Vector3.zero;
+
+				GameObject checkItem = Instantiate(checkItemPrefab);
 				Toggle toggle = checkItem.GetComponent<Toggle>();
+				toggle.isOn = false;
 				toggle.onValueChanged.AddListener(HandleToggleValueChanged);
 				toggles.Add(toggle);
-
-				TMP_Text label = checkItem.transform.Find("Label").GetComponent<TMP_Text>();
-				label.text = question.questions[i].text;
 				checkItem.transform.parent = itemsUI;
+				checkItem.transform.localPosition = Vector3.zero;
 			}
 		}
 

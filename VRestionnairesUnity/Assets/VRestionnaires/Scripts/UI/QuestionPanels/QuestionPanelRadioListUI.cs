@@ -31,9 +31,11 @@ namespace VRestionnaire {
 			if(question.horizontal) {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedRowCount;
 				gridLayout.constraintCount = 1;
+				gridLayout.childAlignment = TextAnchor.MiddleCenter;
 			} else {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedColumnCount;
 				gridLayout.constraintCount = 2;
+				gridLayout.childAlignment = TextAnchor.UpperCenter;
 			}
 
 			for(int i = 0; i < question.labels.Length; i++) {
