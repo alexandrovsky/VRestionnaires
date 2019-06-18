@@ -68,23 +68,21 @@ MonoBehaviour:
   - questionType: 0
     prefab: {fileID: 8333490221534049983, guid: e5a631146328a4517a7eaffae3f9daf0,
       type: 3}
-  - questionType: 0
+  - questionType: 1
     prefab: {fileID: 0}
-  - questionType: 0
+  - questionType: 2
     prefab: {fileID: 0}
-  - questionType: 0
+  - questionType: 3
+    prefab: {fileID: 5722955661822154876, guid: 7904fe998e96e4e39968a65d4c28b3c1,
+      type: 3}
+  - questionType: 4
     prefab: {fileID: 0}
-  - questionType: 0
+  - questionType: 5
     prefab: {fileID: 0}
-  - questionType: 0
+  - questionType: 6
     prefab: {fileID: 0}
-  - questionType: 0
+  - questionType: 7
     prefab: {fileID: 0}
-  - questionType: 0
-    prefab: {fileID: 0}
-  - questionType: 0
-    prefab: {fileID: 0}
-  - questionType: 0
-    prefab: {fileID: 0}
-  - questionType: 0
-    prefab: {fileID: 0}
+  - questionType: 8
+    prefab: {fileID: 1922228505283033168, guid: dc42ff8fb53114955904481dbe25e779,
+      type: 3}

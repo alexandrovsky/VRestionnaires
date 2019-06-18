@@ -11,7 +11,8 @@ namespace VRestionnaire {
 		public RectTransform itemsUI;
 		public VariableGridLayoutGroup gridLayout;
 
-		public GameObject labeledRadioItemPrefab;
+		public GameObject labelPrefab;
+		public GameObject radioItemPrefab;
 
 
 		[SerializeField] RadioListQuestion question;
@@ -32,16 +33,22 @@ namespace VRestionnaire {
 				gridLayout.constraintCount = 1;
 			} else {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedColumnCount;
-				gridLayout.constraintCount = 1;
+				gridLayout.constraintCount = 2;
 			}
 
 			for(int i = 0; i < question.labels.Length; i++) {
-				GameObject radioItem = Instantiate(labeledRadioItemPrefab);
+				GameObject label = Instantiate(labelPrefab);
+				TMP_Text text = label.GetComponent<TMP_Text>();
+				text.text = question.labels[i];
+				label.transform.parent = itemsUI;
+				label.transform.localPosition = Vector3.zero;
+
+				GameObject radioItem = Instantiate(radioItemPrefab);
 				Toggle toggle = radioItem.GetComponent<Toggle>();
 				radioGroup.AddToggle(toggle);
-				TMP_Text label = radioItem.transform.Find("Label").GetComponent<TMP_Text>();
-				label.text = question.labels[i];
+				
 				radioItem.transform.parent = itemsUI;
+				radioItem.transform.localPosition = Vector3.zero;
 			}
 
 			radioGroup.Init();
