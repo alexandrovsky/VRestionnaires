@@ -8,7 +8,13 @@ using CGTespy.UI;
 
 namespace VRestionnaire {
 
-	[System.Serializable] public class QuestionTypePrefabsDictionary:SerializableDictionary<QuestionType,GameObject> { }
+	//[System.Serializable] public class QuestionTypePrefabsDictionary:SerializableDictionary<QuestionType,GameObject> { }
+
+	[System.Serializable] public class QuestionTypePrefab {
+		public QuestionType questionType;
+		public GameObject prefab;
+	}
+
 
 	public class VRestionnaireFactory:MonoBehaviour {
 		public string dir = "/Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires";
@@ -20,7 +26,7 @@ namespace VRestionnaire {
 
 		public Questionnaire questionnaire;
 
-		public QuestionTypePrefabsDictionary questionTypePrefabsDict;
+		public List<QuestionTypePrefab> questionTypePrefabs;
 
 
 		void Start()
@@ -51,6 +57,26 @@ namespace VRestionnaire {
 			}
 		}
 
+		bool ContainsQuestionType(QuestionType type)
+		{
+			for(int i = 0; i < questionTypePrefabs.Count; i++) {
+				if(questionTypePrefabs[i].questionType == type) {
+					return true;
+				}
+			}
+			return false;
+		}
+
+		GameObject ObjectForQuestionType(QuestionType type)
+		{
+			for(int i = 0; i < questionTypePrefabs.Count; i++) {
+				if(questionTypePrefabs[i].questionType == type) {
+					return questionTypePrefabs[i].prefab;
+				}
+			}
+			return null;
+		}
+
 		void GenerateQuestionnaireUI()
 		{
 			//RectTransform panel = Instantiate(questionnairePanelPrefab).GetComponent<RectTransform>();
@@ -61,9 +87,10 @@ namespace VRestionnaire {
 			//panel.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,questionnaireParent.Height());
 
 			foreach(Question question in questionnaire.questions) {
-				if(questionTypePrefabsDict.ContainsKey(question.questiontype)){
-					if(questionTypePrefabsDict[question.questiontype] != null) {
-						GameObject questionPanel = Instantiate(questionTypePrefabsDict[question.questiontype]);
+				if(ContainsQuestionType(question.questiontype)){
+					GameObject prefab = ObjectForQuestionType(question.questiontype);
+					if(prefab != null) {
+						GameObject questionPanel = Instantiate(prefab);
 						RectTransform questionPanelRT = questionPanel.GetComponent<RectTransform>();
 						questionPanelRT.parent = questionnaireParent;
 						questionPanelRT.SetAnchor(AnchorPresets.StretchAll);

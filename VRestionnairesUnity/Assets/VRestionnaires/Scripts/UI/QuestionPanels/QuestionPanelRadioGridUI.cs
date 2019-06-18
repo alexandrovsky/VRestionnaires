@@ -14,8 +14,7 @@ namespace VRestionnaire {
 		public LayoutElement layoutElement;
 		public RectTransform itemsUI;
 		public VariableGridLayoutGroup gridLayout;
-
-
+		
 		public GameObject labelPrefab;
 		public GameObject radioItemPrefab;
 
@@ -37,14 +36,18 @@ namespace VRestionnaire {
 			GameObject empty = Instantiate(labelPrefab);
 			empty.GetComponent<TMP_Text>().text = "";
 			empty.transform.parent = itemsUI;
+			empty.transform.position = Vector3.zero;
+
 			for(int i = 0; i < question.labels.Length; i++) {
 				GameObject label = Instantiate(labelPrefab);
 				TMP_Text labelText = label.GetComponent<TMP_Text>();
 				labelText.text = question.labels[i];
 				labelText.alignment = TextAlignmentOptions.Center;
 				label.transform.parent = itemsUI;
+				//label.transform.position = Vector3.zero;
+				label.transform.localPosition = Vector3.zero;
 			}
-
+			
 			questionItems = new List<RadioGroup>();
 
 			for(int i = 0; i < question.q_text.Length; i++) {
@@ -58,6 +61,7 @@ namespace VRestionnaire {
 				layout.preferredHeight = textSize.y;
 
 				textObj.transform.parent = itemsUI;
+				textObj.transform.localPosition = Vector3.zero;
 				RadioGroup radioGroup = new RadioGroup(question.q_text[i].id, false);
 				radioGroup.OnGroupSelected += OnItemSelected;
 				for(int j = 0; j < question.labels.Length; j++) {
@@ -65,14 +69,15 @@ namespace VRestionnaire {
 					Toggle toggle = item.GetComponent<Toggle>();
 					radioGroup.AddToggle(toggle);
 					item.transform.parent = itemsUI;
+					item.transform.localPosition = Vector3.zero;
 				}
 				radioGroup.Init();
 				questionItems.Add(radioGroup);
 			}
 
-			Canvas.ForceUpdateCanvases();
-			LayoutGridElements(); //Invoke("LayoutGridElements",0.16f);
-			Canvas.ForceUpdateCanvases();
+			//Canvas.ForceUpdateCanvases();
+			//LayoutGridElements(); //Invoke("LayoutGridElements",0.16f);
+			//Canvas.ForceUpdateCanvases();
 
 
 

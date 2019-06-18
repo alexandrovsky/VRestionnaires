@@ -158,5 +158,5 @@ public abstract class DictionaryDrawer<TK, TV>:PropertyDrawer {
 }
 
 
-[CustomPropertyDrawer(typeof(VRestionnaire.QuestionTypePrefabsDictionary))]
-public class QuestionTypePrefabsDictionaryDrawer:DictionaryDrawer<VRestionnaire.QuestionType,GameObject> { }
+//[CustomPropertyDrawer(typeof(VRestionnaire.QuestionTypePrefabsDictionary))]
+//public class QuestionTypePrefabsDictionaryDrawer:DictionaryDrawer<VRestionnaire.QuestionType,GameObject> { }

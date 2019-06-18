@@ -40,14 +40,10 @@ namespace VRestionnaire {
 
 		public virtual void Init()
 		{
-
 			toggleGroup.SetAllTogglesOff();
-
-
 			foreach(Toggle toggle in toggles) {
 				toggle.onValueChanged.AddListener(OnToggleValueChanged);
 			}
-
 		}
 
 
