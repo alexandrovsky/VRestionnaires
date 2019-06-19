@@ -17,9 +17,10 @@ namespace VRestionnaire {
 			idText.text = question.id;
 
 			placeholder.text = question.placeholder;
-
-			inputField.onSubmit.AddListener(OnFieldSubmited);
-			inputField.onDeselect.AddListener(OnFieldSubmited);
+			inputField.onValueChanged.AddListener(OnFieldSubmited);
+			//inputField.onEndEdit.AddListener(OnFieldSubmited);
+			//inputField.onSubmit.AddListener(OnFieldSubmited);
+			//inputField.onDeselect.AddListener(OnFieldSubmited);
 		}
 
 
