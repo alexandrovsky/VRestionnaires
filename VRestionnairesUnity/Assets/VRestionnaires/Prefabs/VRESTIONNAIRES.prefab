@@ -83,7 +83,8 @@ MonoBehaviour:
   - questionType: 5
     prefab: {fileID: 0}
   - questionType: 6
-    prefab: {fileID: 0}
+    prefab: {fileID: 8587977618650306149, guid: 6c3c4dbe0243f452191b9495bc2f2c92,
+      type: 3}
   - questionType: 7
     prefab: {fileID: 2317213466004167439, guid: 9a727e6306db7497a9999fb13ef77ebb,
       type: 3}
