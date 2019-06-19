@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace VRestionnaire {
 
 
 
-	public class QuestionPanelRadioGridUI:QuestionPanelUI, IQuestionPanelUI {
+	public class QuestionPanelRadioGridUI:QuestionPanelUI<RadioGridQuestion>, IQuestionPanelUI {
 		public LayoutElement layoutElement;
 		public RectTransform itemsUI;
 		public VariableGridLayoutGroup gridLayout;
@@ -18,14 +19,13 @@ namespace VRestionnaire {
 		public GameObject labelPrefab;
 		public GameObject radioItemPrefab;
 
-		[SerializeField] RadioGridQuestion question;
 		List<RadioGroup> questionItems;
 
 
 
-		void IQuestionPanelUI.SetQuestion(Question q)
+		public override void SetQuestion(RadioGridQuestion q,UnityAction<Question> answeredEvent)
 		{
-			question = q as RadioGridQuestion;
+			base.SetQuestion(q, answeredEvent);
 
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
@@ -78,9 +78,17 @@ namespace VRestionnaire {
 			//Canvas.ForceUpdateCanvases();
 			//LayoutGridElements(); //Invoke("LayoutGridElements",0.16f);
 			//Canvas.ForceUpdateCanvases();
+		}
 
-
-
+		public override bool CheckMandatory()
+		{
+			
+			foreach(RadioGroup rg in questionItems) {
+				if(rg.toggleGroup.ActiveToggles().ToList().Count() != 1) {
+					return false;
+				}
+			}
+			return true;
 		}
 
 		void LayoutGridElements() {
@@ -94,10 +102,21 @@ namespace VRestionnaire {
 
 		void OnItemSelected(string questionId, int itemId)
 		{
-			question.isAnswered = true;
+			
 			QuestionItem item = question.q_text.First((q) => { return q.id == questionId; });
 			int idx = Array.IndexOf(question.q_text, item);
 			question.answers[idx] = itemId;
+
+			int answersCount = 0;
+			foreach(RadioGroup rg in questionItems) {
+				answersCount += rg.toggleGroup.ActiveToggles().ToList().Count();
+			}
+			if(answersCount == questionItems.Count) {
+				question.isAnswered = true;
+				OnQuestionAnswered.Invoke(question);
+			}
+
+
 		}
 	}
 }

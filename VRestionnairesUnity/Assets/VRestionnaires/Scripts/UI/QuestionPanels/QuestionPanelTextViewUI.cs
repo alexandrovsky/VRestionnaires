@@ -1,22 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 
 namespace VRestionnaire { 
 
 
-	public class QuestionPanelTextViewUI : QuestionPanelUI, IQuestionPanelUI
+	public class QuestionPanelTextViewUI : QuestionPanelUI<TextViewQuestion>, IQuestionPanelUI
 	{
 		public TMP_Text text;
-		[SerializeField] TextViewQuestion question;
-		
-		public void SetQuestion(Question q)
+
+		public override void SetQuestion(TextViewQuestion q, UnityAction<Question> answeredEvent)
 		{
-			question = q as TextViewQuestion;
+			base.SetQuestion(q, answeredEvent);
+
 			idText.text = question.id;
 			text.text = question.text;
 			instructionsText.text = question.title;
+			question.isAnswered = true;
 		}
 	}
 }

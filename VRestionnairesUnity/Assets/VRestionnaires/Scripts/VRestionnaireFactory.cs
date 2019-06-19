@@ -5,6 +5,7 @@ using Crosstales.FB;
 using System.IO;
 using Boomlagoon.JSON;
 using CGTespy.UI;
+using System;
 
 namespace VRestionnaire {
 
@@ -89,29 +90,44 @@ namespace VRestionnaire {
 						questionPanelRT.SetAnchor(AnchorPresets.StretchAll);
 						questionPanelRT.localPosition = Vector3.zero;
 						//questionPanel.transform.parent = questionnaireParent; // questionnairePanelUI.questionsPanel;
+						
 
-						IQuestionPanelUI panelUI = questionPanel.GetComponent<IQuestionPanelUI>();
-						print(panelUI);
+						if(question is RadioGridQuestion) {
+							QuestionPanelUI<RadioGridQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<RadioGridQuestion>>();
+							panelUI.SetQuestion(question as RadioGridQuestion, questionnairePanel.OnQuestionAnswered);
+							
+						} else if(question is RadioListQuestion) {
+							QuestionPanelUI<RadioListQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<RadioListQuestion>>();
+							panelUI.SetQuestion(question as RadioListQuestion,questionnairePanel.OnQuestionAnswered);
+						} else if(question is CheckListQuestion) {
+							QuestionPanelUI<CheckListQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<CheckListQuestion>>();
+							panelUI.SetQuestion(question as CheckListQuestion,questionnairePanel.OnQuestionAnswered);
+						} else if(question is SliderQuestion) {
+							QuestionPanelUI<SliderQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<SliderQuestion>>();
+							panelUI.SetQuestion(question as SliderQuestion,questionnairePanel.OnQuestionAnswered);
+						} else if(question is FieldQuestion) {
+							QuestionPanelUI<FieldQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<FieldQuestion>>();
+							panelUI.SetQuestion(question as FieldQuestion,questionnairePanel.OnQuestionAnswered);
+						} else if(question is NumFieldQuestion) {
+							QuestionPanelUI<NumFieldQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<NumFieldQuestion>>();
+							panelUI.SetQuestion(question as NumFieldQuestion,questionnairePanel.OnQuestionAnswered);
+						} else if(question is MultiFieldQuestion) {
+							QuestionPanelUI<MultiFieldQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<MultiFieldQuestion>>();
+							panelUI.SetQuestion(question as MultiFieldQuestion,questionnairePanel.OnQuestionAnswered);
+						} else if(question is DropDownQuestion) {
+							QuestionPanelUI<DropDownQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<DropDownQuestion>>();
+							panelUI.SetQuestion(question as DropDownQuestion,questionnairePanel.OnQuestionAnswered);
+						} else if(question is TextViewQuestion) {
+							QuestionPanelUI<TextViewQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<TextViewQuestion>>();
+							panelUI.SetQuestion(question as TextViewQuestion,questionnairePanel.OnQuestionAnswered);
+						}
 
-						//if(question is RadioGridQuestion) {
-						//} else if(question is RadioListQuestion) {
-						//} else if(question is CheckListQuestion) {
-						//} else if(question is SliderQuestion) {
-						//} else if(question is FieldQuestion) {
-						//} else if(question is NumFieldQuestion) {
-						//} else if(question is MultiFieldQuestion) {
-						//} else if(question is DropDownQuestion) {
-						//} else if(question is TextViewQuestion) {
-						//}
-
-						panelUI.SetQuestion(question);
 						questionnairePanel.questionPanels.Add(questionPanelRT);
 						questionPanelRT.gameObject.SetActive(false);
 					}
 				}
 			}
-
-			questionnairePanel.questionPanels[0].gameObject.SetActive(true);
+			questionnairePanel.Init();
 
 			//RectTransform firstChild = questionnairePanelUI.GetComponentsInChildren<QuestionPanelUI>()[0].GetComponent<RectTransform>();
 			//questionnairePanelUI.contentScrollRect.content.localPosition =

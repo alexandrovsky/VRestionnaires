@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 
 namespace VRestionnaire {
 
-	public class QuestionPanelCheckListUI:QuestionPanelUI, IQuestionPanelUI {
+	public class QuestionPanelCheckListUI:QuestionPanelUI<CheckListQuestion>, IQuestionPanelUI {
 
 		public RectTransform itemsUI;
 		public VariableGridLayoutGroup gridLayout;
@@ -14,15 +15,14 @@ namespace VRestionnaire {
 		public GameObject labelPrefab;
 		public GameObject checkItemPrefab;
 
-
-		[SerializeField] CheckListQuestion question;
-
-
+		//[SerializeField] CheckListQuestion question;
+		
 		List<Toggle> toggles;
 
-		public void SetQuestion(Question q)
+		public override void SetQuestion(CheckListQuestion q, UnityAction<Question> answeredEvent)
 		{
-			question = q as CheckListQuestion;
+			base.SetQuestion(q, answeredEvent);
+			
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
 
@@ -35,7 +35,7 @@ namespace VRestionnaire {
 			} else {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedColumnCount;
 				gridLayout.constraintCount = 2;
-				gridLayout.childAlignment = TextAnchor.UpperCenter;
+				gridLayout.childAlignment = TextAnchor.MiddleCenter;
 			}
 
 			for(int i = 0; i < question.questions.Length; i++) {
@@ -55,6 +55,7 @@ namespace VRestionnaire {
 			}
 		}
 
+
 		void HandleToggleValueChanged(bool arg0)
 		{
 			question.isAnswered = true;
@@ -62,7 +63,11 @@ namespace VRestionnaire {
 				question.answers[i] = toggles[i].isOn;
 				print("answered: " + i + " item: " + toggles[i].isOn);
 			}
+			OnQuestionAnswered.Invoke(question);
+			
 		}
+
+		
 	}
 }
 

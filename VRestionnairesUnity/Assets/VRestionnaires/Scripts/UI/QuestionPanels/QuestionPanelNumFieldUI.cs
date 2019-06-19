@@ -1,33 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 
 namespace VRestionnaire {
 
-	public class QuestionPanelNumFieldUI:QuestionPanelUI, IQuestionPanelUI {
+	public class QuestionPanelNumFieldUI:QuestionPanelUI<NumFieldQuestion>, IQuestionPanelUI {
 
 		public TMP_InputField inputField;
 		public Button incrementButton;
 		public Button decrementButton;
 
 		public NumberPad numberPad;
-		
 
-		[SerializeField] NumFieldQuestion question;
-		public void SetQuestion(Question q)
+
+		public override void SetQuestion(NumFieldQuestion q, UnityAction<Question> answeredEvent)
 		{
-			question = q as NumFieldQuestion;
+			base.SetQuestion(q,answeredEvent);
 
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
 
 			switch(question.datatype) {
-			case QuestionDatatype.Integer:
+			case QuestionDataType.Integer:
 				inputField.contentType = TMP_InputField.ContentType.IntegerNumber;
 				break;
-			case QuestionDatatype.Float:
+			case QuestionDataType.Float:
 				inputField.contentType = TMP_InputField.ContentType.DecimalNumber;
 				break;
 			}
@@ -52,8 +52,6 @@ namespace VRestionnaire {
 				numberPad.OnConfirm += NumberPad_OnConfirm;
 				numberPad.OnDelete += NumberPad_OnDelete;
 			}
-			
-
 		}
 
 		private void NumberPad_OnDelete()
@@ -98,7 +96,7 @@ namespace VRestionnaire {
 		{
 			bool validAnswer = false;
 			switch(question.datatype) {
-			case QuestionDatatype.Integer:
+			case QuestionDataType.Integer:
 				int ivalue;
 				if(int.TryParse(input, out ivalue)) {
 					if(ivalue < question.min) {
@@ -113,7 +111,7 @@ namespace VRestionnaire {
 				}
 				question.answer = ivalue;
 				break;
-			case QuestionDatatype.Float:
+			case QuestionDataType.Float:
 				float fvalue;
 				if(float.TryParse(input,out fvalue)) {
 					if(fvalue < question.min) {

@@ -30,13 +30,21 @@ namespace VRestionnaire {
 		public List<RectTransform> questionPanels;
 		[SerializeField] int currentQuestionIdx; 
 
-
-		public void ClearQuetionPanels() {
+		
+		public void ClearQuestionPanels() {
 			for(int i = 0; i < questionPanels.Count; i++) {
 				Destroy(questionPanels[i]);
 			}
 			questionPanels.Clear();
 			currentQuestionIdx = 0;
+		}
+
+
+		public void Init()
+		{
+			backButton.GetComponent<Button>().interactable = false;
+			nextButton.GetComponent<Button>().interactable = true;
+			questionPanels[currentQuestionIdx].gameObject.SetActive(true);
 		}
 
 		public void ApplySkin()
@@ -70,6 +78,12 @@ namespace VRestionnaire {
 				questionPanels[currentQuestionIdx].gameObject.SetActive(false);
 				currentQuestionIdx++;
 				questionPanels[currentQuestionIdx].gameObject.SetActive(true);
+				QuestionPanelUI<Question> panelUI = questionPanels[currentQuestionIdx].GetComponent<QuestionPanelUI<Question>>();
+				Question question = panelUI.question;
+				backButton.GetComponent<Button>().interactable = question.required;
+				
+			} else {
+				nextButton.GetComponent<Button>().interactable = false;
 			}
 		}
 
@@ -79,8 +93,18 @@ namespace VRestionnaire {
 				questionPanels[currentQuestionIdx].gameObject.SetActive(false);
 				currentQuestionIdx--;
 				questionPanels[currentQuestionIdx].gameObject.SetActive(true);
+				nextButton.GetComponent<Button>().interactable = true;
+			} else {
+				backButton.GetComponent<Button>().interactable = false;
 			}
 		}
+
+		public void OnQuestionAnswered(Question question)
+		{
+			print(">>>>>>> answered question: " + question.id);
+			nextButton.GetComponent<Button>().interactable = true;
+		}
+
 	}
 
 }

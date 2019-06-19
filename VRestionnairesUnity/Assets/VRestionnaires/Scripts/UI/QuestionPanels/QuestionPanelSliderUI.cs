@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 
 namespace VRestionnaire {
-	public class QuestionPanelSliderUI:QuestionPanelUI, IQuestionPanelUI {
+	public class QuestionPanelSliderUI:QuestionPanelUI<SliderQuestion>, IQuestionPanelUI {
 
 		[SerializeField] Slider slider;
 		[SerializeField] Button incrementValueButton;
@@ -13,12 +14,10 @@ namespace VRestionnaire {
 		[SerializeField] TMP_Text minLabel;
 		[SerializeField] TMP_Text maxLabel;
 
-		[SerializeField] SliderQuestion question;
 
-		
-		public void SetQuestion(Question q)
+		public override void SetQuestion(SliderQuestion q, UnityAction<Question> answeredEvent)
 		{
-			question = q as SliderQuestion;
+			base.SetQuestion(q,answeredEvent);
 
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
@@ -28,18 +27,20 @@ namespace VRestionnaire {
 
 			slider.minValue = 0;
 			slider.maxValue = question.tick_count;
-			slider.wholeNumbers = question.datatype == QuestionDatatype.Integer;
+			slider.wholeNumbers = question.datatype == QuestionDataType.Integer;
 
 			slider.onValueChanged.AddListener(OnSliderValueChanged);
 			incrementValueButton.onClick.AddListener(IncrementValue);
 			decrementValueButton.onClick.AddListener(DecrementValue);
 		}
 
+
 		void OnSliderValueChanged(float value)
 		{
 			question.isAnswered = true;
 			question.answer = value;
 			print(question.id + " " + question.answer);
+			OnQuestionAnswered.Invoke(question);
 		}
 
 

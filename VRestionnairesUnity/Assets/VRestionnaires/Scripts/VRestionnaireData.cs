@@ -9,19 +9,19 @@ namespace VRestionnaire {
 
 	public static class VRestionnaireData {
 
-		public static QuestionDatatype DataTypeFromString(string str)
+		public static QuestionDataType DataTypeFromString(string str)
 		{
 			switch(str) {
 			case "boolean":
-				return QuestionDatatype.Boolean;
+				return QuestionDataType.Boolean;
 			case "integer":
-				return QuestionDatatype.Integer;
+				return QuestionDataType.Integer;
 			case "float":
-				return QuestionDatatype.Float;
+				return QuestionDataType.Float;
 			case "string":
-				return QuestionDatatype.String;
+				return QuestionDataType.String;
 			default:
-				return QuestionDatatype.Invalid;
+				return QuestionDataType.Invalid;
 
 			}
 
@@ -29,17 +29,14 @@ namespace VRestionnaire {
 	}
 
 
-
-
-
-	public enum QuestionDatatype {
+	public enum QuestionDataType {
 		Invalid,
 		Boolean,
 		Integer,
 		Float,
 		String
 	}
-	public enum QuestionDisplaytype {
+	public enum QuestionDisplayType {
 		Integer,
 		Float,
 		Percentage
@@ -90,7 +87,7 @@ namespace VRestionnaire {
 		public string instructions;
 		public bool required;
 		public bool shuffle;
-		public QuestionDatatype datatype;
+		public QuestionDataType datatype;
 		public bool isAnswered;
 
 		public Question(JSONObject json) {
@@ -128,7 +125,7 @@ namespace VRestionnaire {
 		public RadioGridQuestion(JSONObject json) : base(json)
 		{	
 			questiontype = QuestionType.RadioGrid;
-			datatype = QuestionDatatype.Boolean;
+			datatype = QuestionDataType.Boolean;
 
 			JSONArray labelsJson = json["labels"].Array;
 			labels = new string[labelsJson.Length];
@@ -161,7 +158,7 @@ namespace VRestionnaire {
 		public RadioListQuestion(JSONObject json) : base(json)
 		{
 			questiontype = QuestionType.RadioList;
-			datatype = QuestionDatatype.Boolean;
+			datatype = QuestionDataType.Boolean;
 			horizontal = json["horizontal"].Boolean;
 			JSONArray labelsArray = json["labels"].Array;
 			labels = new string[labelsArray.Length];
@@ -207,10 +204,10 @@ namespace VRestionnaire {
 		public SliderQuestion(JSONObject json) : base(json)
 		{
 			questiontype = QuestionType.Slider;
-			datatype = QuestionDatatype.Integer;
+			datatype = QuestionDataType.Integer;
 
 			if(json.ContainsKey("datatype")) {
-				datatype = json["datatype"].Str == "integer" ? QuestionDatatype.Integer : QuestionDatatype.Float;
+				datatype = json["datatype"].Str == "integer" ? QuestionDataType.Integer : QuestionDataType.Float;
 			}
 
 			left = json["left"].Str;
@@ -228,14 +225,14 @@ namespace VRestionnaire {
 		public FieldQuestion(JSONObject json) : base(json)
 		{
 			questiontype = QuestionType.Field;
-			datatype = QuestionDatatype.String;
+			datatype = QuestionDataType.String;
 			placeholder = json["placeholder"].Str;
 		}
 	}
 
 	[System.Serializable]
 	public class NumFieldQuestion:Question {
-		public QuestionDisplaytype displaytype;
+		public QuestionDisplayType displaytype;
 		public bool spinbutton;
 		public float min;
 		public float max;
@@ -252,22 +249,22 @@ namespace VRestionnaire {
 
 			switch(json["datatype"].Str) {
 			case "integer":
-				datatype = QuestionDatatype.Integer;
+				datatype = QuestionDataType.Integer;
 				break;
 			case "float":
-				datatype = QuestionDatatype.Float;
+				datatype = QuestionDataType.Float;
 				break;
 			}
 			if(json.ContainsKey("displaytype")) {
 				switch(json["displaytype"].Str) {
 				case "integer":
-					displaytype = QuestionDisplaytype.Integer;
+					displaytype = QuestionDisplayType.Integer;
 					break;
 				case "float":
-					displaytype = QuestionDisplaytype.Float;
+					displaytype = QuestionDisplayType.Float;
 					break;
 				case "percentage":
-					displaytype = QuestionDisplaytype.Percentage;
+					displaytype = QuestionDisplayType.Percentage;
 					break;
 				}
 			}
@@ -285,12 +282,17 @@ namespace VRestionnaire {
 	}
 
 	[System.Serializable]
-	public class MultiFieldQuestion:FieldQuestion {
+	public class MultiFieldQuestion:Question {
+		public string placeholder;
+		public string answer;
 		public int height;
 		public MultiFieldQuestion(JSONObject json) : base(json)
 		{
 			questiontype = QuestionType.MultField;
 			height = (int)json["height"].Number;
+			datatype = QuestionDataType.String;
+			placeholder = json["placeholder"].Str;
+
 		}
 	}
 

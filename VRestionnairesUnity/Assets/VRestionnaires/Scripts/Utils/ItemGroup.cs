@@ -28,7 +28,7 @@ namespace VRestionnaire {
 		{
 			if(toggles.Count == 0) {
 				toggleGroup = toggle.gameObject.AddComponent<ToggleGroup>();
-				toggleGroup.allowSwitchOff = allowSwitchOff;
+				toggleGroup.allowSwitchOff = true; // allowSwitchOff;
 			}
 			toggle.group = toggleGroup;
 			toggleGroup.RegisterToggle(toggle);
@@ -49,6 +49,8 @@ namespace VRestionnaire {
 
 		public virtual void OnToggleValueChanged(bool value)
 		{
+			toggleGroup.allowSwitchOff = this.allowSwitchOff;
+ 
 			List<Toggle> active = toggleGroup.ActiveToggles().ToList();
 			int idx = -1;
 			if(active.Count == 1) {

@@ -1,27 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 
 
 namespace VRestionnaire {
-	public class QuestionPanelRadioListUI:QuestionPanelUI, IQuestionPanelUI {
+	public class QuestionPanelRadioListUI:QuestionPanelUI<RadioListQuestion>, IQuestionPanelUI {
 		public RectTransform itemsUI;
 		public VariableGridLayoutGroup gridLayout;
 
 		public GameObject labelPrefab;
 		public GameObject radioItemPrefab;
 
-
-		[SerializeField] RadioListQuestion question;
+		
 		RadioGroup radioGroup;
 
 
-		public void SetQuestion(Question q)
+		public override void SetQuestion(RadioListQuestion q, UnityAction<Question> answeredEvent)
 		{
-			question = q as RadioListQuestion;
+			base.SetQuestion(q, answeredEvent);
+
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
 
@@ -56,11 +56,13 @@ namespace VRestionnaire {
 			radioGroup.Init();
 		}
 
+
 		void OnGroupSelected(string qId,int itemId)
 		{
 			question.isAnswered = true;
 			question.answer = question.labels[itemId];
 			print("answered: " + qId + " item: " + question.answer);
+			OnQuestionAnswered.Invoke(question);
 		}
 
 	}
