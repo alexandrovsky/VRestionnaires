@@ -12,7 +12,8 @@ namespace VRestionnaire {
 		public Button incrementButton;
 		public Button decrementButton;
 
-		float inputValue;
+		public NumberPad numberPad;
+		
 
 		[SerializeField] NumFieldQuestion question;
 		public void SetQuestion(Question q)
@@ -39,13 +40,41 @@ namespace VRestionnaire {
 				decrementButton.onClick.AddListener(DecrementValue);
 			}
 
+			inputField.onSelect.AddListener(OnFieldSelected);
+
 			inputField.onValueChanged.AddListener(OnNumFieldSubmitted);
 			inputField.onSubmit.AddListener(OnNumFieldSubmitted);
 			inputField.onDeselect.AddListener(OnNumFieldSubmitted);
 
+			numberPad = FindObjectOfType<QuestionnairePanelUI>().numberPad;
+			if(numberPad) {
+				numberPad.OnNumberSelected += NumberPad_OnNumberSelected;
+				numberPad.OnConfirm += NumberPad_OnConfirm;
+				numberPad.OnDelete += NumberPad_OnDelete;
+			}
+			
+
+		}
+
+		private void NumberPad_OnDelete()
+		{
+			inputField.Select();
+			inputField.text = "";
+		}
+
+		private void NumberPad_OnConfirm()
+		{
+			OnNumFieldSubmitted(inputField.text);
+			numberPad.gameObject.SetActive(false);
+		}
+
+		private void NumberPad_OnNumberSelected(int number)
+		{
+			inputField.text += number.ToString(); 
 		}
 
 		void IncrementValue() {
+			float inputValue = float.Parse(inputField.text.Length == 0? "0" : inputField.text);
 			inputValue++;
 			inputValue = Mathf.Clamp(inputValue,question.min,question.max);
 			inputField.text = inputValue.ToString(); 
@@ -53,11 +82,18 @@ namespace VRestionnaire {
 
 		void DecrementValue()
 		{
+			float inputValue = float.Parse(inputField.text.Length == 0 ? "0" : inputField.text);
 			inputValue--;
 			inputValue = Mathf.Clamp(inputValue,question.min,question.max);
 			inputField.text = inputValue.ToString();
 		}
 
+		void OnFieldSelected(string str)
+		{
+			if(numberPad) {
+				numberPad.gameObject.SetActive(true);
+			}
+		}
 		void OnNumFieldSubmitted(string input)
 		{
 			bool validAnswer = false;

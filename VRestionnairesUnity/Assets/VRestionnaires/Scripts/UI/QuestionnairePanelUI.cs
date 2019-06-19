@@ -18,7 +18,7 @@ namespace VRestionnaire {
 		public RectTransform bottomPanel;
 		public ScrollRect contentScrollRect;
 		public Scrollbar contentScrollbarVertical;
-
+		public NumberPad numberPad;
 
 		[Tooltip("go to next page")]
 		public Button nextButton;
