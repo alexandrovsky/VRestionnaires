@@ -21,13 +21,13 @@ namespace VRestionnaire {
 
 		static string[] fileExtensions = { "json" };
 		//public GameObject questionnairePanelPrefab;
-		public RectTransform questionnaireParent;
-
+		public RectTransform questionParent;
+		public QuestionnairePanelUI questionnairePanel;
 
 		public Questionnaire questionnaire;
 
 		public List<QuestionTypePrefab> questionTypePrefabs;
-
+		
 
 		void Start()
 		{
@@ -78,21 +78,14 @@ namespace VRestionnaire {
 		}
 
 		void GenerateQuestionnaireUI()
-		{
-			//RectTransform panel = Instantiate(questionnairePanelPrefab).GetComponent<RectTransform>();
-			//QuestionnairePanelUI questionnairePanelUI = panel.GetComponent<QuestionnairePanelUI>();
-			//panel.parent = questionnaireParent;
-			//panel.ApplyAnchorPreset(TextAnchor.MiddleCenter,true,true);
-			//panel.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,questionnaireParent.Width());
-			//panel.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,questionnaireParent.Height());
-
+		{	
 			foreach(Question question in questionnaire.questions) {
 				if(ContainsQuestionType(question.questiontype)){
 					GameObject prefab = ObjectForQuestionType(question.questiontype);
 					if(prefab != null) {
 						GameObject questionPanel = Instantiate(prefab);
 						RectTransform questionPanelRT = questionPanel.GetComponent<RectTransform>();
-						questionPanelRT.parent = questionnaireParent;
+						questionPanelRT.parent = questionParent;
 						questionPanelRT.SetAnchor(AnchorPresets.StretchAll);
 						questionPanelRT.localPosition = Vector3.zero;
 						//questionPanel.transform.parent = questionnaireParent; // questionnairePanelUI.questionsPanel;
@@ -112,9 +105,14 @@ namespace VRestionnaire {
 						//}
 
 						panelUI.SetQuestion(question);
+						questionnairePanel.questionPanels.Add(questionPanelRT);
+						questionPanelRT.gameObject.SetActive(false);
 					}
 				}
 			}
+
+			questionnairePanel.questionPanels[0].gameObject.SetActive(true);
+
 			//RectTransform firstChild = questionnairePanelUI.GetComponentsInChildren<QuestionPanelUI>()[0].GetComponent<RectTransform>();
 			//questionnairePanelUI.contentScrollRect.content.localPosition =
 			//questionnairePanelUI.contentScrollRect.GetSnapToPositionToBringChildIntoView(firstChild);

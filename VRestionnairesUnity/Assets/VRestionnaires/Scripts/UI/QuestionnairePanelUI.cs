@@ -18,13 +18,26 @@ namespace VRestionnaire {
 		public RectTransform bottomPanel;
 		public ScrollRect contentScrollRect;
 		public Scrollbar contentScrollbarVertical;
+
+		[Tooltip("Go to previous question")]
+		public GameObject backButton;
+		[Tooltip("Go to next question")]
+		public GameObject nextButton;
+
+		[Tooltip("Number pad for Num field input")]
 		public NumberPad numberPad;
 
-		[Tooltip("go to next page")]
-		public Button nextButton;
-		[Tooltip("go to previous page")]
-		public Button prevButton;
+		public List<RectTransform> questionPanels;
+		[SerializeField] int currentQuestionIdx; 
 
+
+		public void ClearQuetionPanels() {
+			for(int i = 0; i < questionPanels.Count; i++) {
+				Destroy(questionPanels[i]);
+			}
+			questionPanels.Clear();
+			currentQuestionIdx = 0;
+		}
 
 		public void ApplySkin()
 		{
@@ -50,6 +63,23 @@ namespace VRestionnaire {
 			//	}
 			//}
 
+		}
+		public void OnNextButtonClicked()
+		{
+			if(currentQuestionIdx < questionPanels.Count - 1) {
+				questionPanels[currentQuestionIdx].gameObject.SetActive(false);
+				currentQuestionIdx++;
+				questionPanels[currentQuestionIdx].gameObject.SetActive(true);
+			}
+		}
+
+		public void OnBackButtonClicked()
+		{
+			if(currentQuestionIdx > 0) {
+				questionPanels[currentQuestionIdx].gameObject.SetActive(false);
+				currentQuestionIdx--;
+				questionPanels[currentQuestionIdx].gameObject.SetActive(true);
+			}
 		}
 	}
 

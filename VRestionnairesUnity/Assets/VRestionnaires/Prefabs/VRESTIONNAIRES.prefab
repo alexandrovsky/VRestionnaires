@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dir: /Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires
-  questionnaireParent: {fileID: 0}
+  questionParent: {fileID: 0}
+  questionnairePanel: {fileID: 0}
   questionnaire:
     title: Example Questionnaire
     instructions: Please rate each video game experience....
