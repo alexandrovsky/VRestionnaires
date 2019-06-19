@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 
 namespace VRestionnaire {
-	public class QuestionPanelSliderUI:QuestionPanelUI<SliderQuestion>, IQuestionPanelUI {
+	public class QuestionPanelSliderUI:QuestionPanelUI, IQuestionPanelUI {
 
 		[SerializeField] Slider slider;
 		[SerializeField] Button incrementValueButton;
@@ -14,19 +14,20 @@ namespace VRestionnaire {
 		[SerializeField] TMP_Text minLabel;
 		[SerializeField] TMP_Text maxLabel;
 
+		SliderQuestion sliderQuestion;
 
-		public override void SetQuestion(SliderQuestion q, UnityAction<Question> answeredEvent)
+		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q,answeredEvent);
-
+			sliderQuestion = question as SliderQuestion;
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
 
-			minLabel.text = question.left;
-			maxLabel.text = question.right;
+			minLabel.text = sliderQuestion.left;
+			maxLabel.text = sliderQuestion.right;
 
 			slider.minValue = 0;
-			slider.maxValue = question.tick_count;
+			slider.maxValue = sliderQuestion.tick_count;
 			slider.wholeNumbers = question.datatype == QuestionDataType.Integer;
 
 			slider.onValueChanged.AddListener(OnSliderValueChanged);
@@ -38,8 +39,8 @@ namespace VRestionnaire {
 		void OnSliderValueChanged(float value)
 		{
 			question.isAnswered = true;
-			question.answer = value;
-			print(question.id + " " + question.answer);
+			sliderQuestion.answer = value;
+			print(question.id + " " + sliderQuestion.answer);
 			OnQuestionAnswered.Invoke(question);
 		}
 
@@ -47,14 +48,14 @@ namespace VRestionnaire {
 		void IncrementValue()
 		{
 			slider.value++;
-			slider.value = Mathf.Clamp(slider.value, 0, question.tick_count);
+			slider.value = Mathf.Clamp(slider.value, 0,sliderQuestion.tick_count);
 			
 		}
 
 		void DecrementValue()
 		{
 			slider.value--;
-			slider.value = Mathf.Clamp(slider.value, 0,question.tick_count);
+			slider.value = Mathf.Clamp(slider.value, 0,sliderQuestion.tick_count);
 		}
 
 	}

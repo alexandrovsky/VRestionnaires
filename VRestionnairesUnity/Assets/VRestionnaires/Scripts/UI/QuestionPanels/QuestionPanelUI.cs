@@ -12,7 +12,7 @@ namespace VRestionnaire {
 		//bool CheckMandatory();
 	}
 
-	public abstract class QuestionPanelUI<Q>:MonoBehaviour where Q : Question {
+	public abstract class QuestionPanelUI:MonoBehaviour{
 
 		public UnityAction<Question> OnQuestionAnswered;
 		
@@ -23,10 +23,10 @@ namespace VRestionnaire {
 		public TMP_Text instructionsText;
 		public TMP_Text idText;
 
-		public Q question;
+		public Question question;
 
 
-		public virtual void SetQuestion(Q q, UnityAction<Question> answeredEvent)
+		public virtual void SetQuestion(Question q, UnityAction<Question> answeredEvent)
 		{
 			OnQuestionAnswered += answeredEvent;
 			question = q;

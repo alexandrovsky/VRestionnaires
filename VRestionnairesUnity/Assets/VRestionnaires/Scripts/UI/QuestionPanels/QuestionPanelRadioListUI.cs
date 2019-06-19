@@ -7,7 +7,7 @@ using TMPro;
 
 
 namespace VRestionnaire {
-	public class QuestionPanelRadioListUI:QuestionPanelUI<RadioListQuestion>, IQuestionPanelUI {
+	public class QuestionPanelRadioListUI:QuestionPanelUI, IQuestionPanelUI {
 		public RectTransform itemsUI;
 		public VariableGridLayoutGroup gridLayout;
 
@@ -18,17 +18,19 @@ namespace VRestionnaire {
 		RadioGroup radioGroup;
 
 
-		public override void SetQuestion(RadioListQuestion q, UnityAction<Question> answeredEvent)
+		RadioListQuestion radioListQuestion;
+
+		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q, answeredEvent);
-
+			radioListQuestion = question as RadioListQuestion;
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
 
 			radioGroup = new RadioGroup(question.id, false);
 			radioGroup.OnGroupSelected += OnGroupSelected;
 
-			if(question.horizontal) {
+			if(radioListQuestion.horizontal) {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedRowCount;
 				gridLayout.constraintCount = 1;
 				gridLayout.childAlignment = TextAnchor.MiddleCenter;
@@ -38,10 +40,10 @@ namespace VRestionnaire {
 				gridLayout.childAlignment = TextAnchor.UpperCenter;
 			}
 
-			for(int i = 0; i < question.labels.Length; i++) {
+			for(int i = 0; i < radioListQuestion.labels.Length; i++) {
 				GameObject label = Instantiate(labelPrefab);
 				TMP_Text text = label.GetComponent<TMP_Text>();
-				text.text = question.labels[i];
+				text.text = radioListQuestion.labels[i];
 				label.transform.parent = itemsUI;
 				label.transform.localPosition = Vector3.zero;
 
@@ -60,8 +62,8 @@ namespace VRestionnaire {
 		void OnGroupSelected(string qId,int itemId)
 		{
 			question.isAnswered = true;
-			question.answer = question.labels[itemId];
-			print("answered: " + qId + " item: " + question.answer);
+			radioListQuestion.answer = radioListQuestion.labels[itemId];
+			print("answered: " + qId + " item: " + radioListQuestion.answer);
 			OnQuestionAnswered.Invoke(question);
 		}
 

@@ -4,19 +4,19 @@ using UnityEngine.Events;
 using TMPro;
 
 namespace VRestionnaire {
-	public class QuestionPanelMultiFieldUI:QuestionPanelUI<MultiFieldQuestion>, IQuestionPanelUI {
+	public class QuestionPanelMultiFieldUI:QuestionPanelUI, IQuestionPanelUI {
 		public TMP_InputField inputField;
 		public TMP_Text placeholder;
 
 
-		public override void SetQuestion(MultiFieldQuestion q,UnityAction<Question> answeredEvent)
+		public override void SetQuestion(Question q,UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q,answeredEvent);
-
+			MultiFieldQuestion multiFieldQuestion = question as MultiFieldQuestion;
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
 
-			placeholder.text = question.placeholder;
+			placeholder.text = multiFieldQuestion.placeholder;
 
 			inputField.onSubmit.AddListener(OnMultiFieldSubmit);
 			inputField.onDeselect.AddListener(OnMultiFieldSubmit);
@@ -25,9 +25,10 @@ namespace VRestionnaire {
 
 		void OnMultiFieldSubmit(string input)
 		{
+			MultiFieldQuestion multiFieldQuestion = question as MultiFieldQuestion;
 			question.isAnswered = true;
-			question.answer = input;
-			print(question.id + " " + question.answer);
+			multiFieldQuestion.answer = input;
+			print(question.id + " " + multiFieldQuestion.answer);
 			OnQuestionAnswered.Invoke(question);
 		}
 

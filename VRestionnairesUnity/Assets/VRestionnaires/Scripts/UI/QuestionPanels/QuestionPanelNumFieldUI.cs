@@ -7,19 +7,19 @@ using TMPro;
 
 namespace VRestionnaire {
 
-	public class QuestionPanelNumFieldUI:QuestionPanelUI<NumFieldQuestion>, IQuestionPanelUI {
+	public class QuestionPanelNumFieldUI:QuestionPanelUI, IQuestionPanelUI {
 
 		public TMP_InputField inputField;
 		public Button incrementButton;
 		public Button decrementButton;
 
 		public NumberPad numberPad;
+		NumFieldQuestion numFieldQuestion;
 
-
-		public override void SetQuestion(NumFieldQuestion q, UnityAction<Question> answeredEvent)
+		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q,answeredEvent);
-
+			numFieldQuestion = question as NumFieldQuestion;
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
 
@@ -32,10 +32,10 @@ namespace VRestionnaire {
 				break;
 			}
 
-			incrementButton.gameObject.SetActive(question.spinbutton);
-			decrementButton.gameObject.SetActive(question.spinbutton);
+			incrementButton.gameObject.SetActive(numFieldQuestion.spinbutton);
+			decrementButton.gameObject.SetActive(numFieldQuestion.spinbutton);
 
-			if(question.spinbutton) {
+			if(numFieldQuestion.spinbutton) {
 				incrementButton.onClick.AddListener(IncrementValue);
 				decrementButton.onClick.AddListener(DecrementValue);
 			}
@@ -72,17 +72,19 @@ namespace VRestionnaire {
 		}
 
 		void IncrementValue() {
+			NumFieldQuestion numFieldQuestion = question as NumFieldQuestion;
 			float inputValue = float.Parse(inputField.text.Length == 0? "0" : inputField.text);
 			inputValue++;
-			inputValue = Mathf.Clamp(inputValue,question.min,question.max);
+			inputValue = Mathf.Clamp(inputValue,numFieldQuestion.min, numFieldQuestion.max);
 			inputField.text = inputValue.ToString(); 
 		}
 
 		void DecrementValue()
 		{
+			NumFieldQuestion numFieldQuestion = question as NumFieldQuestion;
 			float inputValue = float.Parse(inputField.text.Length == 0 ? "0" : inputField.text);
 			inputValue--;
-			inputValue = Mathf.Clamp(inputValue,question.min,question.max);
+			inputValue = Mathf.Clamp(inputValue,numFieldQuestion.min,numFieldQuestion.max);
 			inputField.text = inputValue.ToString();
 		}
 
@@ -99,36 +101,36 @@ namespace VRestionnaire {
 			case QuestionDataType.Integer:
 				int ivalue;
 				if(int.TryParse(input, out ivalue)) {
-					if(ivalue < question.min) {
-						ivalue = (int)question.min;
-					}else if(ivalue > question.max) {
-						ivalue = (int)question.max;
+					if(ivalue < numFieldQuestion.min) {
+						ivalue = (int)numFieldQuestion.min;
+					}else if(ivalue > numFieldQuestion.max) {
+						ivalue = (int)numFieldQuestion.max;
 					}
 					validAnswer = true;
 					inputField.onValueChanged.RemoveListener(OnNumFieldSubmitted);
 					inputField.text = ivalue.ToString();
 					inputField.onValueChanged.AddListener(OnNumFieldSubmitted);
 				}
-				question.answer = ivalue;
+				numFieldQuestion.answer = ivalue;
 				break;
 			case QuestionDataType.Float:
 				float fvalue;
 				if(float.TryParse(input,out fvalue)) {
-					if(fvalue < question.min) {
-						fvalue = question.min;
-					} else if(fvalue > question.max) {
-						fvalue = question.max;
+					if(fvalue < numFieldQuestion.min) {
+						fvalue = numFieldQuestion.min;
+					} else if(fvalue > numFieldQuestion.max) {
+						fvalue = numFieldQuestion.max;
 					}
 					validAnswer = true;
 					inputField.onValueChanged.RemoveListener(OnNumFieldSubmitted);
 					inputField.text = fvalue.ToString();
 					inputField.onValueChanged.AddListener(OnNumFieldSubmitted);
 				}
-				question.answer = fvalue;
+				numFieldQuestion.answer = fvalue;
 				break;
 			}
 			question.isAnswered = validAnswer;
-			print(question.id + " " + question.answer);
+			print(question.id + " " + numFieldQuestion.answer);
 		}
 
 	}

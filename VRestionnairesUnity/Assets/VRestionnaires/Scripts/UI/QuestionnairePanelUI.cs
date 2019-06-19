@@ -78,10 +78,9 @@ namespace VRestionnaire {
 				questionPanels[currentQuestionIdx].gameObject.SetActive(false);
 				currentQuestionIdx++;
 				questionPanels[currentQuestionIdx].gameObject.SetActive(true);
-				QuestionPanelUI<Question> panelUI = questionPanels[currentQuestionIdx].GetComponent<QuestionPanelUI<Question>>();
+				QuestionPanelUI panelUI = questionPanels[currentQuestionIdx].GetComponent<QuestionPanelUI>();
 				Question question = panelUI.question;
-				backButton.GetComponent<Button>().interactable = question.required;
-				
+				nextButton.GetComponent<Button>().interactable = question.required;
 			} else {
 				nextButton.GetComponent<Button>().interactable = false;
 			}

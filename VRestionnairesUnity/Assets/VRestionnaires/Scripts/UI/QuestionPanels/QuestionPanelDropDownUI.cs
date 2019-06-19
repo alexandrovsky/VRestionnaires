@@ -5,19 +5,21 @@ using UnityEngine.Events;
 using TMPro;
 
 namespace VRestionnaire {
-	public class QuestionPanelDropDownUI:QuestionPanelUI<DropDownQuestion>, IQuestionPanelUI {
+	public class QuestionPanelDropDownUI:QuestionPanelUI, IQuestionPanelUI {
 
 		[SerializeField] TMP_Dropdown dropdown;
-
-		public override void SetQuestion(DropDownQuestion q,UnityAction<Question> answeredEvent)
+		DropDownQuestion downQuestion;
+		public override void SetQuestion(Question q,UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q,answeredEvent);
+
+			downQuestion = q as DropDownQuestion;
 
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
 
 			dropdown.ClearOptions();
-			dropdown.AddOptions(question.items);
+			dropdown.AddOptions(downQuestion.items);
 
 			dropdown.onValueChanged.AddListener(OnDropDownValueChanged);
 		}
@@ -26,8 +28,8 @@ namespace VRestionnaire {
 		void OnDropDownValueChanged(int itemId)
 		{
 			question.isAnswered = true;
-			question.answer = question.items[itemId];
-			print(question.id + " " + question.answer);
+			downQuestion.answer = downQuestion.items[itemId];
+			print(question.id + " " + downQuestion.answer);
 			OnQuestionAnswered.Invoke(question);
 		}
 

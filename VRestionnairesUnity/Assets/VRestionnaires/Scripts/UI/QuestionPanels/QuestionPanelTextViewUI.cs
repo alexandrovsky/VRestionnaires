@@ -6,17 +6,19 @@ using TMPro;
 namespace VRestionnaire { 
 
 
-	public class QuestionPanelTextViewUI : QuestionPanelUI<TextViewQuestion>, IQuestionPanelUI
+	public class QuestionPanelTextViewUI : QuestionPanelUI, IQuestionPanelUI
 	{
 		public TMP_Text text;
-
-		public override void SetQuestion(TextViewQuestion q, UnityAction<Question> answeredEvent)
+		TextViewQuestion textViewQuestion;
+		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q, answeredEvent);
 
+			textViewQuestion = question as TextViewQuestion;
+
 			idText.text = question.id;
-			text.text = question.text;
-			instructionsText.text = question.title;
+			text.text = textViewQuestion.text;
+			instructionsText.text = textViewQuestion.title;
 			question.isAnswered = true;
 		}
 	}

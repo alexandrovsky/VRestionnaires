@@ -90,37 +90,40 @@ namespace VRestionnaire {
 						questionPanelRT.SetAnchor(AnchorPresets.StretchAll);
 						questionPanelRT.localPosition = Vector3.zero;
 						//questionPanel.transform.parent = questionnaireParent; // questionnairePanelUI.questionsPanel;
-						
 
-						if(question is RadioGridQuestion) {
-							QuestionPanelUI<RadioGridQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<RadioGridQuestion>>();
-							panelUI.SetQuestion(question as RadioGridQuestion, questionnairePanel.OnQuestionAnswered);
-							
-						} else if(question is RadioListQuestion) {
-							QuestionPanelUI<RadioListQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<RadioListQuestion>>();
-							panelUI.SetQuestion(question as RadioListQuestion,questionnairePanel.OnQuestionAnswered);
-						} else if(question is CheckListQuestion) {
-							QuestionPanelUI<CheckListQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<CheckListQuestion>>();
-							panelUI.SetQuestion(question as CheckListQuestion,questionnairePanel.OnQuestionAnswered);
-						} else if(question is SliderQuestion) {
-							QuestionPanelUI<SliderQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<SliderQuestion>>();
-							panelUI.SetQuestion(question as SliderQuestion,questionnairePanel.OnQuestionAnswered);
-						} else if(question is FieldQuestion) {
-							QuestionPanelUI<FieldQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<FieldQuestion>>();
-							panelUI.SetQuestion(question as FieldQuestion,questionnairePanel.OnQuestionAnswered);
-						} else if(question is NumFieldQuestion) {
-							QuestionPanelUI<NumFieldQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<NumFieldQuestion>>();
-							panelUI.SetQuestion(question as NumFieldQuestion,questionnairePanel.OnQuestionAnswered);
-						} else if(question is MultiFieldQuestion) {
-							QuestionPanelUI<MultiFieldQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<MultiFieldQuestion>>();
-							panelUI.SetQuestion(question as MultiFieldQuestion,questionnairePanel.OnQuestionAnswered);
-						} else if(question is DropDownQuestion) {
-							QuestionPanelUI<DropDownQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<DropDownQuestion>>();
-							panelUI.SetQuestion(question as DropDownQuestion,questionnairePanel.OnQuestionAnswered);
-						} else if(question is TextViewQuestion) {
-							QuestionPanelUI<TextViewQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<TextViewQuestion>>();
-							panelUI.SetQuestion(question as TextViewQuestion,questionnairePanel.OnQuestionAnswered);
-						}
+						QuestionPanelUI panelUI = questionPanel.GetComponent<QuestionPanelUI>();
+						panelUI.SetQuestion(question, questionnairePanel.OnQuestionAnswered);
+
+
+						//if(question is RadioGridQuestion) {
+						//	QuestionPanelUI<RadioGridQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<RadioGridQuestion>>();
+						//	panelUI.SetQuestion(question as RadioGridQuestion, questionnairePanel.OnQuestionAnswered);
+
+						//} else if(question is RadioListQuestion) {
+						//	QuestionPanelUI<RadioListQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<RadioListQuestion>>();
+						//	panelUI.SetQuestion(question as RadioListQuestion,questionnairePanel.OnQuestionAnswered);
+						//} else if(question is CheckListQuestion) {
+						//	QuestionPanelUI<CheckListQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<CheckListQuestion>>();
+						//	panelUI.SetQuestion(question as CheckListQuestion,questionnairePanel.OnQuestionAnswered);
+						//} else if(question is SliderQuestion) {
+						//	QuestionPanelUI<SliderQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<SliderQuestion>>();
+						//	panelUI.SetQuestion(question as SliderQuestion,questionnairePanel.OnQuestionAnswered);
+						//} else if(question is FieldQuestion) {
+						//	QuestionPanelUI<FieldQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<FieldQuestion>>();
+						//	panelUI.SetQuestion(question as FieldQuestion,questionnairePanel.OnQuestionAnswered);
+						//} else if(question is NumFieldQuestion) {
+						//	QuestionPanelUI<NumFieldQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<NumFieldQuestion>>();
+						//	panelUI.SetQuestion(question as NumFieldQuestion,questionnairePanel.OnQuestionAnswered);
+						//} else if(question is MultiFieldQuestion) {
+						//	QuestionPanelUI<MultiFieldQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<MultiFieldQuestion>>();
+						//	panelUI.SetQuestion(question as MultiFieldQuestion,questionnairePanel.OnQuestionAnswered);
+						//} else if(question is DropDownQuestion) {
+						//	QuestionPanelUI<DropDownQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<DropDownQuestion>>();
+						//	panelUI.SetQuestion(question as DropDownQuestion,questionnairePanel.OnQuestionAnswered);
+						//} else if(question is TextViewQuestion) {
+						//	QuestionPanelUI<TextViewQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<TextViewQuestion>>();
+						//	panelUI.SetQuestion(question as TextViewQuestion,questionnairePanel.OnQuestionAnswered);
+						//}
 
 						questionnairePanel.questionPanels.Add(questionPanelRT);
 						questionPanelRT.gameObject.SetActive(false);
