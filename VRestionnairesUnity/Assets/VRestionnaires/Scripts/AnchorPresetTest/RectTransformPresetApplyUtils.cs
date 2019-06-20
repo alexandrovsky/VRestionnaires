@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace CGTespy.UI
 {
-	public static class RectTransformPresetApplyUtils 
+	public static class RectTransformPresetApplyUtils
 	{
 		#region For converting text anchors to Vector2s
 		static float upper = 							1f;
@@ -53,7 +53,7 @@ namespace CGTespy.UI
 
 
 		#endregion
-		
+
 		#region Various utility funcs that help with applying the preset.
 
 		#region Pivot and anchor-setting functions.
@@ -80,7 +80,7 @@ namespace CGTespy.UI
 		public static void SetAnchors(this RectTransform rectTransform,
 										Vector2 anchorMin, Vector2 anchorMax)
 		{
-			// Make sure this doesn't change the size of the rect transform. 
+			// Make sure this doesn't change the size of the rect transform.
 			Vector2 prevSize =                      rectTransform.rect.size;
 			rectTransform.anchorMin =               anchorMin;
 			rectTransform.anchorMax =               anchorMax;
@@ -106,7 +106,7 @@ namespace CGTespy.UI
 
 		#endregion
 
-		#region Rect Transform Edge coordinates	
+		#region Rect Transform Edge coordinates
 		public static float RightEdgeX(this RectTransform rectTransform, bool inWorldCoordinates = false)
 		{
 			float xCoord =          				rectTransform.rect.xMax;
@@ -152,33 +152,33 @@ namespace CGTespy.UI
 		#region RectTransform corner and center coordinates
 		public static Vector2 LowerLeftCorner(this RectTransform rectTransform, bool inWorldCoordinates = false)
 		{
-			Vector2 lowerLeftCorner =               new Vector2(rectTransform.LeftEdgeX(), 
+			Vector2 lowerLeftCorner =               new Vector2(rectTransform.LeftEdgeX(),
 														rectTransform.LowerEdgeY());
 
 			if (inWorldCoordinates)
 				lowerLeftCorner =                   rectTransform.TransformPoint(lowerLeftCorner);
-			
+
 			return lowerLeftCorner;
-			
+
 		}
 
 		public static Vector2 LowerRightCorner(this RectTransform rectTransform, bool inWorldCoordinates = false)
 		{
 			Vector2 lowerRightCorner = 				new Vector2( rectTransform.RightEdgeX(), rectTransform.LowerEdgeY());
-			
+
 			if (inWorldCoordinates)
 				return rectTransform.TransformPoint(lowerRightCorner);
-			
+
 			return lowerRightCorner;
 		}
 
 		public static Vector2 UpperRightCorner(this RectTransform rectTransform, bool inWorldCoordinates = false)
 		{
 			Vector2 upperRightCorner = 				new Vector2( rectTransform.RightEdgeX(), rectTransform.UpperEdgeY());
-			
+
 			if (inWorldCoordinates)
 				return rectTransform.TransformPoint(upperRightCorner);
-			
+
 			return upperRightCorner;
 		}
 
@@ -218,10 +218,10 @@ namespace CGTespy.UI
 		}
 
 		#endregion
-		
+
 		#region  RectTransform-positioning
 		/// <summary>
-		/// Returns a position on the rect transform based on the anchor position passed. Say, if the anchor position is 
+		/// Returns a position on the rect transform based on the anchor position passed. Say, if the anchor position is
 		/// (1, 1), this returns the position of the rect's upper right corner.
 		/// </summary>
 		public static Vector2 GetPositionOnRect(this RectTransform rectTransform, Vector2 anchorPos, bool inWorldCoordinates = false)
@@ -232,13 +232,13 @@ namespace CGTespy.UI
 			// Use some simple vector math to get the exact point we want.
 			posOnRect.x +=                                 rectTransform.Width() * anchorPos.x;
 			posOnRect.y +=                                 rectTransform.Height() * anchorPos.y;
-			
+
 			return posOnRect;
 		}
 
 		public static void PositionRelativeToParent(this RectTransform rectTransform, Vector2 anchorPos)
 		{
-			// Get the exact world position on the parent rect where the anchor pos is, then adjust based on 
+			// Get the exact world position on the parent rect where the anchor pos is, then adjust based on
 			// the current rect's dimensions, pivot, and the anchor pos.
 			RectTransform parentRect =                  rectTransform.parent.GetComponent<RectTransform>();
 
@@ -267,31 +267,31 @@ namespace CGTespy.UI
 		#endregion
 
 		#region The preset-applying functions
-		public static void ApplyAnchorPreset(this RectTransform rectTransform, 
+		public static void ApplyAnchorPreset(this RectTransform rectTransform,
 												TextAnchor presetToApply,
-												bool alsoSetPivot = false, 
+												bool alsoSetPivot = false,
 												bool alsoSetPosition = false)
 		{
-			
+
 			Vector2 anchorsToSet =              presetToApply.ToViewportCoords();
 			rectTransform.SetAnchors(anchorsToSet, anchorsToSet);
-			
+
 			if (alsoSetPivot)
 				rectTransform.SetPivot(anchorsToSet);
-			
+
 			if (alsoSetPosition)
 				rectTransform.PositionRelativeToParent(anchorsToSet);
 
 		}
 
-		public static void ApplyAnchorPresetRecursively(this RectTransform rectTransform, 
-														TextAnchor presetToApply, 
-														bool alsoSetPivot = false, 
+		public static void ApplyAnchorPresetRecursively(this RectTransform rectTransform,
+														TextAnchor presetToApply,
+														bool alsoSetPivot = false,
 														bool alsoSetPosition = false)
 		{
 			rectTransform.ApplyAnchorPreset (presetToApply, alsoSetPivot, alsoSetPosition);
 
-			foreach (RectTransform child in rectTransform) 
+			foreach (RectTransform child in rectTransform)
 				child.ApplyAnchorPresetRecursively (presetToApply, alsoSetPivot, alsoSetPosition);
 
 		}

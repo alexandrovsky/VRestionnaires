@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using TMPro;
 
-namespace VRestionnaire { 
+namespace VRestionnaire {
 
 
 	public class QuestionPanelTextViewUI : QuestionPanelUI, IQuestionPanelUI

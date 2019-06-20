@@ -68,7 +68,7 @@ namespace VRestionnaire {
 
 		private void NumberPad_OnNumberSelected(int number)
 		{
-			inputField.text += number.ToString(); 
+			inputField.text += number.ToString();
 		}
 
 		void IncrementValue() {
@@ -76,7 +76,7 @@ namespace VRestionnaire {
 			float inputValue = float.Parse(inputField.text.Length == 0? "0" : inputField.text);
 			inputValue++;
 			inputValue = Mathf.Clamp(inputValue,numFieldQuestion.min, numFieldQuestion.max);
-			inputField.text = inputValue.ToString(); 
+			inputField.text = inputValue.ToString();
 		}
 
 		void DecrementValue()

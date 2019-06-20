@@ -15,7 +15,7 @@ namespace VRestionnaire {
 	public abstract class QuestionPanelUI:MonoBehaviour{
 
 		public UnityAction<Question> OnQuestionAnswered;
-		
+
 
 		public LayoutElement headerLayout;
 		public LayoutElement bodyLayout;

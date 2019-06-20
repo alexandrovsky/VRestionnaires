@@ -50,7 +50,7 @@ namespace VRestionnaire {
 		public virtual void OnToggleValueChanged(bool value)
 		{
 			toggleGroup.allowSwitchOff = this.allowSwitchOff;
- 
+
 			List<Toggle> active = toggleGroup.ActiveToggles().ToList();
 			int idx = -1;
 			if(active.Count == 1) {

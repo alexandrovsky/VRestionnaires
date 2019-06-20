@@ -16,13 +16,13 @@ namespace VRestionnaire {
 		public GameObject checkItemPrefab;
 
 		//[SerializeField] CheckListQuestion question;
-		
+
 		List<Toggle> toggles;
-		
+
 		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q, answeredEvent);
-			
+
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
 
@@ -65,10 +65,10 @@ namespace VRestionnaire {
 				print("answered: " + i + " item: " + toggles[i].isOn);
 			}
 			OnQuestionAnswered.Invoke(question);
-			
+
 		}
 
-		
+
 	}
 }
 

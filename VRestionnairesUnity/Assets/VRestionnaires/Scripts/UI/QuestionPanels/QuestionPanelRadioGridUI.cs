@@ -15,7 +15,7 @@ namespace VRestionnaire {
 		public LayoutElement layoutElement;
 		public RectTransform itemsUI;
 		public VariableGridLayoutGroup gridLayout;
-		
+
 		public GameObject labelPrefab;
 		public GameObject radioItemPrefab;
 
@@ -47,7 +47,7 @@ namespace VRestionnaire {
 				//label.transform.position = Vector3.zero;
 				label.transform.localPosition = Vector3.zero;
 			}
-			
+
 			questionItems = new List<RadioGroup>();
 
 			for(int i = 0; i < radioGridQuestion.q_text.Length; i++) {
@@ -82,7 +82,7 @@ namespace VRestionnaire {
 
 		public override bool CheckMandatory()
 		{
-			
+
 			foreach(RadioGroup rg in questionItems) {
 				if(rg.toggleGroup.ActiveToggles().ToList().Count() != 1) {
 					return false;
@@ -102,7 +102,7 @@ namespace VRestionnaire {
 
 		void OnItemSelected(string questionId, int itemId)
 		{
-			
+
 			QuestionItem item = radioGridQuestion.q_text.First((q) => { return q.id == questionId; });
 			int idx = Array.IndexOf(radioGridQuestion.q_text, item);
 			radioGridQuestion.answers[idx] = itemId;

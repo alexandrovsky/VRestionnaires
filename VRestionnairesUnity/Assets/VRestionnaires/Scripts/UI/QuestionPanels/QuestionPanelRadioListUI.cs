@@ -14,7 +14,7 @@ namespace VRestionnaire {
 		public GameObject labelPrefab;
 		public GameObject radioItemPrefab;
 
-		
+
 		RadioGroup radioGroup;
 
 
@@ -50,7 +50,7 @@ namespace VRestionnaire {
 				GameObject radioItem = Instantiate(radioItemPrefab);
 				Toggle toggle = radioItem.GetComponent<Toggle>();
 				radioGroup.AddToggle(toggle);
-				
+
 				radioItem.transform.parent = itemsUI;
 				radioItem.transform.localPosition = Vector3.zero;
 			}

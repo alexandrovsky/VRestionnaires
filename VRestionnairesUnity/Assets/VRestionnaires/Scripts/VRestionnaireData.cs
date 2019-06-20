@@ -123,7 +123,7 @@ namespace VRestionnaire {
 		public int[] answers;
 
 		public RadioGridQuestion(JSONObject json) : base(json)
-		{	
+		{
 			questiontype = QuestionType.RadioGrid;
 			datatype = QuestionDataType.Boolean;
 

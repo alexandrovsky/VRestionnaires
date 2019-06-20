@@ -28,7 +28,7 @@ namespace VRestionnaire {
 		public Questionnaire questionnaire;
 
 		public List<QuestionTypePrefab> questionTypePrefabs;
-		
+
 
 		void Start()
 		{
@@ -79,7 +79,7 @@ namespace VRestionnaire {
 		}
 
 		void GenerateQuestionnaireUI()
-		{	
+		{
 			foreach(Question question in questionnaire.questions) {
 				if(ContainsQuestionType(question.questiontype)){
 					GameObject prefab = ObjectForQuestionType(question.questiontype);

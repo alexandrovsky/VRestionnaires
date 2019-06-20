@@ -49,7 +49,7 @@ namespace VRestionnaire {
 		{
 			slider.value++;
 			slider.value = Mathf.Clamp(slider.value, 0,sliderQuestion.tick_count);
-			
+
 		}
 
 		void DecrementValue()
