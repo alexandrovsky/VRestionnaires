@@ -1,0 +1,171 @@
+{
+    "title":"Example Questionnaire",
+    "instructions":"Please rate each video game experience....",
+    "code":"001",
+    "questions":[
+    	{
+	    	"id": "textview_1",
+	        "questiontype": "textview",
+	        "instructions": "Some header",
+	        "text": "These are some instructions which will appear wherever you place this question.",
+	        "title": "I am an Awesome Title"
+	    },
+    	{
+	        "questiontype": "radiogrid",
+	        "instructions": "Choose an option...",
+	        "id": "radio_1",
+	        "shuffle": "true",
+	        "labels": [
+	            "I hate it!",
+	            "",
+	            "Neutral",
+	            "",
+	            "I love it!"
+	        ],
+	        "q_text": [
+	            {
+	                "id": "q_1",
+	                "text": "Do you like VRestionnaires?"
+	            },
+	            {
+	                "id": "q_2",
+	                "text": "Do you like ice cream?"
+	            },
+	            {
+	                "id": "q_3",
+	                "text": "Cartoons"
+	            },
+	            {
+	                "id": "q_3",
+	                "text": "Batman"
+	            },
+	            {
+	                "id": "q_3",
+	                "text": "Spiderman"
+	            },
+	            {
+	                "id": "q_3",
+	                "text": "Wolverine"
+	            }
+	        ]
+	    },
+	    {
+	        "questiontype":"radiolist",
+	        "instructions":"choose one option...",
+	        "id":"radiolist_1",
+	        "horizontal": false,
+	        "labels":[
+	            "Yes",
+	            "Maybe",
+	            "No"
+	        ]
+	    },
+	    {
+	        "questiontype":"radiolist",
+	        "instructions":"choose one option...",
+	        "id":"radiolist_2",
+	        "horizontal": true,
+	        "labels":[
+	            "Yes",
+	            "Maybe",
+	            "No",
+	            "Absolutely"
+	        ]
+	    },
+	    {
+	        "questiontype":"checklist",
+	        "instructions":"choose any options...",
+	        "id":"checklist_1",
+	        "shuffle":true,
+	        "horizontal": false,
+	        "questions":[
+	            {
+	                "id":"cl_1",
+	                "text":"Option 1"
+	            },
+	            {
+	                "id":"cl_2",
+	                "text":"Option 2"
+	            },
+	            {
+	                "id":"cl_3",
+	                "text":"Option 3"
+	            }
+	        ]
+	    },
+	    {
+	        "questiontype":"checklist",
+	        "instructions":"choose any options...",
+	        "id":"checklist_2",
+	        "shuffle":true,
+	        "horizontal": true,
+	        "questions":[
+	            {
+	                "id":"cl_1",
+	                "text":"Option 1"
+	            },
+	            {
+	                "id":"cl_2",
+	                "text":"Option 2"
+	            },
+	            {
+	                "id":"cl_3",
+	                "text":"Option 3"
+	            }
+	        ]
+	    },
+	    {
+	        "questiontype": "slider",
+	        "instructions": "I am a slider",
+	        "id": "slider_1",
+	        "left": "left",
+	        "right": "right",
+	        "tick_count": 5
+	    },
+	    {
+	        "questiontype": "field",
+	        "instructions": "enter text",
+	        "placeholder": "I am a placeholder",
+	        "id": "field_1"
+	    },
+		{
+	        "questiontype": "num_field",
+	        "datatype": "integer",
+	        "instructions": "enter an integer",
+	        "id": "num_field_1",
+	        "min": -5,
+	        "max": 5
+	    },
+	    {
+	        "questiontype": "num_field",
+	        "datatype": "float",
+	        "instructions": "enter a float",
+	        "spinbutton": true,
+	        "id": "num_field_2",
+	        "min": 0,
+	        "max": 10
+	    },
+	    {
+	        "questiontype": "multi_field",
+	        "id": "multi_field_1",
+	        "placeholder": "I am holding the place",
+	        "instructions": "big text field",
+	        "height": 100
+	    },
+	    {
+			"id": "drop_down_1",
+	        "questiontype": "drop_down",
+	        "instructions": "choose one",
+	        "items": [
+	            "apples", "oranges", "watermelon"
+	        ]
+	    },
+	    {
+	    	"id": "textview_1",
+	        "questiontype": "textview",
+	        "instructions": "Some header",
+	        "text": "These are some instructions which will appear wherever you place this question.",
+	        "title": "I am an Awesome Title"
+	    }
+    ]
+}
