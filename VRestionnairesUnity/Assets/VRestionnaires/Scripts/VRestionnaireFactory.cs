@@ -18,7 +18,7 @@ namespace VRestionnaire {
 
 
 	public class VRestionnaireFactory:MonoBehaviour {
-		public string dir = "/Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires";
+		public string dir = "Assets/VRestionnaires/Resources/Questions";
 
 		static string[] fileExtensions = { "json" };
 		//public GameObject questionnairePanelPrefab;
