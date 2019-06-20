@@ -46,6 +46,7 @@ namespace VRestionnaire {
 				label.transform.parent = itemsUI;
 				//label.transform.position = Vector3.zero;
 				label.transform.localPosition = Vector3.zero;
+				label.transform.localRotation = Quaternion.identity;
 			}
 
 			questionItems = new List<RadioGroup>();
@@ -62,6 +63,7 @@ namespace VRestionnaire {
 
 				textObj.transform.parent = itemsUI;
 				textObj.transform.localPosition = Vector3.zero;
+				textObj.transform.localRotation = Quaternion.identity;
 				RadioGroup radioGroup = new RadioGroup(radioGridQuestion.q_text[i].id, false);
 				radioGroup.OnGroupSelected += OnItemSelected;
 				for(int j = 0; j < radioGridQuestion.labels.Length; j++) {
@@ -70,6 +72,7 @@ namespace VRestionnaire {
 					radioGroup.AddToggle(toggle);
 					item.transform.parent = itemsUI;
 					item.transform.localPosition = Vector3.zero;
+					item.transform.localRotation = Quaternion.identity;
 				}
 				radioGroup.Init();
 				questionItems.Add(radioGroup);

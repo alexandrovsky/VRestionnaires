@@ -89,6 +89,7 @@ namespace VRestionnaire {
 						questionPanelRT.parent = questionParent;
 						questionPanelRT.SetAnchor(AnchorPresets.StretchAll);
 						questionPanelRT.localPosition = Vector3.zero;
+						questionPanelRT.localRotation = Quaternion.identity;
 						//questionPanel.transform.parent = questionnaireParent; // questionnairePanelUI.questionsPanel;
 
 						QuestionPanelUI panelUI = questionPanel.GetComponent<QuestionPanelUI>();

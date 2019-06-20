@@ -44,6 +44,7 @@ namespace VRestionnaire {
 				text.text = check.questions[i].text;
 				label.transform.parent = itemsUI;
 				label.transform.localPosition = Vector3.zero;
+				label.transform.localRotation = Quaternion.identity;
 
 				GameObject checkItem = Instantiate(checkItemPrefab);
 				Toggle toggle = checkItem.GetComponent<Toggle>();
@@ -52,6 +53,7 @@ namespace VRestionnaire {
 				toggles.Add(toggle);
 				checkItem.transform.parent = itemsUI;
 				checkItem.transform.localPosition = Vector3.zero;
+				checkItem.transform.localRotation = Quaternion.identity;
 			}
 		}
 
