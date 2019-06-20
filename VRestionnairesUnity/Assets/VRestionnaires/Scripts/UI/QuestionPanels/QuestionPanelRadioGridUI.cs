@@ -37,6 +37,8 @@ namespace VRestionnaire {
 			empty.GetComponent<TMP_Text>().text = "";
 			empty.transform.parent = itemsUI;
 			empty.transform.position = Vector3.zero;
+			empty.transform.rotation = Quaternion.identity;
+			empty.transform.localScale = Vector3.zero;
 
 			for(int i = 0; i < radioGridQuestion.labels.Length; i++) {
 				GameObject label = Instantiate(labelPrefab);
@@ -47,6 +49,7 @@ namespace VRestionnaire {
 				//label.transform.position = Vector3.zero;
 				label.transform.localPosition = Vector3.zero;
 				label.transform.localRotation = Quaternion.identity;
+				label.transform.localScale = label.transform.parent.localScale;
 			}
 
 			questionItems = new List<RadioGroup>();
@@ -64,6 +67,7 @@ namespace VRestionnaire {
 				textObj.transform.parent = itemsUI;
 				textObj.transform.localPosition = Vector3.zero;
 				textObj.transform.localRotation = Quaternion.identity;
+				textObj.transform.localScale = textObj.transform.parent.localScale;
 				RadioGroup radioGroup = new RadioGroup(radioGridQuestion.q_text[i].id, false);
 				radioGroup.OnGroupSelected += OnItemSelected;
 				for(int j = 0; j < radioGridQuestion.labels.Length; j++) {
@@ -73,6 +77,7 @@ namespace VRestionnaire {
 					item.transform.parent = itemsUI;
 					item.transform.localPosition = Vector3.zero;
 					item.transform.localRotation = Quaternion.identity;
+					item.transform.localScale = item.transform.parent.localScale;
 				}
 				radioGroup.Init();
 				questionItems.Add(radioGroup);

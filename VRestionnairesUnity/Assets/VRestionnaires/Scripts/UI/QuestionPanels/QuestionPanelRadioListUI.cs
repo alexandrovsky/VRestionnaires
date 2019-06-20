@@ -47,6 +47,7 @@ namespace VRestionnaire {
 				label.transform.parent = itemsUI;
 				label.transform.localPosition = Vector3.zero;
 				label.transform.localRotation = Quaternion.identity;
+				label.transform.localScale = label.transform.parent.localScale;
 
 				GameObject radioItem = Instantiate(radioItemPrefab);
 				Toggle toggle = radioItem.GetComponent<Toggle>();
@@ -55,6 +56,7 @@ namespace VRestionnaire {
 				radioItem.transform.parent = itemsUI;
 				radioItem.transform.localPosition = Vector3.zero;
 				radioItem.transform.localRotation = Quaternion.identity;
+				radioItem.transform.localScale = radioItem.transform.parent.localScale;
 			}
 
 			radioGroup.Init();
