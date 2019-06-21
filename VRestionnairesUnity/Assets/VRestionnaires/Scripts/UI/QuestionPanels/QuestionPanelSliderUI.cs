@@ -13,6 +13,7 @@ namespace VRestionnaire {
 		[SerializeField] Button decrementValueButton;
 		[SerializeField] TMP_Text minLabel;
 		[SerializeField] TMP_Text maxLabel;
+		[SerializeField] TMP_Text valueLabel;
 
 		SliderQuestion sliderQuestion;
 
@@ -30,6 +31,8 @@ namespace VRestionnaire {
 			slider.maxValue = sliderQuestion.tick_count;
 			slider.wholeNumbers = question.datatype == QuestionDataType.Integer;
 
+			valueLabel.text = slider.value.ToString();
+
 			slider.onValueChanged.AddListener(OnSliderValueChanged);
 			incrementValueButton.onClick.AddListener(IncrementValue);
 			decrementValueButton.onClick.AddListener(DecrementValue);
@@ -40,7 +43,9 @@ namespace VRestionnaire {
 		{
 			question.isAnswered = true;
 			sliderQuestion.answer = value;
-			print(question.id + " " + sliderQuestion.answer);
+			//print(question.id + " " + sliderQuestion.answer);
+			valueLabel.text = slider.value.ToString();
+
 			OnQuestionAnswered.Invoke(question);
 		}
 
