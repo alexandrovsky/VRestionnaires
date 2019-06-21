@@ -33,7 +33,7 @@ namespace VRestionnaire {
 			OnConfirm.Invoke();
 		}
 
-		
+
 	}
 }
 

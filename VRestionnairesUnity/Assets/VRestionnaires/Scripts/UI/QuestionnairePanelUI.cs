@@ -28,9 +28,9 @@ namespace VRestionnaire {
 		public NumberPad numberPad;
 
 		public List<RectTransform> questionPanels;
-		[SerializeField] int currentQuestionIdx; 
+		[SerializeField] int currentQuestionIdx;
 
-		
+
 		public void ClearQuestionPanels() {
 			for(int i = 0; i < questionPanels.Count; i++) {
 				Destroy(questionPanels[i]);

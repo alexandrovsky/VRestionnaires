@@ -27,7 +27,7 @@ namespace VRestionnaire {
 
 
 		void OnFieldSubmited(string value)
-		{	
+		{
 			question.isAnswered = true;
 			fieldQuestion.answer = value;
 			print(question.id + " " + fieldQuestion.answer);

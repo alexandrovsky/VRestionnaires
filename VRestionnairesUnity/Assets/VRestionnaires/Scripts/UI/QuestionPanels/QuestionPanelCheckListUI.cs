@@ -16,13 +16,13 @@ namespace VRestionnaire {
 		public GameObject checkItemPrefab;
 
 		//[SerializeField] CheckListQuestion question;
-		
+
 		List<Toggle> toggles;
-		
+
 		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q, answeredEvent);
-			
+
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
 
@@ -44,6 +44,8 @@ namespace VRestionnaire {
 				text.text = check.questions[i].text;
 				label.transform.parent = itemsUI;
 				label.transform.localPosition = Vector3.zero;
+				label.transform.localRotation = Quaternion.identity;
+				label.transform.localScale = label.transform.parent.localScale;
 
 				GameObject checkItem = Instantiate(checkItemPrefab);
 				Toggle toggle = checkItem.GetComponent<Toggle>();
@@ -52,6 +54,8 @@ namespace VRestionnaire {
 				toggles.Add(toggle);
 				checkItem.transform.parent = itemsUI;
 				checkItem.transform.localPosition = Vector3.zero;
+				checkItem.transform.localRotation = Quaternion.identity;
+				checkItem.transform.localScale = label.transform.parent.localScale;
 			}
 		}
 
@@ -65,10 +69,10 @@ namespace VRestionnaire {
 				print("answered: " + i + " item: " + toggles[i].isOn);
 			}
 			OnQuestionAnswered.Invoke(question);
-			
+
 		}
 
-		
+
 	}
 }
 

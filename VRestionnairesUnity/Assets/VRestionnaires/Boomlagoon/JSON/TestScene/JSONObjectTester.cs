@@ -7,7 +7,7 @@ public class JSONObjectTester : MonoBehaviour {
 	public GUIText infoText;
 
 	private string stringToEvaluate = @"{""web-app"": {
-  ""servlet"": [   
+  ""servlet"": [
     {
       ""servlet-name"": ""cofaxCDS"",
       ""servlet-class"": ""org.cofax.cds.CDSServlet"",
@@ -63,7 +63,7 @@ public class JSONObjectTester : MonoBehaviour {
     {
       ""servlet-name"": ""cofaxAdmin"",
       ""servlet-class"": ""org.cofax.cds.AdminServlet""},
- 
+
     {
       ""servlet-name"": ""fileServlet"",
       ""servlet-class"": ""org.cofax.cds.FileServlet""},
@@ -90,7 +90,7 @@ public class JSONObjectTester : MonoBehaviour {
     ""cofaxAdmin"": ""/admin/*"",
     ""fileServlet"": ""/static/*"",
     ""cofaxTools"": ""/tools/*""},
- 
+
   ""taglib"": {
     ""taglib-uri"": ""cofax.tld"",
     ""taglib-location"": ""/WEB-INF/tlds/cofax.tld""}}}";
@@ -117,7 +117,7 @@ public class JSONObjectTester : MonoBehaviour {
 		//You can iterate through all values with a simple for-each loop
 		foreach (KeyValuePair<string, JSONValue> pair in emptyObject) {
 			Debug.Log("key : value -> " + pair.Key + " : " + pair.Value);
-			
+
 			//Each JSONValue has a JSONValueType that tells you what type of value it is. Valid values are: String, Number, Object, Array, Boolean or Null.
 			Debug.Log("pair.Value.Type.ToString() -> " + pair.Value.Type.ToString());
 
@@ -149,11 +149,11 @@ public class JSONObjectTester : MonoBehaviour {
 		//Elements can removed with Remove() and the whole object emptied with Clear()
 		newObject.Remove("key");
 		Debug.Log("newObject with \"key\" removed: " + newObject.ToString());
-		
+
 		newObject.Clear();
 		Debug.Log("newObject cleared: " + newObject.ToString());
 	}
-	
+
 	void OnGUI() {
 		stringToEvaluate = GUI.TextArea(new Rect(0, 0, Screen.width - 300, Screen.height - 5), stringToEvaluate);
 

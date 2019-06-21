@@ -18,7 +18,7 @@ namespace VRestionnaire {
 
 
 	public class VRestionnaireFactory:MonoBehaviour {
-		public string dir = "/Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires";
+		public string dir = "Assets/VRestionnaires/Resources/Questions";
 
 		static string[] fileExtensions = { "json" };
 		//public GameObject questionnairePanelPrefab;
@@ -28,7 +28,7 @@ namespace VRestionnaire {
 		public Questionnaire questionnaire;
 
 		public List<QuestionTypePrefab> questionTypePrefabs;
-		
+
 
 		void Start()
 		{
@@ -79,7 +79,7 @@ namespace VRestionnaire {
 		}
 
 		void GenerateQuestionnaireUI()
-		{	
+		{
 			foreach(Question question in questionnaire.questions) {
 				if(ContainsQuestionType(question.questiontype)){
 					GameObject prefab = ObjectForQuestionType(question.questiontype);
@@ -89,6 +89,8 @@ namespace VRestionnaire {
 						questionPanelRT.parent = questionParent;
 						questionPanelRT.SetAnchor(AnchorPresets.StretchAll);
 						questionPanelRT.localPosition = Vector3.zero;
+						questionPanelRT.localRotation = Quaternion.identity;
+						questionPanelRT.localScale = questionParent.localScale;
 						//questionPanel.transform.parent = questionnaireParent; // questionnairePanelUI.questionsPanel;
 
 						QuestionPanelUI panelUI = questionPanel.GetComponent<QuestionPanelUI>();

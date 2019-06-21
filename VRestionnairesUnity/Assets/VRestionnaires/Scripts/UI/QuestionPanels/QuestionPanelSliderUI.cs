@@ -12,10 +12,12 @@ namespace VRestionnaire {
 		[SerializeField] Button incrementValueButton;
 		[SerializeField] Button decrementValueButton;
 		[SerializeField] TMP_Text minLabel;
+
 		[SerializeField] TMP_Text maxLabel;
 		[SerializeField] TMP_Text valueLabel;
 
 		SliderQuestion sliderQuestion;
+
 
 		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent)
 		{
@@ -45,7 +47,6 @@ namespace VRestionnaire {
 			sliderQuestion.answer = value;
 			//print(question.id + " " + sliderQuestion.answer);
 			valueLabel.text = slider.value.ToString();
-
 			OnQuestionAnswered.Invoke(question);
 		}
 
@@ -54,7 +55,7 @@ namespace VRestionnaire {
 		{
 			slider.value++;
 			slider.value = Mathf.Clamp(slider.value, 0,sliderQuestion.tick_count);
-			
+
 		}
 
 		void DecrementValue()
