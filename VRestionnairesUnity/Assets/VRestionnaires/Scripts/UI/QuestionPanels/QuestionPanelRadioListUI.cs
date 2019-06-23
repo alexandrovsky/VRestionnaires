@@ -57,6 +57,13 @@ namespace VRestionnaire {
 				radioItem.transform.localPosition = Vector3.zero;
 				radioItem.transform.localRotation = Quaternion.identity;
 				radioItem.transform.localScale = radioItem.transform.parent.localScale;
+
+				if(label.GetComponent<Button>()) {
+					Button btn = label.GetComponent<Button>();
+					btn.onClick.AddListener(() => {
+						toggle.isOn = !toggle.isOn;
+					});
+				}
 			}
 
 			radioGroup.Init();

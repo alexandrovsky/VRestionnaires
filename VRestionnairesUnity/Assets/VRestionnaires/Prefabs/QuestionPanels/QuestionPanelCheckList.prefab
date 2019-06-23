@@ -16,12 +16,6 @@ MonoBehaviour:
   bodyLayout: {fileID: 2819317519598873614}
   instructionsText: {fileID: 2819317519481848911}
   idText: {fileID: 2819317520429612277}
-  itemsUI: {fileID: 1044800688931445717}
-  gridLayout: {fileID: 7637249465511251717}
-  labelPrefab: {fileID: 7741861365275477466, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
-    type: 3}
-  checkItemPrefab: {fileID: 7934071903582610391, guid: af0ffe7535c974f1499b719bfde16110,
-    type: 3}
   question:
     id: 
     questiontype: 0
@@ -30,9 +24,12 @@ MonoBehaviour:
     shuffle: 0
     datatype: 0
     isAnswered: 0
-    horizontal: 0
-    questions: []
-    answers: 
+  itemsUI: {fileID: 1044800688931445717}
+  gridLayout: {fileID: 7637249465511251717}
+  labelPrefab: {fileID: 3731015878180257815, guid: d0de96f896e644147ba10f474565989e,
+    type: 3}
+  checkItemPrefab: {fileID: 7934071903582610391, guid: af0ffe7535c974f1499b719bfde16110,
+    type: 3}
 --- !u!1 &7089097753476553457
 GameObject:
   m_ObjectHideFlags: 0

@@ -127,7 +127,7 @@ MonoBehaviour:
     isAnswered: 0
   itemsUI: {fileID: 6607033385620350203}
   gridLayout: {fileID: 4723061692839121329}
-  labelPrefab: {fileID: 7741861365275477466, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
+  labelPrefab: {fileID: 3731015878180257815, guid: d0de96f896e644147ba10f474565989e,
     type: 3}
   radioItemPrefab: {fileID: 8110706846887825874, guid: 90d3f898355994e69b363cb4b7d25418,
     type: 3}
