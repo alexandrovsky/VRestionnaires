@@ -10,6 +10,12 @@ namespace VRestionnaire {
 	public interface IQuestionPanelUI {
 		//void SetQuestion(Question q);
 		//bool CheckMandatory();
+
+		//void OnPanelBecameVisible();
+
+		//void OnPanelBecameInVissible();
+		
+
 	}
 
 	public abstract class QuestionPanelUI:MonoBehaviour{
@@ -40,6 +46,11 @@ namespace VRestionnaire {
 				return true;
 			}
 		}
+
+		//public abstract void ShowPanel();
+		//public abstract void HidePanel();
+
+		
 	}
 
 

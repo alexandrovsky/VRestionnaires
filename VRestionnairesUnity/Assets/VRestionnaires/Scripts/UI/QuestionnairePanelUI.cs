@@ -27,13 +27,13 @@ namespace VRestionnaire {
 		[Tooltip("Number pad for Num field input")]
 		public NumberPad numberPad;
 
-		public List<RectTransform> questionPanels;
+		public List<QuestionPanelUI> questionPanels;
 		[SerializeField] int currentQuestionIdx;
 
 
 		public void ClearQuestionPanels() {
 			for(int i = 0; i < questionPanels.Count; i++) {
-				Destroy(questionPanels[i]);
+				Destroy(questionPanels[i].gameObject);
 			}
 			questionPanels.Clear();
 			currentQuestionIdx = 0;
@@ -78,7 +78,7 @@ namespace VRestionnaire {
 				questionPanels[currentQuestionIdx].gameObject.SetActive(false);
 				currentQuestionIdx++;
 				questionPanels[currentQuestionIdx].gameObject.SetActive(true);
-				QuestionPanelUI panelUI = questionPanels[currentQuestionIdx].GetComponent<QuestionPanelUI>();
+				QuestionPanelUI panelUI = questionPanels[currentQuestionIdx];
 				nextButton.GetComponent<Button>().interactable = panelUI.CheckMandatory();
 				backButton.GetComponent<Button>().interactable = true;
 			} else {

@@ -127,7 +127,7 @@ namespace VRestionnaire {
 						//	panelUI.SetQuestion(question as TextViewQuestion,questionnairePanel.OnQuestionAnswered);
 						//}
 
-						questionnairePanel.questionPanels.Add(questionPanelRT);
+						questionnairePanel.questionPanels.Add(panelUI);
 						questionPanelRT.gameObject.SetActive(false);
 					}
 				}
