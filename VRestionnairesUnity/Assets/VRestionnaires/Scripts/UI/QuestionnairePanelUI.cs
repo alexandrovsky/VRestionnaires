@@ -74,28 +74,46 @@ namespace VRestionnaire {
 		}
 		public void OnNextButtonClicked()
 		{
-			if(currentQuestionIdx < questionPanels.Count - 1) {
-				questionPanels[currentQuestionIdx].gameObject.SetActive(false);
+			if(currentQuestionIdx < questionPanels.Count) {
+				questionPanels[currentQuestionIdx].HidePanel();
+				//questionPanels[currentQuestionIdx].gameObject.SetActive(false);
 				currentQuestionIdx++;
-				questionPanels[currentQuestionIdx].gameObject.SetActive(true);
-				QuestionPanelUI panelUI = questionPanels[currentQuestionIdx];
+				//questionPanels[currentQuestionIdx].gameObject.SetActive(true);
+				questionPanels[currentQuestionIdx].ShowPanel();
+			}
+			CheckNavigationButtons();
+		}
+
+		void CheckNavigationButtons()
+		{
+
+			QuestionPanelUI panelUI = questionPanels[currentQuestionIdx];
+			nextButton.GetComponent<Button>().interactable = panelUI.CheckMandatory();
+			backButton.GetComponent<Button>().interactable = true;
+
+			// next button
+			if(currentQuestionIdx < questionPanels.Count-1) {
 				nextButton.GetComponent<Button>().interactable = panelUI.CheckMandatory();
-				backButton.GetComponent<Button>().interactable = true;
 			} else {
 				nextButton.GetComponent<Button>().interactable = false;
+			}
+
+			//back button
+			if(currentQuestionIdx > 0) {
+				backButton.GetComponent<Button>().interactable = true;
+			} else {
+				backButton.GetComponent<Button>().interactable = false;
 			}
 		}
 
 		public void OnBackButtonClicked()
 		{
 			if(currentQuestionIdx > 0) {
-				questionPanels[currentQuestionIdx].gameObject.SetActive(false);
+				questionPanels[currentQuestionIdx].HidePanel(); //.gameObject.SetActive(false);
 				currentQuestionIdx--;
-				questionPanels[currentQuestionIdx].gameObject.SetActive(true);
-				nextButton.GetComponent<Button>().interactable = true;
-			} else {
-				backButton.GetComponent<Button>().interactable = false;
+				questionPanels[currentQuestionIdx].ShowPanel();             //questionPanels[currentQuestionIdx].gameObject.SetActive(true);
 			}
+			CheckNavigationButtons();
 		}
 
 		public void OnQuestionAnswered(Question question)

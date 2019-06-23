@@ -47,8 +47,13 @@ namespace VRestionnaire {
 			}
 		}
 
-		//public abstract void ShowPanel();
-		//public abstract void HidePanel();
+		public virtual void ShowPanel() {
+			gameObject.SetActive(true);
+		}
+		public virtual void HidePanel()
+		{
+			gameObject.SetActive(false);
+		}
 
 		
 	}
