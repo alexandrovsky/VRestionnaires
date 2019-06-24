@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Boomlagoon.JSON;
-
+using System;
 namespace VRestionnaire {
-
-
 
 	public static class VRestionnaireData {
 
@@ -72,10 +70,19 @@ namespace VRestionnaire {
 
 	[System.Serializable]
 	public class Questionnaire {
+		public string condition;
+		public string participantId;
 		public string title;
 		public string instructions;
 		public string code;
 		public Question[] questions;
+		public DateTime startUtcTime;
+		public DateTime endUtcTime;
+
+		public Questionnaire()
+		{
+			startUtcTime = DateTime.UtcNow;
+		}
 
 	}
 
@@ -89,7 +96,19 @@ namespace VRestionnaire {
 		public bool required;
 		public bool shuffle;
 		public QuestionDataType datatype;
-		public bool isAnswered;
+		bool _isAnswered;
+		public bool isAnswered {
+			get {
+				return _isAnswered; }
+			set {
+				_isAnswered = value;
+				answerCounter++;
+				answerUtcTime = DateTime.UtcNow;
+			}
+		}
+
+		public int answerCounter; // how often was the an answer picked
+		public DateTime answerUtcTime;
 
 		public Question(JSONObject json) {
 			if(json.ContainsKey("id")) {

@@ -133,11 +133,10 @@ namespace VRestionnaire {
 		{
 			print(">>>>>>> answered submitted: " + question.id);
 			CheckNavigationButtons();
+			questionnaire.endUtcTime = System.DateTime.UtcNow;
 			if(OnQuestionnaireSubmittedCallback != null) {
 				OnQuestionnaireSubmittedCallback.Invoke(this.questionnaire);
 			}
 		}
-
 	}
-
 }
