@@ -155,7 +155,7 @@ namespace VRestionnaire {
 
 		public string[] labels;
 		public bool horizontal;
-		public int answer;
+		public int answer = -1;
 		public RadioListQuestion(JSONObject json) : base(json)
 		{
 			questiontype = QuestionType.RadioList;
