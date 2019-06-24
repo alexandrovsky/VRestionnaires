@@ -383,6 +383,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuestionnaireCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7172461193639116527, guid: 117b9b7f5bf2c4df799b19d31cd197fa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7172461193644266076, guid: 117b9b7f5bf2c4df799b19d31cd197fa,
         type: 3}
       propertyPath: m_AnchorMin.y

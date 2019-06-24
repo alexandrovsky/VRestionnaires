@@ -12,7 +12,8 @@ namespace VRestionnaire {
 		public delegate void OnQuestionnaireSubmittedEvent(Questionnaire questionnaire);
 		public event OnQuestionnaireSubmittedEvent OnQuestionnaireSubmittedCallback;
 
-		public Questionnaire questionnaire;
+		public int currentQuestionnaireIdx;
+		public List<Questionnaire> questionnaires;
 
 		public UISkinData skinData;
 
@@ -48,9 +49,9 @@ namespace VRestionnaire {
 
 		public void Init()
 		{
-			backButton.GetComponent<Button>().interactable = false;
-			nextButton.GetComponent<Button>().interactable = true;
-			questionPanels[currentQuestionIdx].gameObject.SetActive(true);
+			//backButton.GetComponent<Button>().interactable = false;
+			//nextButton.GetComponent<Button>().interactable = true;
+			questionPanels[currentQuestionIdx].ShowPanel(); //.gameObject.SetActive(true);
 			CheckNavigationButtons();
 		}
 
@@ -133,9 +134,9 @@ namespace VRestionnaire {
 		{
 			print(">>>>>>> answered submitted: " + question.id);
 			CheckNavigationButtons();
-			questionnaire.endUtcTime = System.DateTime.UtcNow;
+			questionnaires[currentQuestionnaireIdx].endUtcTime = System.DateTime.UtcNow;
 			if(OnQuestionnaireSubmittedCallback != null) {
-				OnQuestionnaireSubmittedCallback.Invoke(this.questionnaire);
+				OnQuestionnaireSubmittedCallback.Invoke(this.questionnaires[currentQuestionnaireIdx]);
 			}
 		}
 	}

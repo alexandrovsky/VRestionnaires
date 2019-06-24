@@ -5,7 +5,7 @@ using Crosstales.FB;
 using System.IO;
 using Boomlagoon.JSON;
 using CGTespy.UI;
-using System;
+using System.Linq;
 
 namespace VRestionnaire {
 
@@ -22,16 +22,24 @@ namespace VRestionnaire {
 		public string questionnaire_filename = "/example.json";
 
 		static string[] fileExtensions = { "json" };
-		//public GameObject questionnairePanelPrefab;
+		
 		public RectTransform questionParent;
 		public QuestionnairePanelUI questionnairePanel;
 
 		public List<QuestionTypePrefab> questionTypePrefabs;
 
+		public VRestionnaireStudySettings studySettings;
 
 		void Start()
 		{
 			BuildDefault();
+		}
+
+		public void BuildFromStudySettings(string condition, string participantId) {
+			string[] filenames = studySettings.FilePathsForCondition(condition);
+			OpenAction(filenames);
+
+
 		}
 
 		public void BuildDefault() {
@@ -47,14 +55,18 @@ namespace VRestionnaire {
 
 		void OpenAction(string[] filenames)
 		{
-			foreach(string filename in filenames) {
-				print(filename);
+			questionnairePanel.questionnaires = new List<Questionnaire>();
+
+			for(int i = 0; i < filenames.Length; i++) {
+				string filename = filenames[i];
+				print("open: " + filename);
 				string file = File.ReadAllText(filename);
 				JSONObject json = JSONObject.Parse(file);
 
-				GenerateQuestionnaire(json);
-				GenerateQuestionnaireUI();
+				questionnairePanel.questionnaires.Add( GenerateQuestionnaire(json) );
+				GenerateQuestionnaireUI(questionnairePanel.questionnaires.Last());
 			}
+			GenerateSubmitQuestionnaireUI();
 		}
 
 		bool ContainsQuestionType(QuestionType type)
@@ -98,9 +110,19 @@ namespace VRestionnaire {
 			return null;
 		}
 
-		void GenerateQuestionnaireUI()
+
+		void GenerateSubmitQuestionnaireUI() {
+
+			QuestionPanelUI submitUI = GeneratePanelForQuestionType(QuestionType.Submit);
+			submitUI.SetQuestion(submitUI.question,questionnairePanel.OnQuestionnaireSubmitted);
+			questionnairePanel.questionPanels.Add(submitUI);
+			submitUI.HidePanel();
+		}
+
+		void GenerateQuestionnaireUI(Questionnaire questionnaire)
 		{
-			foreach(Question question in questionnairePanel.questionnaire.questions) {
+			// TODO: Clear UI
+			foreach(Question question in questionnaire.questions) {
 				QuestionPanelUI panelUI = GeneratePanelForQuestionType(question.questiontype);
 				if(panelUI != null) {
 					panelUI.SetQuestion(question, questionnairePanel.OnQuestionAnswered);
@@ -110,11 +132,7 @@ namespace VRestionnaire {
 				}
 			}
 			questionnairePanel.Init();
-
-			QuestionPanelUI submitUI = GeneratePanelForQuestionType(QuestionType.Submit);
-			submitUI.SetQuestion(submitUI.question,questionnairePanel.OnQuestionnaireSubmitted);
-			questionnairePanel.questionPanels.Add(submitUI);
-			submitUI.HidePanel();
+			
 
 
 			//Canvas.ForceUpdateCanvases();
@@ -125,33 +143,33 @@ namespace VRestionnaire {
 
 		}
 
-		void GenerateQuestionnaire(JSONObject json)
+		Questionnaire GenerateQuestionnaire(JSONObject json)
 		{
-
-			questionnairePanel.questionnaire = new Questionnaire();
+			Questionnaire questionnaire = new Questionnaire();
 
 			foreach(KeyValuePair<string,JSONValue> pair in json) {
 				switch(pair.Key) {
 				case "title":
-					questionnairePanel.questionnaire.title = pair.Value.Str;
+					questionnaire.title = pair.Value.Str;
 					break;
 				case "instructions":
-					questionnairePanel.questionnaire.instructions = pair.Value.Str;
+					questionnaire.instructions = pair.Value.Str;
 					break;
 				case "code":
-					questionnairePanel.questionnaire.code = pair.Value.Str;
+					questionnaire.code = pair.Value.Str;
 					break;
 				case "questions":
 					JSONArray questionsJson = pair.Value.Array;
-					questionnairePanel.questionnaire.questions = new Question[questionsJson.Length];
+					questionnaire.questions = new Question[questionsJson.Length];
 					for(int i = 0; i < questionsJson.Length; i++) {
-						questionnairePanel.questionnaire.questions[i] = GenerateQuestion(questionsJson[i].Obj);
+						questionnaire.questions[i] = GenerateQuestion(questionsJson[i].Obj);
 					}
 					break;
 				}
 				Debug.Log("key : value -> " + pair.Key + " : " + pair.Value);
 			}
-			print(questionnairePanel.questionnaire);
+			print(questionnaire);
+			return questionnaire;
 		}
 
 		Question GenerateQuestion(JSONObject json)
