@@ -18,4 +18,5 @@ MonoBehaviour:
   - condition: a
     filePaths:
     - /Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires/Games.json
+    - /Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires/IMI.json
     currentQuestionnaire: 0

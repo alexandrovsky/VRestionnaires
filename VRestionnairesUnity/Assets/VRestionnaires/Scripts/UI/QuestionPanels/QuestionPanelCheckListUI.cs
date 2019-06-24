@@ -24,9 +24,9 @@ namespace VRestionnaire {
 		[Range(0.1f,2.0f)]
 		public float preferredHeightScaler = 1.5f;
 
-		[Range(0.1f,3.0f)]
-		public float maxWidth = 2.5f;
-		[Range(0.1f,3.0f)]
+		[Range(0.1f,5.0f)]
+		public float maxWidth = 4.0f;
+		[Range(0.1f,5.0f)]
 		public float maxHeight = 2.5f;
 
 

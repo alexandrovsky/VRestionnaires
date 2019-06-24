@@ -12,6 +12,10 @@ namespace VRestionnaire {
 		public delegate void OnQuestionnaireSubmittedEvent(Questionnaire questionnaire);
 		public event OnQuestionnaireSubmittedEvent OnQuestionnaireSubmittedCallback;
 
+		public delegate void OnQuestionnaireFinishedEvent(Questionnaire questionnaire);
+		public event OnQuestionnaireFinishedEvent OnQuestionnaireFinishedCallback;
+
+
 		public int currentQuestionnaireIdx;
 		public List<Questionnaire> questionnaires;
 
@@ -51,6 +55,8 @@ namespace VRestionnaire {
 		{
 			//backButton.GetComponent<Button>().interactable = false;
 			//nextButton.GetComponent<Button>().interactable = true;
+			title.text = questionnaires[currentQuestionnaireIdx].title;
+			instructions.text = questionnaires[currentQuestionnaireIdx].instructions;
 			questionPanels[currentQuestionIdx].ShowPanel(); //.gameObject.SetActive(true);
 			CheckNavigationButtons();
 		}
@@ -84,13 +90,50 @@ namespace VRestionnaire {
 		{
 			if(currentQuestionIdx < questionPanels.Count) {
 				questionPanels[currentQuestionIdx].HidePanel();
-				//questionPanels[currentQuestionIdx].gameObject.SetActive(false);
+				
 				currentQuestionIdx++;
-				//questionPanels[currentQuestionIdx].gameObject.SetActive(true);
+				UpdateQuestionnaireIdxForQuestionIdx(currentQuestionIdx);
+				
 				questionPanels[currentQuestionIdx].ShowPanel();
 			}
 			CheckNavigationButtons();
 		}
+
+		public void OnBackButtonClicked()
+		{
+			if(currentQuestionIdx > 0) {
+				questionPanels[currentQuestionIdx].HidePanel();
+
+				currentQuestionIdx--;
+				UpdateQuestionnaireIdxForQuestionIdx(currentQuestionIdx);
+
+				questionPanels[currentQuestionIdx].ShowPanel();
+			}
+			CheckNavigationButtons();
+		}
+
+		public void UpdateQuestionnaireIdxForQuestionIdx(int questionIdx)
+		{
+			int qstnrIdx = 0;
+			int acc = 0;
+			for(int i = 0; i < questionnaires.Count; i++) {
+				acc += questionnaires[i].questions.Length;
+				if(questionIdx >= acc) {
+					qstnrIdx++;
+				} else {
+					break;
+				}
+			}
+			if(currentQuestionnaireIdx != qstnrIdx) {
+				if(OnQuestionnaireFinishedCallback != null) {
+					OnQuestionnaireFinishedCallback.Invoke(questionnaires[currentQuestionnaireIdx]);
+				}
+				currentQuestionnaireIdx = qstnrIdx;
+				Init();
+			}
+		}
+
+		
 
 		void CheckNavigationButtons()
 		{
@@ -114,15 +157,7 @@ namespace VRestionnaire {
 			}
 		}
 
-		public void OnBackButtonClicked()
-		{
-			if(currentQuestionIdx > 0) {
-				questionPanels[currentQuestionIdx].HidePanel(); //.gameObject.SetActive(false);
-				currentQuestionIdx--;
-				questionPanels[currentQuestionIdx].ShowPanel();             //questionPanels[currentQuestionIdx].gameObject.SetActive(true);
-			}
-			CheckNavigationButtons();
-		}
+		
 
 		public void OnQuestionAnswered(Question question)
 		{
