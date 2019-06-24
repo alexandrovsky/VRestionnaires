@@ -398,7 +398,6 @@ MonoBehaviour:
   bodyLayout: {fileID: 2317213465494148183}
   instructionsText: {fileID: 2317213466424671254}
   idText: {fileID: 2317213465183503532}
-  dropdown: {fileID: 5535072371632997120}
   question:
     id: 
     questiontype: 0
@@ -406,12 +405,8 @@ MonoBehaviour:
     required: 0
     shuffle: 0
     datatype: 0
-    isAnswered: 0
-    items: []
-    width: 0
-    dropwidth: 0
-    dropheight: 0
-    answer: 
+    answerCounter: 0
+  dropdown: {fileID: 5535072371632997120}
 --- !u!1 &2836818964442866348
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,9 +838,9 @@ MonoBehaviour:
   m_fontSize: 14
   m_fontSizeBase: 14
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 8
+  m_fontSizeMax: 12
   m_fontStyle: 0
   m_textAlignment: 513
   m_isAlignmentEnumConverted: 1

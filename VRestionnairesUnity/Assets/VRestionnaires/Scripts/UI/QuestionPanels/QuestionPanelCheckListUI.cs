@@ -18,6 +18,17 @@ namespace VRestionnaire {
 		CheckListQuestion checkQuestion;
 
 		List<Toggle> toggles;
+		public int maxQuestionsVertical = 4;
+		[Range(0.1f,2.0f)]
+		public float preferredWidthScaler = 1.5f;
+		[Range(0.1f,2.0f)]
+		public float preferredHeightScaler = 1.5f;
+
+		[Range(0.1f,3.0f)]
+		public float maxWidth = 2.5f;
+		[Range(0.1f,3.0f)]
+		public float maxHeight = 2.5f;
+
 
 
 		public override void InitWithAnswer()
@@ -44,7 +55,9 @@ namespace VRestionnaire {
 				gridLayout.childAlignment = TextAnchor.MiddleCenter;
 			} else {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedColumnCount;
-				gridLayout.constraintCount = 2;
+				
+				int factor = checkQuestion.questions.Length / maxQuestionsVertical;
+				gridLayout.constraintCount = 2 * factor;
 				gridLayout.childAlignment = TextAnchor.MiddleCenter;
 			}
 
@@ -56,7 +69,13 @@ namespace VRestionnaire {
 				label.transform.localPosition = Vector3.zero;
 				label.transform.localRotation = Quaternion.identity;
 				label.transform.localScale = label.transform.parent.localScale;
-				
+
+				LayoutElement labelLayout = label.GetComponent<LayoutElement>();
+				float w = text.preferredWidth * preferredWidthScaler;
+				float h = text.preferredHeight * preferredHeightScaler;
+				labelLayout.preferredWidth = Mathf.Clamp(w, 0, maxWidth);
+				labelLayout.preferredHeight = Mathf.Clamp(h, 0, maxHeight);
+
 
 				GameObject checkItem = Instantiate(checkItemPrefab);
 				Toggle toggle = checkItem.GetComponent<Toggle>();

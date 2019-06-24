@@ -135,7 +135,7 @@ PrefabInstance:
     - target: {fileID: 6430778920087190675, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6430778920087190675, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
         type: 3}
@@ -145,7 +145,7 @@ PrefabInstance:
     - target: {fileID: 6430778920087190675, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6430778920087190675, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
         type: 3}
@@ -155,12 +155,12 @@ PrefabInstance:
     - target: {fileID: 6430778920087190675, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6430778920087190675, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4761780062628531117, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
         type: 3}
@@ -181,6 +181,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_firstOverflowCharacterIndex
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4761780062628531117, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
+        type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4761780062628531117, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4761780062628531117, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4761780062628531117, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d3f6dc1fd85d412bb0f085a17ddc066, type: 3}

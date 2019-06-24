@@ -23,13 +23,18 @@ MonoBehaviour:
     required: 0
     shuffle: 0
     datatype: 0
-    isAnswered: 0
+    answerCounter: 0
   itemsUI: {fileID: 1044800688931445717}
   gridLayout: {fileID: 7637249465511251717}
   labelPrefab: {fileID: 3731015878180257815, guid: d0de96f896e644147ba10f474565989e,
     type: 3}
   checkItemPrefab: {fileID: 7934071903582610391, guid: af0ffe7535c974f1499b719bfde16110,
     type: 3}
+  maxQuestionsVertical: 4
+  preferredWidthScaler: 2
+  preferredHeightScaler: 2
+  maxWidth: 3
+  maxHeight: 3
 --- !u!1 &7089097753476553457
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,9 +131,9 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellAlignment: 0
-  m_Spacing: {x: 0.5, y: 0.5}
+  m_Spacing: {x: 1, y: 1}
   m_Constraint: 0
-  m_ConstraintCount: 3
+  m_ConstraintCount: 2
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
 --- !u!1001 &2714219534253378615
