@@ -10,6 +10,12 @@ namespace VRestionnaire {
 	{
 		public TMP_Text text;
 		TextViewQuestion textViewQuestion;
+
+		public override void InitWithAnswer()
+		{
+			
+		}
+
 		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q, answeredEvent);

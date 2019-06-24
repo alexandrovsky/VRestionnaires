@@ -23,6 +23,21 @@ namespace VRestionnaire {
 
 		RadioGridQuestion radioGridQuestion;
 
+
+		public override void InitWithAnswer()
+		{
+			if(radioGridQuestion != null && radioGridQuestion.isAnswered) {
+				for(int i = 0; i < questionItems.Count; i++) {
+					questionItems[0].toggleGroup.Get(radioGridQuestion.answers[i]).isOn = true;
+				}
+			} else {
+				for(int i = 0; i < questionItems.Count; i++) {
+					questionItems[i].toggleGroup.allowSwitchOff = true;
+					questionItems[i].toggleGroup.SetAllTogglesOff();
+				}
+			}
+		}
+
 		public override void SetQuestion(Question q,UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q, answeredEvent);
@@ -68,7 +83,7 @@ namespace VRestionnaire {
 				textObj.transform.localPosition = Vector3.zero;
 				textObj.transform.localRotation = Quaternion.identity;
 				textObj.transform.localScale = textObj.transform.parent.localScale;
-				RadioGroup radioGroup = new RadioGroup(radioGridQuestion.q_text[i].id, false);
+				RadioGroup radioGroup = new RadioGroup(radioGridQuestion.q_text[i].id);
 				radioGroup.OnGroupSelected += OnItemSelected;
 				for(int j = 0; j < radioGridQuestion.labels.Length; j++) {
 					GameObject item = Instantiate(radioItemPrefab);

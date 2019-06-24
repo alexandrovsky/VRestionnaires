@@ -11,6 +11,13 @@ namespace VRestionnaire {
 
 		FieldQuestion fieldQuestion;
 
+		public override void InitWithAnswer()
+		{
+			if(fieldQuestion != null && fieldQuestion.isAnswered) {
+				inputField.text = fieldQuestion.answer;
+			}
+		}
+
 		public override void SetQuestion(Question q,UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q,answeredEvent);

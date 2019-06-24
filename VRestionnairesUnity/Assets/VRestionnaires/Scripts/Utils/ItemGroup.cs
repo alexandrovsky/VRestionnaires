@@ -11,15 +11,15 @@ namespace VRestionnaire {
 		public string questionId;
 		public ToggleGroup toggleGroup;
 
-		bool allowSwitchOff;
+		
 		public delegate void OnGroupSelectedDelegate(string qId,int itemId);
 		public event OnGroupSelectedDelegate OnGroupSelected;
 
 
-		protected ItemGroup(string questionId, bool allowSwitchOff)
+		protected ItemGroup(string questionId)
 		{
 			this.questionId = questionId;
-			this.allowSwitchOff = allowSwitchOff;
+			
 
 			toggles = new List<Toggle>();
 		}
@@ -28,29 +28,44 @@ namespace VRestionnaire {
 		{
 			if(toggles.Count == 0) {
 				toggleGroup = toggle.gameObject.AddComponent<ToggleGroup>();
-				toggleGroup.allowSwitchOff = true; // allowSwitchOff;
+				toggleGroup.allowSwitchOff = true;
 			}
 			toggle.group = toggleGroup;
 			toggleGroup.RegisterToggle(toggle);
-			//toggleGroup.NotifyToggleOn(toggle,false);
+			toggleGroup.NotifyToggleOn(toggle,false);
 
 			toggles.Add(toggle);
 		}
 
 
+		public void RegisterToggles() {
+			for(int i = 0; i < toggles.Count; i++) {
+				toggleGroup.RegisterToggle(toggles[i]);
+			}
+		}
+
+		public void UnregisterToggle()
+		{
+			for(int i = 0; i < toggles.Count; i++) {
+				toggleGroup.UnregisterToggle(toggles[i]);
+			}
+		}
+
 		public virtual void Init()
 		{
+			foreach(Toggle toggle in toggles) {
+				toggle.onValueChanged.RemoveListener(OnToggleValueChanged);
+			}
 			toggleGroup.SetAllTogglesOff();
 			foreach(Toggle toggle in toggles) {
 				toggle.onValueChanged.AddListener(OnToggleValueChanged);
 			}
 		}
 
-
 		public virtual void OnToggleValueChanged(bool value)
 		{
-			toggleGroup.allowSwitchOff = this.allowSwitchOff;
-
+			toggleGroup.allowSwitchOff = false;
+			
 			List<Toggle> active = toggleGroup.ActiveToggles().ToList();
 			int idx = -1;
 			if(active.Count == 1) {

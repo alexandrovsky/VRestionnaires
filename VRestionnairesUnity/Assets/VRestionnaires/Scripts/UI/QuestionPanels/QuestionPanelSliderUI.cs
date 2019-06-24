@@ -19,6 +19,14 @@ namespace VRestionnaire {
 		SliderQuestion sliderQuestion;
 
 
+		public override void InitWithAnswer()
+		{
+			if(sliderQuestion != null && sliderQuestion.isAnswered) {
+				slider.value = sliderQuestion.answer;
+			}
+		}
+
+
 		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q,answeredEvent);
@@ -64,6 +72,7 @@ namespace VRestionnaire {
 			slider.value = Mathf.Clamp(slider.value, 0,sliderQuestion.tick_count);
 		}
 
+		
 	}
 }
 

@@ -8,6 +8,6 @@ namespace VRestionnaire {
 
 	public class RadioGroup : ItemGroup {
 
-		public RadioGroup(string questionId, bool allowSwitchOff) : base(questionId,allowSwitchOff) { }
+		public RadioGroup(string questionId) : base(questionId) { }
 	}
 }

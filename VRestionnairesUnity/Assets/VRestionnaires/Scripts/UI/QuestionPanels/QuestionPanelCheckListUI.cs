@@ -15,9 +15,19 @@ namespace VRestionnaire {
 		public GameObject labelPrefab;
 		public GameObject checkItemPrefab;
 
-		//[SerializeField] CheckListQuestion question;
+		CheckListQuestion checkQuestion;
 
 		List<Toggle> toggles;
+
+
+		public override void InitWithAnswer()
+		{
+			if(checkQuestion != null && checkQuestion.isAnswered) {
+				for(int i = 0; i < checkQuestion.answers.Length; i++) {
+					checkQuestion.answers[i] = toggles[i].isOn;
+				}
+			}
+		}
 
 		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent)
 		{
@@ -27,8 +37,8 @@ namespace VRestionnaire {
 			idText.text = question.id;
 
 			toggles = new List<Toggle>();
-			CheckListQuestion check = (question as CheckListQuestion);
-			if(check.horizontal) {
+			checkQuestion = (question as CheckListQuestion);
+			if(checkQuestion.horizontal) {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedRowCount;
 				gridLayout.constraintCount = 1;
 				gridLayout.childAlignment = TextAnchor.MiddleCenter;
@@ -38,10 +48,10 @@ namespace VRestionnaire {
 				gridLayout.childAlignment = TextAnchor.MiddleCenter;
 			}
 
-			for(int i = 0; i < check.questions.Length; i++) {
+			for(int i = 0; i < checkQuestion.questions.Length; i++) {
 				GameObject label = Instantiate(labelPrefab);
 				TMP_Text text = label.GetComponent<TMP_Text>();
-				text.text = check.questions[i].text;
+				text.text = checkQuestion.questions[i].text;
 				label.transform.parent = itemsUI;
 				label.transform.localPosition = Vector3.zero;
 				label.transform.localRotation = Quaternion.identity;
@@ -71,10 +81,9 @@ namespace VRestionnaire {
 
 		void HandleToggleValueChanged(bool arg0)
 		{
-			CheckListQuestion check = (question as CheckListQuestion);
 			question.isAnswered = true;
-			for(int i = 0; i < check.answers.Length; i++) {
-				(question as CheckListQuestion).answers[i] = toggles[i].isOn;
+			for(int i = 0; i < checkQuestion.answers.Length; i++) {
+				checkQuestion.answers[i] = toggles[i].isOn;
 				print("answered: " + i + " item: " + toggles[i].isOn);
 			}
 			OnQuestionAnswered.Invoke(question);

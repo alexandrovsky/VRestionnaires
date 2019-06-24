@@ -38,6 +38,8 @@ namespace VRestionnaire {
 			question = q;
 		}
 
+		public abstract void InitWithAnswer();
+
 		public virtual bool CheckMandatory()
 		{
 			if(question.required) {
@@ -49,6 +51,7 @@ namespace VRestionnaire {
 
 		public virtual void ShowPanel() {
 			gameObject.SetActive(true);
+			InitWithAnswer();
 		}
 		public virtual void HidePanel()
 		{

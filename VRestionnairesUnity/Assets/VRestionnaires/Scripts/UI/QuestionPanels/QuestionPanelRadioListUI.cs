@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using System.Linq;
 using TMPro;
 
 
@@ -14,11 +15,31 @@ namespace VRestionnaire {
 		public GameObject labelPrefab;
 		public GameObject radioItemPrefab;
 
+		List<Toggle> toggles;
+		
+		[SerializeField] RadioListQuestion radioListQuestion;
 
-		RadioGroup radioGroup;
 
+		public override void InitWithAnswer()
+		{
 
-		RadioListQuestion radioListQuestion;
+			if(radioListQuestion != null && radioListQuestion.isAnswered) {
+				for(int i = 0; i < toggles.Count; i++) {
+					toggles[i].SetIsOnWithoutNotify(false);
+				}
+				toggles[radioListQuestion.answer].SetIsOnWithoutNotify(true);
+			}
+		}
+
+		public override void HidePanel()
+		{
+			base.HidePanel();
+		}
+
+		public override void ShowPanel()
+		{
+			base.ShowPanel();
+		}
 
 		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent)
 		{
@@ -27,8 +48,9 @@ namespace VRestionnaire {
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
 
-			radioGroup = new RadioGroup(question.id, false);
-			radioGroup.OnGroupSelected += OnGroupSelected;
+			
+			toggles = new List<Toggle>();
+			
 
 			if(radioListQuestion.horizontal) {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedRowCount;
@@ -51,7 +73,13 @@ namespace VRestionnaire {
 
 				GameObject radioItem = Instantiate(radioItemPrefab);
 				Toggle toggle = radioItem.GetComponent<Toggle>();
-				radioGroup.AddToggle(toggle);
+
+				
+				toggle.SetIsOnWithoutNotify(false);
+				toggles.Add(toggle);
+				toggle.onValueChanged.AddListener((val) => {
+					OnItemSelected(toggle,radioListQuestion.id, val);
+				});
 
 				radioItem.transform.parent = itemsUI;
 				radioItem.transform.localPosition = Vector3.zero;
@@ -65,16 +93,19 @@ namespace VRestionnaire {
 					});
 				}
 			}
-
-			radioGroup.Init();
 		}
 
-
-		void OnGroupSelected(string qId,int itemId)
+		void OnItemSelected(Toggle toggle, string qId, bool value)
 		{
-			question.isAnswered = true;
-			radioListQuestion.answer = radioListQuestion.labels[itemId];
-			print("answered: " + qId + " item: " + radioListQuestion.answer);
+			int idx = toggles.IndexOf(toggle);
+			foreach(Toggle t in toggles) {
+				t.SetIsOnWithoutNotify(false);
+			}
+			toggle.SetIsOnWithoutNotify(true);
+			radioListQuestion.answer = idx;
+			radioListQuestion.isAnswered = true;
+
+			print("answered: " + qId + " item: " + idx);
 			OnQuestionAnswered.Invoke(question);
 		}
 

@@ -9,6 +9,12 @@ namespace VRestionnaire {
 
 		public Button submitButton;
 		UnityAction<Question> submitEvent;
+
+		public override void InitWithAnswer()
+		{
+			
+		}
+
 		public override void SetQuestion(Question q,UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q,answeredEvent);

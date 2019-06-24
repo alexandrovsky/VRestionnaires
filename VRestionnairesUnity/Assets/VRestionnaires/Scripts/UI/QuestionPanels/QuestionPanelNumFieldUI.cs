@@ -16,6 +16,15 @@ namespace VRestionnaire {
 		public NumberPad numberPad;
 		NumFieldQuestion numFieldQuestion;
 
+
+		
+		public override void InitWithAnswer()
+		{
+			if(numFieldQuestion != null && numFieldQuestion.isAnswered) {
+				inputField.text = numFieldQuestion.answer.ToString();
+			}
+		}
+
 		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q,answeredEvent);

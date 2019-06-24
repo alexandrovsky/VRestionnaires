@@ -8,11 +8,19 @@ namespace VRestionnaire {
 		public TMP_InputField inputField;
 		public TMP_Text placeholder;
 
+		MultiFieldQuestion multiFieldQuestion;
+		public override void InitWithAnswer()
+		{
+			if(multiFieldQuestion != null && multiFieldQuestion.isAnswered) {
+				inputField.text = multiFieldQuestion.answer;
+			}
+		}
+
 
 		public override void SetQuestion(Question q,UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q,answeredEvent);
-			MultiFieldQuestion multiFieldQuestion = question as MultiFieldQuestion;
+			multiFieldQuestion = question as MultiFieldQuestion;
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
 
@@ -25,7 +33,6 @@ namespace VRestionnaire {
 
 		void OnMultiFieldSubmit(string input)
 		{
-			MultiFieldQuestion multiFieldQuestion = question as MultiFieldQuestion;
 			question.isAnswered = true;
 			multiFieldQuestion.answer = input;
 			print(question.id + " " + multiFieldQuestion.answer);

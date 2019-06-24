@@ -9,6 +9,15 @@ namespace VRestionnaire {
 
 		[SerializeField] TMP_Dropdown dropdown;
 		DropDownQuestion downQuestion;
+
+
+		public override void InitWithAnswer()
+		{
+			if(downQuestion != null && downQuestion.isAnswered) {
+				dropdown.value = downQuestion.items.IndexOf(downQuestion.answer); 
+			}
+		}
+
 		public override void SetQuestion(Question q,UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q,answeredEvent);
