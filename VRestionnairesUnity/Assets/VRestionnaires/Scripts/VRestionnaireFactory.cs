@@ -19,6 +19,7 @@ namespace VRestionnaire {
 
 	public class VRestionnaireFactory:MonoBehaviour {
 		public string dir = "Assets/VRestionnaires/Resources/Questions";
+		public string questionnaire_filename = "/example.json";
 
 		static string[] fileExtensions = { "json" };
 		//public GameObject questionnairePanelPrefab;
@@ -34,7 +35,7 @@ namespace VRestionnaire {
 		}
 
 		public void BuildDefault() {
-			string[] filenames = { dir + "/example.json" };
+			string[] filenames = { dir + questionnaire_filename };
 			OpenAction(filenames);
 		}
 
