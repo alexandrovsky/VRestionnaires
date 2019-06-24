@@ -98,7 +98,6 @@ namespace VRestionnaire {
 					toggles.Add(toggle);
 
 
-
 					item.transform.parent = itemsUI;
 					item.transform.localPosition = Vector3.zero;
 					item.transform.localRotation = Quaternion.identity;

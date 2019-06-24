@@ -202,6 +202,12 @@ PrefabInstance:
       propertyPath: questionnairePanel
       value: 
       objectReference: {fileID: 174001051}
+    - target: {fileID: 7675895281654311088, guid: e8d3ba54a3f4b472894be8ca8ac713e0,
+        type: 3}
+      propertyPath: studySettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 24cb998f020f74c6d8c3b4d49e17d0cb,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8d3ba54a3f4b472894be8ca8ac713e0, type: 3}
 --- !u!224 &168683301 stripped

@@ -32,13 +32,18 @@ namespace VRestionnaire {
 
 		void Start()
 		{
-			BuildDefault();
+			//BuildDefault();
+			BuildFromStudySettings("a","dimi");
 		}
 
 		public void BuildFromStudySettings(string condition, string participantId) {
+			questionnairePanel.ClearQuestionPanels();
 			string[] filenames = studySettings.FilePathsForCondition(condition);
 			OpenAction(filenames);
-
+			foreach(Questionnaire questionnaire in questionnairePanel.questionnaires) {
+				questionnaire.condition = condition;
+				questionnaire.participantId = participantId;
+			}
 
 		}
 

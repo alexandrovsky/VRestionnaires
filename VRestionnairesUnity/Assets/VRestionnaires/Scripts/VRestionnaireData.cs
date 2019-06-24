@@ -181,7 +181,7 @@ namespace VRestionnaire {
 		{
 			questiontype = QuestionType.RadioList;
 			datatype = QuestionDataType.Boolean;
-			horizontal = json["horizontal"].Boolean;
+			horizontal = json.ContainsKey("horizontal") ? json["horizontal"].Boolean : false;
 			JSONArray labelsArray = json["labels"].Array;
 			labels = new string[labelsArray.Length];
 			for(int i = 0; i < labels.Length; i++) {
@@ -200,8 +200,7 @@ namespace VRestionnaire {
 		public CheckListQuestion(JSONObject json) : base(json)
 		{
 			questiontype = QuestionType.CheckList;
-			horizontal = json["horizontal"].Boolean;
-
+			horizontal = json.ContainsKey("horizontal") ? json["horizontal"].Boolean : false;
 			JSONArray qJSON = json["questions"].Array;
 			questions = new QuestionItem[qJSON.Length];
 			answers = new bool[qJSON.Length];
