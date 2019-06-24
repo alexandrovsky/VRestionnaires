@@ -93,3 +93,6 @@ MonoBehaviour:
   - questionType: 8
     prefab: {fileID: 1922228505283033168, guid: dc42ff8fb53114955904481dbe25e779,
       type: 3}
+  - questionType: 9
+    prefab: {fileID: 6242965059730865160, guid: 21b56929ad1924e1a8b63730c722cb41,
+      type: 3}

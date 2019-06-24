@@ -1,12 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 
 namespace VRestionnaire {
 
 	public class QuestionnairePanelUI:MonoBehaviour {
+
+		public delegate void OnQuestionnaireSubmittedEvent(Questionnaire questionnaire);
+		public event OnQuestionnaireSubmittedEvent OnQuestionnaireSubmittedCallback;
+
+		public Questionnaire questionnaire;
 
 		public UISkinData skinData;
 
@@ -119,10 +125,18 @@ namespace VRestionnaire {
 		public void OnQuestionAnswered(Question question)
 		{
 			print(">>>>>>> answered question: " + question.id);
-			nextButton.GetComponent<Button>().interactable = true;
+			CheckNavigationButtons();
+		}
+
+		public void OnQuestionnaireSubmitted(Question question)
+		{
+			print(">>>>>>> answered submitted: " + question.id);
+			CheckNavigationButtons();
+			if(OnQuestionnaireSubmittedCallback != null) {
+				OnQuestionnaireSubmittedCallback.Invoke(this.questionnaire);
+			}
 		}
 
 	}
 
 }
-

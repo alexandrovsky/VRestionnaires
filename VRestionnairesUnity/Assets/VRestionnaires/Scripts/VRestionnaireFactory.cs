@@ -25,8 +25,6 @@ namespace VRestionnaire {
 		public RectTransform questionParent;
 		public QuestionnairePanelUI questionnairePanel;
 
-		public Questionnaire questionnaire;
-
 		public List<QuestionTypePrefab> questionTypePrefabs;
 
 
@@ -78,65 +76,45 @@ namespace VRestionnaire {
 			return null;
 		}
 
+		QuestionPanelUI GeneratePanelForQuestionType(QuestionType questionType)
+		{
+
+			if(ContainsQuestionType(questionType)) {
+				GameObject prefab = ObjectForQuestionType(questionType);
+				if(prefab != null) {
+					GameObject questionPanel = Instantiate(prefab);
+					RectTransform questionPanelRT = questionPanel.GetComponent<RectTransform>();
+					questionPanelRT.parent = questionParent;
+					questionPanelRT.SetAnchor(AnchorPresets.StretchAll);
+					questionPanelRT.localPosition = Vector3.zero;
+					questionPanelRT.localRotation = Quaternion.identity;
+					questionPanelRT.localScale = questionParent.localScale;
+					//questionPanel.transform.parent = questionnaireParent; // questionnairePanelUI.questionsPanel;
+
+					return questionPanel.GetComponent<QuestionPanelUI>();
+				}
+			}
+			return null;
+		}
+
 		void GenerateQuestionnaireUI()
 		{
-			foreach(Question question in questionnaire.questions) {
-				if(ContainsQuestionType(question.questiontype)){
-					GameObject prefab = ObjectForQuestionType(question.questiontype);
-					if(prefab != null) {
-						GameObject questionPanel = Instantiate(prefab);
-						RectTransform questionPanelRT = questionPanel.GetComponent<RectTransform>();
-						questionPanelRT.parent = questionParent;
-						questionPanelRT.SetAnchor(AnchorPresets.StretchAll);
-						questionPanelRT.localPosition = Vector3.zero;
-						questionPanelRT.localRotation = Quaternion.identity;
-						questionPanelRT.localScale = questionParent.localScale;
-						//questionPanel.transform.parent = questionnaireParent; // questionnairePanelUI.questionsPanel;
+			foreach(Question question in questionnairePanel.questionnaire.questions) {
+				QuestionPanelUI panelUI = GeneratePanelForQuestionType(question.questiontype);
+				if(panelUI != null) {
+					panelUI.SetQuestion(question, questionnairePanel.OnQuestionAnswered);
 
-						QuestionPanelUI panelUI = questionPanel.GetComponent<QuestionPanelUI>();
-						panelUI.SetQuestion(question, questionnairePanel.OnQuestionAnswered);
-
-
-						//if(question is RadioGridQuestion) {
-						//	QuestionPanelUI<RadioGridQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<RadioGridQuestion>>();
-						//	panelUI.SetQuestion(question as RadioGridQuestion, questionnairePanel.OnQuestionAnswered);
-
-						//} else if(question is RadioListQuestion) {
-						//	QuestionPanelUI<RadioListQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<RadioListQuestion>>();
-						//	panelUI.SetQuestion(question as RadioListQuestion,questionnairePanel.OnQuestionAnswered);
-						//} else if(question is CheckListQuestion) {
-						//	QuestionPanelUI<CheckListQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<CheckListQuestion>>();
-						//	panelUI.SetQuestion(question as CheckListQuestion,questionnairePanel.OnQuestionAnswered);
-						//} else if(question is SliderQuestion) {
-						//	QuestionPanelUI<SliderQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<SliderQuestion>>();
-						//	panelUI.SetQuestion(question as SliderQuestion,questionnairePanel.OnQuestionAnswered);
-						//} else if(question is FieldQuestion) {
-						//	QuestionPanelUI<FieldQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<FieldQuestion>>();
-						//	panelUI.SetQuestion(question as FieldQuestion,questionnairePanel.OnQuestionAnswered);
-						//} else if(question is NumFieldQuestion) {
-						//	QuestionPanelUI<NumFieldQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<NumFieldQuestion>>();
-						//	panelUI.SetQuestion(question as NumFieldQuestion,questionnairePanel.OnQuestionAnswered);
-						//} else if(question is MultiFieldQuestion) {
-						//	QuestionPanelUI<MultiFieldQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<MultiFieldQuestion>>();
-						//	panelUI.SetQuestion(question as MultiFieldQuestion,questionnairePanel.OnQuestionAnswered);
-						//} else if(question is DropDownQuestion) {
-						//	QuestionPanelUI<DropDownQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<DropDownQuestion>>();
-						//	panelUI.SetQuestion(question as DropDownQuestion,questionnairePanel.OnQuestionAnswered);
-						//} else if(question is TextViewQuestion) {
-						//	QuestionPanelUI<TextViewQuestion> panelUI = questionPanel.GetComponent<QuestionPanelUI<TextViewQuestion>>();
-						//	panelUI.SetQuestion(question as TextViewQuestion,questionnairePanel.OnQuestionAnswered);
-						//}
-
-						questionnairePanel.questionPanels.Add(panelUI);
-						questionPanelRT.gameObject.SetActive(false);
-					}
+					questionnairePanel.questionPanels.Add(panelUI);
+					panelUI.HidePanel();
 				}
 			}
 			questionnairePanel.Init();
 
-			//RectTransform firstChild = questionnairePanelUI.GetComponentsInChildren<QuestionPanelUI>()[0].GetComponent<RectTransform>();
-			//questionnairePanelUI.contentScrollRect.content.localPosition =
-			//questionnairePanelUI.contentScrollRect.GetSnapToPositionToBringChildIntoView(firstChild);
+			QuestionPanelUI submitUI = GeneratePanelForQuestionType(QuestionType.Submit);
+			submitUI.SetQuestion(submitUI.question,questionnairePanel.OnQuestionnaireSubmitted);
+			questionnairePanel.questionPanels.Add(submitUI);
+			submitUI.HidePanel();
+
 
 			//Canvas.ForceUpdateCanvases();
 			//questionnairePanelUI.contentScrollbarVertical.value = 1;
@@ -149,30 +127,30 @@ namespace VRestionnaire {
 		void GenerateQuestionnaire(JSONObject json)
 		{
 
-			questionnaire = new Questionnaire();
+			questionnairePanel.questionnaire = new Questionnaire();
 
 			foreach(KeyValuePair<string,JSONValue> pair in json) {
 				switch(pair.Key) {
 				case "title":
-					questionnaire.title = pair.Value.Str;
+					questionnairePanel.questionnaire.title = pair.Value.Str;
 					break;
 				case "instructions":
-					questionnaire.instructions = pair.Value.Str;
+					questionnairePanel.questionnaire.instructions = pair.Value.Str;
 					break;
 				case "code":
-					questionnaire.code = pair.Value.Str;
+					questionnairePanel.questionnaire.code = pair.Value.Str;
 					break;
 				case "questions":
 					JSONArray questionsJson = pair.Value.Array;
-					questionnaire.questions = new Question[questionsJson.Length];
+					questionnairePanel.questionnaire.questions = new Question[questionsJson.Length];
 					for(int i = 0; i < questionsJson.Length; i++) {
-						questionnaire.questions[i] = GenerateQuestion(questionsJson[i].Obj);
+						questionnairePanel.questionnaire.questions[i] = GenerateQuestion(questionsJson[i].Obj);
 					}
 					break;
 				}
 				Debug.Log("key : value -> " + pair.Key + " : " + pair.Value);
 			}
-			print(questionnaire);
+			print(questionnairePanel.questionnaire);
 		}
 
 		Question GenerateQuestion(JSONObject json)

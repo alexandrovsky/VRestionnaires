@@ -45,7 +45,8 @@ namespace VRestionnaire {
 	public enum QuestionType {
 		RadioGrid,RadioList, CheckList,
 		Slider,Field, NumField,
-		MultField, DropDown, TextView
+		MultField, DropDown, TextView,
+		Submit
 	}
 
 	public static class QuestionTypeNames {
