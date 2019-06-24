@@ -51,6 +51,7 @@ namespace VRestionnaire {
 			backButton.GetComponent<Button>().interactable = false;
 			nextButton.GetComponent<Button>().interactable = true;
 			questionPanels[currentQuestionIdx].gameObject.SetActive(true);
+			CheckNavigationButtons();
 		}
 
 		public void ApplySkin()

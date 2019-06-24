@@ -147,6 +147,7 @@ namespace VRestionnaire {
 				item.id = obj["id"].Str;
 				item.text = obj["text"].Str;
 				q_text[i] = item;
+				answers[i] = -1;
 			}
 		}
 	}

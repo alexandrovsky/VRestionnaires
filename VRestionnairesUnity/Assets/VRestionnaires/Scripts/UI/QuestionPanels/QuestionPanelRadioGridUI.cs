@@ -26,16 +26,16 @@ namespace VRestionnaire {
 
 		public override void InitWithAnswer()
 		{
-			//if(radioGridQuestion != null && radioGridQuestion.isAnswered) {
-			//	for(int i = 0; i < questionItems.Count; i++) {
-			//		questionItems[0].toggleGroup.Get(radioGridQuestion.answers[i]).isOn = true;
-			//	}
-			//} else {
-			//	for(int i = 0; i < questionItems.Count; i++) {
-			//		questionItems[i].toggleGroup.allowSwitchOff = true;
-			//		questionItems[i].toggleGroup.SetAllTogglesOff();
-			//	}
-			//}
+			if(radioGridQuestion != null) {
+				for(int i= 0; i < questionItems.Count; i++) {
+					for(int j = 0; j < questionItems[i].Count; j++) {
+						questionItems[i][j].SetIsOnWithoutNotify(false);
+					}
+					if(radioGridQuestion.answers[i] >= 0) {
+						questionItems[i][radioGridQuestion.answers[i]].SetIsOnWithoutNotify(true);
+					}
+				}
+			}
 		}
 
 		public override void SetQuestion(Question q,UnityAction<Question> answeredEvent)
@@ -114,15 +114,15 @@ namespace VRestionnaire {
 			//Canvas.ForceUpdateCanvases();
 		}
 
-		public override bool CheckMandatory()
-		{
-			//foreach(RadioGroup rg in questionItems) {
-			//	if(rg.toggleGroup.ActiveToggles().ToList().Count() != 1) {
-			//		return false;
-			//	}
-			//}
-			return true;
-		}
+		//public override bool CheckMandatory()
+		//{
+		//	foreach(int a in radioGridQuestion.answers) {
+		//		if(a == -1) {
+		//			return false;
+		//		}
+		//	}
+		//	return true;
+		//}
 
 		void LayoutGridElements() {
 			for(int i = 0; i < gridLayout.rows; i++) {
@@ -160,37 +160,7 @@ namespace VRestionnaire {
 				radioGridQuestion.isAnswered = true;
 				OnQuestionAnswered.Invoke(question);
 			}
-
-
-				//int idx = toggles.IndexOf(toggle);
-				//foreach(Toggle t in toggles) {
-				//	t.SetIsOnWithoutNotify(false);
-				//}
-				//toggle.SetIsOnWithoutNotify(true);
-				//radioListQuestion.answer = idx;
-				//radioListQuestion.isAnswered = true;
-
-				//print("answered: " + qId + " item: " + idx);
-				//OnQuestionAnswered.Invoke(question);
-			}
-
-		//void OnItemSelected(string questionId, int itemId)
-		//{
-
-		//	QuestionItem item = radioGridQuestion.q_text.First((q) => { return q.id == questionId; });
-		//	int idx = Array.IndexOf(radioGridQuestion.q_text, item);
-		//	radioGridQuestion.answers[idx] = itemId;
-
-		//	int answersCount = 0;
-		//	foreach(RadioGroup rg in questionItems) {
-		//		answersCount += rg.toggleGroup.ActiveToggles().ToList().Count();
-		//	}
-		//	if(answersCount == questionItems.Count) {
-		//		question.isAnswered = true;
-		//		OnQuestionAnswered.Invoke(question);
-		//	}
-
-
-		//}
+		}		
+		
 	}
 }
