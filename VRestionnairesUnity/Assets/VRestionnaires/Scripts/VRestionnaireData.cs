@@ -131,13 +131,14 @@ namespace VRestionnaire {
 			JSONArray labelsJson = json["labels"].Array;
 			labels = new string[labelsJson.Length];
 
-			answers = new int[labelsJson.Length];
 
 			for(int i = 0; i < labelsJson.Length; i++) {
 				labels[i] = labelsJson[i].Str;
 			}
 
 			JSONArray qTextJson = json["q_text"].Array;
+			answers = new int[qTextJson.Length];
+
 			q_text = new QuestionItem[qTextJson.Length];
 
 			for(int i = 0; i < qTextJson.Length; i++) {

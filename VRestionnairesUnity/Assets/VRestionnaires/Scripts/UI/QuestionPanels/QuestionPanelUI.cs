@@ -29,7 +29,7 @@ namespace VRestionnaire {
 		public TMP_Text instructionsText;
 		public TMP_Text idText;
 
-		public Question question;
+		[HideInInspector]public Question question;
 
 
 		public virtual void SetQuestion(Question q, UnityAction<Question> answeredEvent)

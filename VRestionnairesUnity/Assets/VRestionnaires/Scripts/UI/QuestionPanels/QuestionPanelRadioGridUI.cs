@@ -19,23 +19,23 @@ namespace VRestionnaire {
 		public GameObject labelPrefab;
 		public GameObject radioItemPrefab;
 
-		List<RadioGroup> questionItems;
+		List<List<Toggle>> questionItems;
 
-		RadioGridQuestion radioGridQuestion;
+		[SerializeField] RadioGridQuestion radioGridQuestion;
 
 
 		public override void InitWithAnswer()
 		{
-			if(radioGridQuestion != null && radioGridQuestion.isAnswered) {
-				for(int i = 0; i < questionItems.Count; i++) {
-					questionItems[0].toggleGroup.Get(radioGridQuestion.answers[i]).isOn = true;
-				}
-			} else {
-				for(int i = 0; i < questionItems.Count; i++) {
-					questionItems[i].toggleGroup.allowSwitchOff = true;
-					questionItems[i].toggleGroup.SetAllTogglesOff();
-				}
-			}
+			//if(radioGridQuestion != null && radioGridQuestion.isAnswered) {
+			//	for(int i = 0; i < questionItems.Count; i++) {
+			//		questionItems[0].toggleGroup.Get(radioGridQuestion.answers[i]).isOn = true;
+			//	}
+			//} else {
+			//	for(int i = 0; i < questionItems.Count; i++) {
+			//		questionItems[i].toggleGroup.allowSwitchOff = true;
+			//		questionItems[i].toggleGroup.SetAllTogglesOff();
+			//	}
+			//}
 		}
 
 		public override void SetQuestion(Question q,UnityAction<Question> answeredEvent)
@@ -67,7 +67,7 @@ namespace VRestionnaire {
 				label.transform.localScale = label.transform.parent.localScale;
 			}
 
-			questionItems = new List<RadioGroup>();
+			questionItems = new List<List<Toggle>>();
 
 			for(int i = 0; i < radioGridQuestion.q_text.Length; i++) {
 				GameObject textObj = Instantiate(labelPrefab);
@@ -83,19 +83,30 @@ namespace VRestionnaire {
 				textObj.transform.localPosition = Vector3.zero;
 				textObj.transform.localRotation = Quaternion.identity;
 				textObj.transform.localScale = textObj.transform.parent.localScale;
-				RadioGroup radioGroup = new RadioGroup(radioGridQuestion.q_text[i].id);
-				radioGroup.OnGroupSelected += OnItemSelected;
+				//RadioGroup radioGroup = new RadioGroup(radioGridQuestion.q_text[i].id);
+				List<Toggle> toggles = new List<Toggle>();
+				//radioGroup.OnGroupSelected += OnItemSelected;
 				for(int j = 0; j < radioGridQuestion.labels.Length; j++) {
 					GameObject item = Instantiate(radioItemPrefab);
 					Toggle toggle = item.GetComponent<Toggle>();
-					radioGroup.AddToggle(toggle);
+					//radioGroup.AddToggle(toggle);
+					toggle.SetIsOnWithoutNotify(false);
+					toggle.onValueChanged.AddListener((val) => {
+						OnItemSelected(toggle,radioGridQuestion.id,val);
+					});
+
+					toggles.Add(toggle);
+
+
+
 					item.transform.parent = itemsUI;
 					item.transform.localPosition = Vector3.zero;
 					item.transform.localRotation = Quaternion.identity;
 					item.transform.localScale = item.transform.parent.localScale;
 				}
-				radioGroup.Init();
-				questionItems.Add(radioGroup);
+				//radioGroup.Init();
+				//questionItems.Add(radioGroup);
+				questionItems.Add(toggles);
 			}
 
 			//Canvas.ForceUpdateCanvases();
@@ -105,12 +116,11 @@ namespace VRestionnaire {
 
 		public override bool CheckMandatory()
 		{
-
-			foreach(RadioGroup rg in questionItems) {
-				if(rg.toggleGroup.ActiveToggles().ToList().Count() != 1) {
-					return false;
-				}
-			}
+			//foreach(RadioGroup rg in questionItems) {
+			//	if(rg.toggleGroup.ActiveToggles().ToList().Count() != 1) {
+			//		return false;
+			//	}
+			//}
 			return true;
 		}
 
@@ -123,23 +133,64 @@ namespace VRestionnaire {
 		}
 
 
-		void OnItemSelected(string questionId, int itemId)
+
+		void OnItemSelected(Toggle toggle,string qId,bool value)
 		{
-
-			QuestionItem item = radioGridQuestion.q_text.First((q) => { return q.id == questionId; });
-			int idx = Array.IndexOf(radioGridQuestion.q_text, item);
-			radioGridQuestion.answers[idx] = itemId;
-
-			int answersCount = 0;
-			foreach(RadioGroup rg in questionItems) {
-				answersCount += rg.toggleGroup.ActiveToggles().ToList().Count();
+			for(int i = 0; i < questionItems.Count; i++) {
+				List<Toggle> toggles = questionItems[i];
+				int idx = toggles.IndexOf(toggle);
+				if(idx >= 0) {
+					for(int j = 0; j < toggles.Count; j++) {
+						toggles[j].SetIsOnWithoutNotify(false);
+					}
+					toggle.SetIsOnWithoutNotify(true);
+					break;
+				}
 			}
-			if(answersCount == questionItems.Count) {
-				question.isAnswered = true;
+			int counter = 0;
+			for(int i = 0; i < questionItems.Count; i++) {
+				for(int j = 0; j < questionItems[i].Count; j++) {
+					if(questionItems[i][j].isOn) {
+						radioGridQuestion.answers[i] = j;
+						counter++;
+					}
+				}
+			}
+			if(counter == questionItems.Count) {
+				radioGridQuestion.isAnswered = true;
 				OnQuestionAnswered.Invoke(question);
 			}
 
 
-		}
+				//int idx = toggles.IndexOf(toggle);
+				//foreach(Toggle t in toggles) {
+				//	t.SetIsOnWithoutNotify(false);
+				//}
+				//toggle.SetIsOnWithoutNotify(true);
+				//radioListQuestion.answer = idx;
+				//radioListQuestion.isAnswered = true;
+
+				//print("answered: " + qId + " item: " + idx);
+				//OnQuestionAnswered.Invoke(question);
+			}
+
+		//void OnItemSelected(string questionId, int itemId)
+		//{
+
+		//	QuestionItem item = radioGridQuestion.q_text.First((q) => { return q.id == questionId; });
+		//	int idx = Array.IndexOf(radioGridQuestion.q_text, item);
+		//	radioGridQuestion.answers[idx] = itemId;
+
+		//	int answersCount = 0;
+		//	foreach(RadioGroup rg in questionItems) {
+		//		answersCount += rg.toggleGroup.ActiveToggles().ToList().Count();
+		//	}
+		//	if(answersCount == questionItems.Count) {
+		//		question.isAnswered = true;
+		//		OnQuestionAnswered.Invoke(question);
+		//	}
+
+
+		//}
 	}
 }
