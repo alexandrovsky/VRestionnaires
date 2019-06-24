@@ -44,27 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dir: /Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires
+  questionnaire_filename: /example.json
   questionParent: {fileID: 0}
   questionnairePanel: {fileID: 0}
-  questionnaire:
-    title: Example Questionnaire
-    instructions: Please rate each video game experience....
-    code: 001
-    questions:
-    - id: 
-      questiontype: 8
-      instructions: 
-      required: 0
-      shuffle: 0
-      datatype: 0
-      isAnswered: 0
-    - id: radio_1
-      questiontype: 0
-      instructions: 
-      required: 0
-      shuffle: 0
-      datatype: 1
-      isAnswered: 0
   questionTypePrefabs:
   - questionType: 0
     prefab: {fileID: 8333490221534049983, guid: e5a631146328a4517a7eaffae3f9daf0,
@@ -96,3 +78,4 @@ MonoBehaviour:
   - questionType: 9
     prefab: {fileID: 6242965059730865160, guid: 21b56929ad1924e1a8b63730c722cb41,
       type: 3}
+  studySettings: {fileID: 11400000, guid: 24cb998f020f74c6d8c3b4d49e17d0cb, type: 2}
