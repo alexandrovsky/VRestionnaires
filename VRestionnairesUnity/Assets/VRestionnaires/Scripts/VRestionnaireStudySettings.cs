@@ -14,6 +14,7 @@ namespace VRestionnaire {
 			public int currentQuestionnaire;
 		}
 
+
 		//[Serializable]
 		//public class QuestionnaireFromEditor {
 		//	public string condition;
@@ -29,6 +30,8 @@ namespace VRestionnaire {
 		//public bool loadQuestionnairesFromFiles;
 		public QuestionnaireFromFile[] questionnairesFromFiles;
 		//public QuestionnaireFromEditor[] questionnairesFromEditor;
+
+		public string answersOutputFilePath = "Assets/VRestionnaires/Resources/Answers/";
 
 		public string[] FilePathsForCondition(string conditon) {
 			for(int i = 0; i < questionnairesFromFiles.Length; i++) {

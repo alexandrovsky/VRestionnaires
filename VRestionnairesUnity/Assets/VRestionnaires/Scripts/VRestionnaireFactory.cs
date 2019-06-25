@@ -38,6 +38,7 @@ namespace VRestionnaire {
 
 		public void BuildFromStudySettings(string condition, string participantId) {
 			questionnairePanel.ClearQuestionPanels();
+			questionnairePanel.studySettings = studySettings;
 			string[] filenames = studySettings.FilePathsForCondition(condition);
 			OpenAction(filenames);
 			foreach(Questionnaire questionnaire in questionnairePanel.questionnaires) {

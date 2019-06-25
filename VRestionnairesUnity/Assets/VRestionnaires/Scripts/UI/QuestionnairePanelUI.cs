@@ -20,7 +20,7 @@ namespace VRestionnaire {
 		public List<Questionnaire> questionnaires;
 
 		public UISkinData skinData;
-
+		public VRestionnaireStudySettings studySettings;
 		public TMP_Text title;
 		public TMP_Text instructions;
 
@@ -29,6 +29,9 @@ namespace VRestionnaire {
 		public RectTransform bottomPanel;
 		public ScrollRect contentScrollRect;
 		public Scrollbar contentScrollbarVertical;
+
+
+		public string output;
 
 		[Tooltip("Go to previous question")]
 		public GameObject backButton;
@@ -50,6 +53,23 @@ namespace VRestionnaire {
 			currentQuestionIdx = 0;
 		}
 
+		private void OnEnable()
+		{
+			OnQuestionnaireFinishedCallback += QuestionnairePanelUI_OnQuestionnaireFinishedCallback;
+		}
+
+		private void OnDisable()
+		{
+			OnQuestionnaireFinishedCallback -= QuestionnairePanelUI_OnQuestionnaireFinishedCallback;
+		}
+
+		private void QuestionnairePanelUI_OnQuestionnaireFinishedCallback(Questionnaire questionnaire)
+		{
+			output = VRestionnairePersistence.CreateCSVTableFromQuestionnaire(questionnaire);
+			string filename = VRestionnairePersistence.GenerateFilename(questionnaire);
+			VRestionnairePersistence.WriteFile(studySettings.answersOutputFilePath,filename,output);
+			print(output);
+		}
 
 		public void Init()
 		{
@@ -124,11 +144,12 @@ namespace VRestionnaire {
 					break;
 				}
 			}
-			qstnrIdx = Mathf.Clamp(qstnrIdx,0,questionnaires.Count - 1);
+			
 			if(currentQuestionnaireIdx != qstnrIdx) {
 				if(OnQuestionnaireFinishedCallback != null) {
 					OnQuestionnaireFinishedCallback.Invoke(questionnaires[currentQuestionnaireIdx]);
 				}
+				qstnrIdx = Mathf.Clamp(qstnrIdx,0,questionnaires.Count-1);
 				currentQuestionnaireIdx = qstnrIdx;
 				Init();
 			}

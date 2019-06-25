@@ -182,7 +182,7 @@ namespace VRestionnaire {
 
 		public override string Export()
 		{
-			string output = String.Join(",",answers.Select(p => p.ToString()).ToArray());
+			string output = "[" + String.Join(",",answers.Select(p => p.ToString()).ToArray()) + "]";
 			return output;
 		}
 	}
@@ -234,7 +234,12 @@ namespace VRestionnaire {
 		}
 		public override string Export()
 		{
-			string output = String.Join(",",answers.Select(p => p.ToString()).ToArray());
+			List<string> responses = new List<string>();
+			for(int i = 0; i < questions.Length; i++) {
+				responses.Add(answers[i] ? questions[i].text : "");
+			}
+
+			string output = "[" + String.Join(",",responses.Select(s => s).ToArray()) + "]";
 			return output;
 		}
 	}
