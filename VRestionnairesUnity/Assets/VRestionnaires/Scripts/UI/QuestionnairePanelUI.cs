@@ -88,7 +88,7 @@ namespace VRestionnaire {
 		}
 		public void OnNextButtonClicked()
 		{
-			if(currentQuestionIdx < questionPanels.Count) {
+			if(currentQuestionIdx < questionPanels.Count-1) {
 				questionPanels[currentQuestionIdx].HidePanel();
 				
 				currentQuestionIdx++;
@@ -124,6 +124,7 @@ namespace VRestionnaire {
 					break;
 				}
 			}
+			qstnrIdx = Mathf.Clamp(qstnrIdx,0,questionnaires.Count - 1);
 			if(currentQuestionnaireIdx != qstnrIdx) {
 				if(OnQuestionnaireFinishedCallback != null) {
 					OnQuestionnaireFinishedCallback.Invoke(questionnaires[currentQuestionnaireIdx]);
@@ -167,7 +168,7 @@ namespace VRestionnaire {
 
 		public void OnQuestionnaireSubmitted(Question question)
 		{
-			print(">>>>>>> answered submitted: " + question.id);
+			print(">>>>>>> qstnr submitted: " + question.id);
 			CheckNavigationButtons();
 			questionnaires[currentQuestionnaireIdx].endUtcTime = System.DateTime.UtcNow;
 			if(OnQuestionnaireSubmittedCallback != null) {

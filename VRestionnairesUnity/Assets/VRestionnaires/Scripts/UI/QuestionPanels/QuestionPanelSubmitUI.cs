@@ -9,6 +9,7 @@ namespace VRestionnaire {
 
 		public Button submitButton;
 		UnityAction<Question> submitEvent;
+		public SubmitQuestion submitQuestion;
 
 		public override void InitWithAnswer()
 		{
@@ -18,13 +19,18 @@ namespace VRestionnaire {
 		public override void SetQuestion(Question q,UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q,answeredEvent);
+			submitQuestion = q as SubmitQuestion;
 			submitButton.onClick.AddListener(Submit);
 
 		}
 
 		public void Submit() {
-			question.isAnswered = true;
-			OnQuestionAnswered.Invoke(question);
+			if(question != null) {
+				question.isAnswered = true;
+			}
+			if(OnQuestionAnswered != null) {
+				OnQuestionAnswered.Invoke(question);
+			}
 		}
 
 	}

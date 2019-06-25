@@ -119,7 +119,11 @@ namespace VRestionnaire {
 		void GenerateSubmitQuestionnaireUI() {
 
 			QuestionPanelUI submitUI = GeneratePanelForQuestionType(QuestionType.Submit);
-			submitUI.SetQuestion(submitUI.question,questionnairePanel.OnQuestionnaireSubmitted);
+			submitUI.SetQuestion(new SubmitQuestion() {
+				text = "",
+				id = "submit_1234",
+				instructions = "instructions...."
+			}, questionnairePanel.OnQuestionnaireSubmitted);
 			questionnairePanel.questionPanels.Add(submitUI);
 			submitUI.HidePanel();
 		}
@@ -173,7 +177,7 @@ namespace VRestionnaire {
 				}
 				Debug.Log("key : value -> " + pair.Key + " : " + pair.Value);
 			}
-			print(questionnaire);
+			//print(questionnaire);
 			return questionnaire;
 		}
 
@@ -213,7 +217,7 @@ namespace VRestionnaire {
 				question = new TextViewQuestion(json);
 				break;
 			default:
-				question = new Question(json);
+				question = new TextViewQuestion(json);
 				break;
 			}
 			return question;

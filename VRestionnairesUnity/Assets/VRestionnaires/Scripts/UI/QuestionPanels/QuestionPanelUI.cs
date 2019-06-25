@@ -42,7 +42,7 @@ namespace VRestionnaire {
 
 		public virtual bool CheckMandatory()
 		{
-			if(question.required) {
+			if(question != null && question.required) {
 				return question.isAnswered;
 			}else {
 				return true;

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Boomlagoon.JSON;
 using System;
+using System.Linq;
+
 namespace VRestionnaire {
 
 	public static class VRestionnaireData {
@@ -89,7 +91,7 @@ namespace VRestionnaire {
 	#region Different Question Classes
 
 	[System.Serializable]
-	public class Question {
+	public abstract class Question {
 		public string id;
 		public QuestionType questiontype;
 		public string instructions;
@@ -107,10 +109,16 @@ namespace VRestionnaire {
 			}
 		}
 
+		public abstract string Export();
+
 		public int answerCounter; // how often was the an answer picked
 		public DateTime answerUtcTime;
 
 		public Question(JSONObject json) {
+			if(json == null) {
+				return; // --->
+			} 
+
 			if(json.ContainsKey("id")) {
 				id = json["id"].Str;
 			}
@@ -142,6 +150,8 @@ namespace VRestionnaire {
 		public QuestionItem[] q_text;
 		public int[] answers;
 
+
+
 		public RadioGridQuestion(JSONObject json) : base(json)
 		{
 			questiontype = QuestionType.RadioGrid;
@@ -169,6 +179,12 @@ namespace VRestionnaire {
 				answers[i] = -1;
 			}
 		}
+
+		public override string Export()
+		{
+			string output = String.Join(",",answers.Select(p => p.ToString()).ToArray());
+			return output;
+		}
 	}
 
 	[System.Serializable]
@@ -187,6 +203,10 @@ namespace VRestionnaire {
 			for(int i = 0; i < labels.Length; i++) {
 				labels[i] = labelsArray[i].Str;
 			}
+		}
+		public override string Export()
+		{
+			return isAnswered ? labels[answer] : "-1";
 		}
 	}
 
@@ -212,6 +232,11 @@ namespace VRestionnaire {
 				questions[i] = item;
 			}
 		}
+		public override string Export()
+		{
+			string output = String.Join(",",answers.Select(p => p.ToString()).ToArray());
+			return output;
+		}
 	}
 
 	[System.Serializable]
@@ -236,6 +261,14 @@ namespace VRestionnaire {
 
 			tick_count = (int) json["tick_count"].Number;
 		}
+
+		public override string Export()
+		{
+			if(datatype == QuestionDataType.Float) {
+				return answer.ToString();
+			} 
+			return ((int)answer).ToString();
+		}
 	}
 
 	[System.Serializable]
@@ -248,6 +281,11 @@ namespace VRestionnaire {
 			questiontype = QuestionType.Field;
 			datatype = QuestionDataType.String;
 			placeholder = json["placeholder"].Str;
+		}
+
+		public override string Export()
+		{
+			return answer;
 		}
 	}
 
@@ -300,6 +338,14 @@ namespace VRestionnaire {
 				max = float.MaxValue;
 			}
 		}
+
+		public override string Export()
+		{
+			if(datatype == QuestionDataType.Float) {
+				return answer.ToString();
+			}
+			return ((int)answer).ToString();
+		}
 	}
 
 	[System.Serializable]
@@ -314,6 +360,11 @@ namespace VRestionnaire {
 			datatype = QuestionDataType.String;
 			placeholder = json["placeholder"].Str;
 
+		}
+
+		public override string Export()
+		{
+			return answer;
 		}
 	}
 
@@ -334,6 +385,11 @@ namespace VRestionnaire {
 				items.Add(itemsJson[i].Str);
 			}
 		}
+
+		public override string Export()
+		{
+			return answer;
+		}
 	}
 
 	[System.Serializable]
@@ -349,10 +405,30 @@ namespace VRestionnaire {
 			if(json.ContainsKey("text")) {
 				text = json["text"].Str;
 			}
+		}
 
-
+		public override string Export()
+		{
+			return "";
 		}
 	}
+
+
+	[System.Serializable]
+	public class SubmitQuestion:Question {
+		public string title;
+		public string text;
+		public SubmitQuestion() : base(null)
+		{
+			questiontype = QuestionType.TextView;
+		}
+
+		public override string Export()
+		{
+			return "";
+		}
+	}
+
 	#endregion
 
 }
