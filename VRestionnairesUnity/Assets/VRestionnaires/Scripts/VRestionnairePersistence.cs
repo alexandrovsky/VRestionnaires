@@ -20,6 +20,7 @@ namespace VRestionnaire {
 
 		public static void WriteFile(string path, string filename, string data)
 		{
+			CreateDirectoryRecursively(path);
 			File.WriteAllText(path + filename,data);
 			
 		}
@@ -27,8 +28,10 @@ namespace VRestionnaire {
 		public static void CreteCSVFromQuestionnaire(string basepath, Questionnaire questionnaire) {
 			string dir = basepath + questionnaire.title + "/";
 			string fullPath = dir + questionnaire.title + ".csv";
+			
 			if(!Directory.Exists(dir)) {
-				Directory.CreateDirectory(dir);
+				CreateDirectoryRecursively(dir);
+				//Directory.CreateDirectory(dir);
 			}
 			if(!File.Exists(fullPath)) {
 				string table = CreateCSVStringFromQuestionnaire(questionnaire);
@@ -51,7 +54,6 @@ namespace VRestionnaire {
 				{ "endUtcTime", questionnaire.endUtcTime.ToString() }
 			};
 
-
 			foreach(Question q in questionnaire.questions) {
 				Dictionary<string,string> responses = q.Export();
 				foreach(string key in responses.Keys) {
@@ -71,6 +73,19 @@ namespace VRestionnaire {
 
 			string output = string.Join("\n",header,values);
 			return output;
+		}
+
+		public static void CreateDirectoryRecursively(string path)
+		{
+			string[] pathParts = path.Split('/');
+
+			for(int i = 0; i < pathParts.Length; i++) {
+				if(i > 0)
+					pathParts[i] = Path.Combine(pathParts[i - 1],pathParts[i]);
+
+				if(!Directory.Exists(pathParts[i]))
+					Directory.CreateDirectory(pathParts[i]);
+			}
 		}
 
 	}
