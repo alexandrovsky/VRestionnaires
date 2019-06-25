@@ -66,9 +66,12 @@ namespace VRestionnaire {
 		private void QuestionnairePanelUI_OnQuestionnaireFinishedCallback(Questionnaire questionnaire)
 		{
 			questionnaire.endUtcTime = System.DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-			output = VRestionnairePersistence.CreateCSVTableFromQuestionnaire(questionnaire);
+			output = VRestionnairePersistence.CreateCSVStringFromQuestionnaire(questionnaire);
 			string filename = VRestionnairePersistence.GenerateFilename(questionnaire);
 			VRestionnairePersistence.WriteFile(studySettings.answersOutputFilePath,filename,output);
+
+			// append
+			VRestionnairePersistence.CreteCSVFromQuestionnaire(studySettings.answersOutputFilePath,questionnaire);
 			print(output);
 		}
 
