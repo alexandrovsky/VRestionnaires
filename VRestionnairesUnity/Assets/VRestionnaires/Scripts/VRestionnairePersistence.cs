@@ -9,10 +9,11 @@ namespace VRestionnaire {
 
 		public static string GenerateFilename(Questionnaire questionnaire)
 		{
+			long utcNow = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 			return questionnaire.title
 				+ "_" + questionnaire.participantId
 				+ "_" + questionnaire.condition
-				+ "_" + DateTime.UtcNow.ToLongTimeString()
+				+ "_" + utcNow
 				+ ".csv";
 		
 		}
@@ -30,8 +31,8 @@ namespace VRestionnaire {
 				{ "participantId", questionnaire.participantId },
 				{ "condition", questionnaire.condition },
 				{ "title", questionnaire.title },
-				{ "startUtcTime", questionnaire.startUtcTime.ToLongTimeString() },
-				{ "endUtcTime", questionnaire.endUtcTime.ToLongTimeString() }
+				{ "startUtcTime", questionnaire.startUtcTime.ToString() },
+				{ "endUtcTime", questionnaire.endUtcTime.ToString() }
 			};
 
 

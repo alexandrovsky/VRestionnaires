@@ -78,12 +78,12 @@ namespace VRestionnaire {
 		public string instructions;
 		public string code;
 		public Question[] questions;
-		public DateTime startUtcTime;
-		public DateTime endUtcTime;
+		public long startUtcTime;
+		public long endUtcTime;
 
 		public Questionnaire()
 		{
-			startUtcTime = DateTime.UtcNow;
+			startUtcTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 		}
 
 	}

@@ -65,6 +65,7 @@ namespace VRestionnaire {
 
 		private void QuestionnairePanelUI_OnQuestionnaireFinishedCallback(Questionnaire questionnaire)
 		{
+			questionnaire.endUtcTime = System.DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 			output = VRestionnairePersistence.CreateCSVTableFromQuestionnaire(questionnaire);
 			string filename = VRestionnairePersistence.GenerateFilename(questionnaire);
 			VRestionnairePersistence.WriteFile(studySettings.answersOutputFilePath,filename,output);
@@ -191,7 +192,7 @@ namespace VRestionnaire {
 		{
 			print(">>>>>>> qstnr submitted: " + question.id);
 			CheckNavigationButtons();
-			questionnaires[currentQuestionnaireIdx].endUtcTime = System.DateTime.UtcNow;
+			questionnaires[currentQuestionnaireIdx].endUtcTime = System.DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 			if(OnQuestionnaireSubmittedCallback != null) {
 				OnQuestionnaireSubmittedCallback.Invoke(this.questionnaires[currentQuestionnaireIdx]);
 			}
