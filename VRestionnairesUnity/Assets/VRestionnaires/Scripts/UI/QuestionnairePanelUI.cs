@@ -95,7 +95,7 @@ namespace VRestionnaire {
 				return;
 			}
 			
-			TMP_Text[] texts = GetComponentsInChildren<TMP_Text>();
+			TMP_Text[] texts = GetComponentsInChildren<TMP_Text>(true);
 			foreach(TMP_Text text in texts) {
 				text.font = skinData.font;
 				text.color = skinData.normalTextColor;
@@ -108,17 +108,17 @@ namespace VRestionnaire {
 			}
 
 
-			Toggle[] toggles = GetComponentsInChildren<Toggle>();
+			Toggle[] toggles = GetComponentsInChildren<Toggle>(true);
 			foreach(Toggle toggle in toggles) {
 				toggle.GetComponent<RectTransform>().sizeDelta = skinData.toggleSize;
 			}
 
-			BackgroundImage[] bgs = GetComponentsInChildren<BackgroundImage>();
-			foreach(BackgroundImage bg in bgs) {
-				bg.ApplySkin(skinData.panelSprite,skinData.backgroundColor);
+			ISkinHandler[] handlers = GetComponentsInChildren<ISkinHandler>(true);
+			foreach(ISkinHandler handler in handlers) {
+				handler.ApplySkin(skinData);
 			}
 
-			Button[] buttons = GetComponentsInChildren<Button>();
+			Button[] buttons = GetComponentsInChildren<Button>(true);
 			foreach(Button btn in buttons) {
 				btn.GetComponent<Image>().sprite = skinData.buttonSprite;
 			}

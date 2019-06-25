@@ -4,16 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace VRestionnaire {
 	[RequireComponent(typeof(Image))]
-	public class BackgroundImage:MonoBehaviour {
+	public class BackgroundImageSkin:MonoBehaviour, ISkinHandler {
 
 		public Image image;
 
-		public void ApplySkin(Sprite sprite, Color color)
-		{
-			image.sprite = sprite;
-			image.color = color;
-		}
 		
+
+		public void ApplySkin(UISkinData skin)
+		{
+			
+			image.sprite = skin.panelSprite;
+			image.color = skin.backgroundColor;
+		}
 	}
 
 }

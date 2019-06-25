@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 namespace VRestionnaire {
+
+	
 	[CreateAssetMenu(menuName = "UI Skin Data")]
 	public class UISkinData:ScriptableObject {
 		[Header("Test Settings")]
