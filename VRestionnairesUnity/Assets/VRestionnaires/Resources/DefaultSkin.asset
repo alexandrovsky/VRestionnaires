@@ -15,12 +15,14 @@ MonoBehaviour:
   font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   normalTextColor: {r: 0.8862745, g: 0.8862745, b: 0.8862745, a: 1}
   colorBlock:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.96, g: 0.96, b: 0.96, a: 1}
-    m_PressedColor: {r: 0.78, g: 0.78, b: 0.78, a: 1}
-    m_SelectedColor: {r: 0.96, g: 0.96, b: 0.96, a: 1}
-    m_DisabledColor: {r: 0.78, g: 0.78, b: 0.78, a: 0.5}
+    m_NormalColor: {r: 0.06666667, g: 0.26666668, b: 0.46666667, a: 1}
+    m_HighlightedColor: {r: 0.06666667, g: 0.2, b: 0.4, a: 1}
+    m_PressedColor: {r: 0.06666667, g: 0.13333334, b: 0.33333334, a: 1}
+    m_SelectedColor: {r: 0.06666667, g: 0.06666667, b: 0.26666668, a: 1}
+    m_DisabledColor: {r: 0.06666667, g: 0, b: 0.2, a: 0.5}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   toggleSize: {x: 0.6, y: 0.6}
+  panelSprite: {fileID: 21300000, guid: 28a4bfbd869bb4bccbc221376737003d, type: 3}
   backgroundColor: {r: 0.36862746, g: 0.36862746, b: 0.3764706, a: 1}
+  buttonSprite: {fileID: 21300000, guid: ef71ad67339df4588a1f3da62821a917, type: 3}
