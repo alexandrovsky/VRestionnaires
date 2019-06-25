@@ -35,8 +35,10 @@ namespace VRestionnaire {
 
 		[Tooltip("Go to previous question")]
 		public GameObject backButton;
+		public TMP_Text backButtonLabel;
 		[Tooltip("Go to next question")]
 		public GameObject nextButton;
+		public TMP_Text nextButtonLabel;
 
 		[Tooltip("Number pad for Num field input")]
 		public NumberPad numberPad;
@@ -82,6 +84,8 @@ namespace VRestionnaire {
 			title.text = questionnaires[currentQuestionnaireIdx].title;
 			instructions.text = questionnaires[currentQuestionnaireIdx].instructions;
 			questionPanels[currentQuestionIdx].ShowPanel(); //.gameObject.SetActive(true);
+			nextButtonLabel.text = studySettings.navigationButtonNextLabel;
+			backButtonLabel.text = studySettings.navigationButtonBackLabel;
 			CheckNavigationButtons();
 		}
 

@@ -31,6 +31,10 @@ namespace VRestionnaire {
 		public QuestionnaireFromFile[] questionnairesFromFiles;
 		//public QuestionnaireFromEditor[] questionnairesFromEditor;
 
+		[Space]
+		public string navigationButtonNextLabel = "Weiter";
+		public string navigationButtonBackLabel = "Zurück";
+
 		public string answersOutputFilePath = "Assets/VRestionnaires/Resources/Answers/";
 
 		public string[] FilePathsForCondition(string conditon) {

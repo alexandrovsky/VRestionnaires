@@ -413,6 +413,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7172461193639116514, guid: 117b9b7f5bf2c4df799b19d31cd197fa,
+        type: 3}
+      propertyPath: questionnaires.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7172461193639116515, guid: 117b9b7f5bf2c4df799b19d31cd197fa,
         type: 3}
       propertyPath: m_LocalPosition.x

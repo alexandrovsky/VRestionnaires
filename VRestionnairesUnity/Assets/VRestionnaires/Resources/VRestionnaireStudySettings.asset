@@ -14,9 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conditions:
   - a
+  - b
   questionnairesFromFiles:
   - condition: a
     filePaths:
     - /Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires/Games.json
     - /Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires/IMI.json
     currentQuestionnaire: 0
+  - condition: b
+    filePaths: []
+    currentQuestionnaire: 0
+  navigationButtonNextLabel: Weiter
+  navigationButtonBackLabel: "Zur\xFCck"
+  answersOutputFilePath: Assets/VRestionnaires/Resources/Answers/
