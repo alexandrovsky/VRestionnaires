@@ -43,7 +43,6 @@ namespace VRestionnaire {
 
 
 
-
 		public string[] FilePathsForCondition(string conditon) {
 			for(int i = 0; i < questionnairesFromFiles.Length; i++) {
 				if(questionnairesFromFiles[i].condition == conditon) {

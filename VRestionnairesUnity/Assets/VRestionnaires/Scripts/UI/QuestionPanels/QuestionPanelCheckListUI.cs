@@ -65,10 +65,7 @@ namespace VRestionnaire {
 				GameObject label = Instantiate(labelPrefab);
 				TMP_Text text = label.GetComponent<TMP_Text>();
 				text.text = checkQuestion.questions[i].text;
-				label.transform.parent = itemsUI;
-				label.transform.localPosition = Vector3.zero;
-				label.transform.localRotation = Quaternion.identity;
-				label.transform.localScale = label.transform.parent.localScale;
+				
 
 				LayoutElement labelLayout = label.GetComponent<LayoutElement>();
 				float w = text.preferredWidth * preferredWidthScaler;
@@ -82,10 +79,7 @@ namespace VRestionnaire {
 				toggle.isOn = false;
 				toggle.onValueChanged.AddListener(HandleToggleValueChanged);
 				toggles.Add(toggle);
-				checkItem.transform.parent = itemsUI;
-				checkItem.transform.localPosition = Vector3.zero;
-				checkItem.transform.localRotation = Quaternion.identity;
-				checkItem.transform.localScale = label.transform.parent.localScale;
+				
 
 				if(label.GetComponent<Button>()) {
 					Button btn = label.GetComponent<Button>();
@@ -93,6 +87,19 @@ namespace VRestionnaire {
 						toggle.isOn = !toggle.isOn;
 					});
 				}
+
+
+				checkItem.transform.parent = itemsUI;
+				label.transform.parent = itemsUI;
+
+				label.transform.localPosition = Vector3.zero;
+				label.transform.localRotation = Quaternion.identity;
+				label.transform.localScale = label.transform.parent.localScale;
+
+				
+				checkItem.transform.localPosition = Vector3.zero;
+				checkItem.transform.localRotation = Quaternion.identity;
+				checkItem.transform.localScale = label.transform.parent.localScale;
 
 			}
 		}

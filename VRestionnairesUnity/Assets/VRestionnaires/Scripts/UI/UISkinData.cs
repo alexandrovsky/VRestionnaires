@@ -20,8 +20,15 @@ namespace VRestionnaire {
 			colorMultiplier = 1,
 			fadeDuration = 0.1f
 		};
+
+		[Space]
+		public Vector2 toggleSize = new Vector2(0.6f,0.6f);
+
 		[Header("Background")]
+		public Sprite panelSprite;
 		public Color backgroundColor = new Color(0.5f, 0.5f, 0.5f, 1);
+
+		
 	}
 }
 

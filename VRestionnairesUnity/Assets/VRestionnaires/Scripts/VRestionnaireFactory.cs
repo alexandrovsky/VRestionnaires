@@ -97,7 +97,6 @@ namespace VRestionnaire {
 
 		QuestionPanelUI GeneratePanelForQuestionType(QuestionType questionType)
 		{
-
 			if(ContainsQuestionType(questionType)) {
 				GameObject prefab = ObjectForQuestionType(questionType);
 				if(prefab != null) {
@@ -108,7 +107,27 @@ namespace VRestionnaire {
 					questionPanelRT.localPosition = Vector3.zero;
 					questionPanelRT.localRotation = Quaternion.identity;
 					questionPanelRT.localScale = questionParent.localScale;
-					//questionPanel.transform.parent = questionnaireParent; // questionnairePanelUI.questionsPanel;
+
+					//switch(questionType) {
+					//case QuestionType.CheckList:
+					//	break;
+					//case QuestionType.DropDown:
+					//	break;
+					//case QuestionType.Field:
+					//	break;
+					//case QuestionType.MultField:
+					//	break;
+					//case QuestionType.NumField:
+					//	break;
+					//case QuestionType.RadioGrid:
+					//	break;
+					//case QuestionType.RadioList:
+					//	break;
+					//case QuestionType.Slider:
+					//	break;
+					//case QuestionType.Submit:
+					//	break;
+					//}
 
 					return questionPanel.GetComponent<QuestionPanelUI>();
 				}
@@ -149,7 +168,7 @@ namespace VRestionnaire {
 			//questionnairePanelUI.contentScrollbarVertical.value = 1;
 			//Canvas.ForceUpdateCanvases();
 
-			//questionnairePanelUI.ApplySkin();
+			questionnairePanel.ApplySkin();
 
 		}
 

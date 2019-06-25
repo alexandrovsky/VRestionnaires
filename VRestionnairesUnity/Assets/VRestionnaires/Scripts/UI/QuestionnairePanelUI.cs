@@ -106,12 +106,17 @@ namespace VRestionnaire {
 				selectable.colors = skinData.colorBlock;
 				selectable.transition = Selectable.Transition.ColorTint;
 			}
-			//Image[] backgrounds = GetComponentsInChildren<Image>();
-			//foreach(Image bg in backgrounds) {
-			//	if(bg.sprite.name == "Background") {
-			//		bg.color = skinData.backgroundColor;
-			//	}
-			//}
+
+
+			Toggle[] toggles = GetComponentsInChildren<Toggle>();
+			foreach(Toggle toggle in toggles) {
+				toggle.GetComponent<RectTransform>().sizeDelta = skinData.toggleSize;
+			}
+
+			BackgroundImage[] bgs = GetComponentsInChildren<BackgroundImage>();
+			foreach(BackgroundImage bg in bgs) {
+				bg.ApplySkin(skinData.panelSprite,skinData.backgroundColor);
+			}
 
 		}
 		public void OnNextButtonClicked()
