@@ -35,7 +35,14 @@ namespace VRestionnaire {
 		public string navigationButtonNextLabel = "Weiter";
 		public string navigationButtonBackLabel = "Zurück";
 
+		[Space]
+		public bool showQuestionId = false;
+
+		[Space]
 		public string answersOutputFilePath = "Assets/VRestionnaires/Resources/Answers/";
+
+
+
 
 		public string[] FilePathsForCondition(string conditon) {
 			for(int i = 0; i < questionnairesFromFiles.Length; i++) {

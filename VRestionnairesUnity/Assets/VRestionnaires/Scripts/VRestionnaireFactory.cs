@@ -136,7 +136,7 @@ namespace VRestionnaire {
 				QuestionPanelUI panelUI = GeneratePanelForQuestionType(question.questiontype);
 				if(panelUI != null) {
 					panelUI.SetQuestion(question, questionnairePanel.OnQuestionAnswered);
-
+					panelUI.SetQuestionIDVisibility(studySettings.showQuestionId);
 					questionnairePanel.questionPanels.Add(panelUI);
 					panelUI.HidePanel();
 				}

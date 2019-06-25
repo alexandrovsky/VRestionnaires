@@ -32,6 +32,11 @@ namespace VRestionnaire {
 		[HideInInspector]public Question question;
 
 
+		public void SetQuestionIDVisibility(bool visible)
+		{
+			idText.gameObject.SetActive(visible);
+		}
+
 		public virtual void SetQuestion(Question q, UnityAction<Question> answeredEvent)
 		{
 			OnQuestionAnswered += answeredEvent;
