@@ -11,7 +11,7 @@ namespace VRestionnaire {
 		public string questionId;
 		public ToggleGroup toggleGroup;
 
-		
+
 		public delegate void OnGroupSelectedDelegate(string qId,int itemId);
 		public event OnGroupSelectedDelegate OnGroupSelected;
 
@@ -19,7 +19,7 @@ namespace VRestionnaire {
 		protected ItemGroup(string questionId)
 		{
 			this.questionId = questionId;
-			
+
 
 			toggles = new List<Toggle>();
 		}
@@ -65,7 +65,7 @@ namespace VRestionnaire {
 		public virtual void OnToggleValueChanged(bool value)
 		{
 			toggleGroup.allowSwitchOff = false;
-			
+
 			List<Toggle> active = toggleGroup.ActiveToggles().ToList();
 			int idx = -1;
 			if(active.Count == 1) {

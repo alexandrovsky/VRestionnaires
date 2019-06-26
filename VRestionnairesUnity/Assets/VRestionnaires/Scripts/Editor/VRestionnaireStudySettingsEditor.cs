@@ -11,13 +11,13 @@ using UnityEngine;
 //		public override void OnInspectorGUI()
 //		{
 //			serializedObject.Update();
-			
+
 
 //			VRestionnaireStudySettings settings = (VRestionnaireStudySettings)target;
 //			var conditions = serializedObject.FindProperty("conditions");
 //			EditorGUILayout.PropertyField(conditions, new GUIContent("Conditions"),true);
 
-			
+
 
 //			settings.assignRandomCondition = EditorGUILayout.Toggle("Assign Random Condition", settings.assignRandomCondition);
 //			settings.generateParticipantId = EditorGUILayout.Toggle("Generate Participant ID",settings.generateParticipantId);
@@ -29,7 +29,7 @@ using UnityEngine;
 //				if(settings.questionnairesFromFiles == null || settings.questionnairesFromFiles.Length != settings.conditions.Length) {
 //					settings.questionnairesFromFiles = new VRestionnaireStudySettings.QuestionnaireFromFile[settings.conditions.Length];
 //				}
-				
+
 //				for(int i = 0; i < settings.conditions.Length; i++) {
 //					GUILayout.BeginHorizontal();
 //					settings.questionnairesFromFiles[i].condition = settings.conditions[i];
@@ -50,4 +50,4 @@ using UnityEngine;
 //	}
 //}
 
-	
+

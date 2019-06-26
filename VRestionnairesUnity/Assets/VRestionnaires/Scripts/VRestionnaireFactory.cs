@@ -22,7 +22,7 @@ namespace VRestionnaire {
 		public string questionnaire_filename = "/example.json";
 
 		static string[] fileExtensions = { "json" };
-		
+
 		public RectTransform questionParent;
 		public QuestionnairePanelUI questionnairePanel;
 
@@ -163,14 +163,14 @@ namespace VRestionnaire {
 				}
 			}
 			questionnairePanel.Init();
-			
+
 
 
 			//Canvas.ForceUpdateCanvases();
 			//questionnairePanelUI.contentScrollbarVertical.value = 1;
 			//Canvas.ForceUpdateCanvases();
 
-			
+
 
 		}
 

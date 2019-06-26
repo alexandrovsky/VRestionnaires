@@ -17,7 +17,7 @@ namespace VRestionnaire {
 		NumFieldQuestion numFieldQuestion;
 
 
-		
+
 		public override void InitWithAnswer()
 		{
 			if(numFieldQuestion != null && numFieldQuestion.isAnswered) {

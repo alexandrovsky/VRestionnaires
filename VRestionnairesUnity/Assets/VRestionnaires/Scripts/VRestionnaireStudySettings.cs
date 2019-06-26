@@ -56,8 +56,8 @@ namespace VRestionnaire {
 		{
 			Array.Resize(ref questionnairesFromFiles, conditions.Length);
 			for(int i = 0; i < conditions.Length; i++) {
-				
-				
+
+
 				if(questionnairesFromFiles[i] == null) {
 					QuestionnaireFromFile fromFile = new QuestionnaireFromFile();
 					fromFile.condition = conditions[i];

@@ -94,7 +94,7 @@ namespace VRestionnaire {
 			if(skinData == null) {
 				return;
 			}
-			
+
 			TMP_Text[] texts = GetComponentsInChildren<TMP_Text>(true);
 			foreach(TMP_Text text in texts) {
 				text.font = skinData.font;
@@ -123,19 +123,19 @@ namespace VRestionnaire {
 			//	if(btn.GetComponent<Image>()) {
 			//		btn.GetComponent<Image>().sprite = skinData.buttonSprite;
 			//	}
-				
+
 			//}
-			
+
 
 		}
 		public void OnNextButtonClicked()
 		{
 			if(currentQuestionIdx < questionPanels.Count-1) {
 				questionPanels[currentQuestionIdx].HidePanel();
-				
+
 				currentQuestionIdx++;
 				UpdateQuestionnaireIdxForQuestionIdx(currentQuestionIdx);
-				
+
 				questionPanels[currentQuestionIdx].ShowPanel();
 			}
 			CheckNavigationButtons();
@@ -166,7 +166,7 @@ namespace VRestionnaire {
 					break;
 				}
 			}
-			
+
 			if(currentQuestionnaireIdx != qstnrIdx) {
 				if(OnQuestionnaireFinishedCallback != null) {
 					OnQuestionnaireFinishedCallback.Invoke(questionnaires[currentQuestionnaireIdx]);
@@ -177,7 +177,7 @@ namespace VRestionnaire {
 			}
 		}
 
-		
+
 
 		void CheckNavigationButtons()
 		{
@@ -201,7 +201,7 @@ namespace VRestionnaire {
 			}
 		}
 
-		
+
 
 		public void OnQuestionAnswered(Question question)
 		{

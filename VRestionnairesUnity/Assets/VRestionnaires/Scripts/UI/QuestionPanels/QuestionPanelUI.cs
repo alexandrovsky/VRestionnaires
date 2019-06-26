@@ -14,7 +14,7 @@ namespace VRestionnaire {
 		//void OnPanelBecameVisible();
 
 		//void OnPanelBecameInVissible();
-		
+
 
 	}
 
@@ -63,7 +63,7 @@ namespace VRestionnaire {
 			gameObject.SetActive(false);
 		}
 
-		
+
 	}
 
 

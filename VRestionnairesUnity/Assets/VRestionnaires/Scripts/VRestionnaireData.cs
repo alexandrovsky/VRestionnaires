@@ -117,7 +117,7 @@ namespace VRestionnaire {
 		public Question(JSONObject json) {
 			if(json == null) {
 				return; // --->
-			} 
+			}
 
 			if(json.ContainsKey("id")) {
 				id = json["id"].Str;
@@ -218,7 +218,7 @@ namespace VRestionnaire {
 			string key = id;
 			string val = isAnswered ? labels[answer] : "-1";
 			response.Add(key,val);
-			
+
 			return response;
 			//string output = "[" + String.Join(",",answers.Select(p => p.ToString()).ToArray()) + "]";
 			//return output;
