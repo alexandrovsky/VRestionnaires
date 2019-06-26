@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7172461192622285972}
   - component: {fileID: 7172461192622285973}
   - component: {fileID: 878709632}
+  - component: {fileID: 1408316802}
   m_Layer: 5
   m_Name: NextButton
   m_TagString: Untagged
@@ -153,6 +154,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
+--- !u!114 &1408316802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7172461192622285971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094cf7d29e3144acb9f4428b1c03917a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 7172461192622285973}
 --- !u!1 &7172461192715850906
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,6 +180,7 @@ GameObject:
   - component: {fileID: 7172461192715850911}
   - component: {fileID: 7172461192715850908}
   - component: {fileID: 1353849904}
+  - component: {fileID: 948284066}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -306,6 +321,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
+--- !u!114 &948284066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7172461192715850906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094cf7d29e3144acb9f4428b1c03917a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 7172461192715850908}
 --- !u!1 &7172461193075306830
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,8 +661,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 0.8
-  m_fontSizeBase: 0.8
+  m_fontSize: 1
+  m_fontSizeBase: 1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -951,13 +979,13 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 0.5
-  m_fontSizeBase: 0.5
+  m_fontSize: 0.8
+  m_fontSizeBase: 0.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0.5
   m_fontSizeMax: 0.6
-  m_fontStyle: 2
+  m_fontStyle: 0
   m_textAlignment: 513
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
@@ -1166,7 +1194,6 @@ MonoBehaviour:
   backButtonLabel: {fileID: 7172461194046114938}
   nextButton: {fileID: 7172461192622285971}
   nextButtonLabel: {fileID: 7172461193151354909}
-  numberPad: {fileID: 0}
   questionPanels: []
   currentQuestionIdx: 0
 --- !u!1 &7172461193644266077
