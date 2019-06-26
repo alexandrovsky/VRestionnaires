@@ -127,6 +127,11 @@ PrefabInstance:
       propertyPath: m_PreferredWidth
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 483932557505655343, guid: 90d3f898355994e69b363cb4b7d25418,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 993373327924098094, guid: 90d3f898355994e69b363cb4b7d25418,
         type: 3}
       propertyPath: m_Sprite

@@ -16,14 +16,6 @@ MonoBehaviour:
   bodyLayout: {fileID: 2819317519598873614}
   instructionsText: {fileID: 2819317519481848911}
   idText: {fileID: 2819317520429612277}
-  question:
-    id: 
-    questiontype: 0
-    instructions: 
-    required: 0
-    shuffle: 0
-    datatype: 0
-    answerCounter: 0
   itemsUI: {fileID: 1044800688931445717}
   gridLayout: {fileID: 7637249465511251717}
   labelPrefab: {fileID: 3731015878180257815, guid: d0de96f896e644147ba10f474565989e,
@@ -35,6 +27,7 @@ MonoBehaviour:
   preferredHeightScaler: 2
   maxWidth: 3
   maxHeight: 3
+  spacing: {x: 0.6, y: 0.6}
 --- !u!1 &7089097753476553457
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +81,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7089097753476553457}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -131,7 +124,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellAlignment: 0
-  m_Spacing: {x: 1, y: 1}
+  m_Spacing: {x: 1, y: 0.5}
   m_Constraint: 0
   m_ConstraintCount: 2
   m_ChildForceExpandWidth: 1

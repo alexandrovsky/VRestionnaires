@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 4291839474332383510}
   - component: {fileID: 6872951741858552785}
   - component: {fileID: 2108476666920539884}
+  - component: {fileID: 1487680410294840515}
   m_Layer: 5
   m_Name: SubmitButton
   m_TagString: Untagged
@@ -462,6 +463,19 @@ MonoBehaviour:
   m_FlexibleWidth: 1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &1487680410294840515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4986316941722527817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094cf7d29e3144acb9f4428b1c03917a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 6872951741858552785}
 --- !u!114 &4584834584549816438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,15 +492,17 @@ MonoBehaviour:
   bodyLayout: {fileID: 6242965060227380048}
   instructionsText: {fileID: 6242965059849329425}
   idText: {fileID: 6242965061074363307}
-  question:
-    id: 999
-    questiontype: 9
-    instructions: Thanks
+  submitButton: {fileID: 6872951741858552785}
+  submitQuestion:
+    id: 
+    questiontype: 8
+    instructions: 
     required: 0
     shuffle: 0
     datatype: 0
-    isAnswered: 0
-  submitButton: {fileID: 6872951741858552785}
+    answerCounter: 0
+    title: 
+    text: 
 --- !u!114 &8911260580152874964
 MonoBehaviour:
   m_ObjectHideFlags: 0

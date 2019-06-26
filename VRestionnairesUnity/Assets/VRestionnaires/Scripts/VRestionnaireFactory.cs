@@ -73,6 +73,8 @@ namespace VRestionnaire {
 				GenerateQuestionnaireUI(questionnairePanel.questionnaires.Last());
 			}
 			GenerateSubmitQuestionnaireUI();
+
+			questionnairePanel.ApplySkin();
 		}
 
 		bool ContainsQuestionType(QuestionType type)
@@ -168,7 +170,7 @@ namespace VRestionnaire {
 			//questionnairePanelUI.contentScrollbarVertical.value = 1;
 			//Canvas.ForceUpdateCanvases();
 
-			questionnairePanel.ApplySkin();
+			
 
 		}
 

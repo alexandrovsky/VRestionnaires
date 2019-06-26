@@ -14,6 +14,7 @@ namespace VRestionnaire {
 
 		public GameObject labelPrefab;
 		public GameObject checkItemPrefab;
+		//public GameObject checkItemLabeledPrefab;
 
 		CheckListQuestion checkQuestion;
 
@@ -28,7 +29,7 @@ namespace VRestionnaire {
 		public float maxWidth = 4.0f;
 		[Range(0.1f,5.0f)]
 		public float maxHeight = 2.5f;
-
+		public Vector2 spacing = new Vector2(0.5f,0.5f);
 
 
 		public override void InitWithAnswer()
@@ -57,29 +58,36 @@ namespace VRestionnaire {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedColumnCount;
 				
 				int factor = checkQuestion.questions.Length / maxQuestionsVertical;
-				gridLayout.constraintCount = 2 * factor;
+				gridLayout.constraintCount =  2 * factor;
 				gridLayout.childAlignment = TextAnchor.MiddleCenter;
+				gridLayout.spacing = spacing;
 			}
 
 			for(int i = 0; i < checkQuestion.questions.Length; i++) {
-				GameObject label = Instantiate(labelPrefab);
-				TMP_Text text = label.GetComponent<TMP_Text>();
-				text.text = checkQuestion.questions[i].text;
-				
 
-				LayoutElement labelLayout = label.GetComponent<LayoutElement>();
-				float w = text.preferredWidth * preferredWidthScaler;
-				float h = text.preferredHeight * preferredHeightScaler;
-				labelLayout.preferredWidth = Mathf.Clamp(w, 0, maxWidth);
-				labelLayout.preferredHeight = Mathf.Clamp(h, 0, maxHeight);
-
+				//GameObject labeledItem = Instantiate(checkItemLabeledPrefab);
+				//GameObject checkItem = labeledItem.transform.Find("Checkbox").gameObject;
 
 				GameObject checkItem = Instantiate(checkItemPrefab);
 				Toggle toggle = checkItem.GetComponent<Toggle>();
 				toggle.isOn = false;
 				toggle.onValueChanged.AddListener(HandleToggleValueChanged);
 				toggles.Add(toggle);
-				
+
+				//GameObject label = labeledItem.transform.Find("QuestionLabelInteractive").gameObject;
+				GameObject label = Instantiate(labelPrefab);
+				TMP_Text text = label.GetComponent<TMP_Text>();
+				text.text = checkQuestion.questions[i].text;
+				text.margin = new Vector4(-spacing.x/4f,0,0,0);
+
+				LayoutElement labelLayout = label.GetComponent<LayoutElement>();
+				float w = text.preferredWidth * preferredWidthScaler;
+				float h = text.preferredHeight * preferredHeightScaler;
+				labelLayout.preferredWidth = Mathf.Clamp(w,0,maxWidth);
+				labelLayout.preferredHeight = Mathf.Clamp(h,0,maxHeight);
+
+
+
 
 				if(label.GetComponent<Button>()) {
 					Button btn = label.GetComponent<Button>();
@@ -88,7 +96,7 @@ namespace VRestionnaire {
 					});
 				}
 
-
+				//labeledItem.transform.parent = itemsUI;
 				checkItem.transform.parent = itemsUI;
 				label.transform.parent = itemsUI;
 

@@ -101,11 +101,11 @@ namespace VRestionnaire {
 				text.color = skinData.normalTextColor;
 			}
 
-			Selectable[] selectables = GetComponentsInChildren<Selectable>(true);
-			foreach(Selectable selectable in selectables) {
-				selectable.colors = skinData.colorBlock;
-				selectable.transition = Selectable.Transition.ColorTint;
-			}
+			//Selectable[] selectables = GetComponentsInChildren<Selectable>(true);
+			//foreach(Selectable selectable in selectables) {
+			//	selectable.colors = skinData.colorBlock;
+			//	selectable.transition = Selectable.Transition.ColorTint;
+			//}
 
 
 			Toggle[] toggles = GetComponentsInChildren<Toggle>(true);
@@ -118,10 +118,13 @@ namespace VRestionnaire {
 				handler.ApplySkin(skinData);
 			}
 
-			Button[] buttons = GetComponentsInChildren<Button>(true);
-			foreach(Button btn in buttons) {
-				btn.GetComponent<Image>().sprite = skinData.buttonSprite;
-			}
+			//Button[] buttons = GetComponentsInChildren<Button>(true);
+			//foreach(Button btn in buttons) {
+			//	if(btn.GetComponent<Image>()) {
+			//		btn.GetComponent<Image>().sprite = skinData.buttonSprite;
+			//	}
+				
+			//}
 			
 
 		}
