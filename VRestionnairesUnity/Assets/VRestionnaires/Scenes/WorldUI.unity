@@ -1054,6 +1054,16 @@ PrefabInstance:
       propertyPath: m_fontStyle
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7172461193455791628, guid: 117b9b7f5bf2c4df799b19d31cd197fa,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172461193455791628, guid: 117b9b7f5bf2c4df799b19d31cd197fa,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7172461193410581077, guid: 117b9b7f5bf2c4df799b19d31cd197fa,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -1062,6 +1072,16 @@ PrefabInstance:
     - target: {fileID: 7172461193410581077, guid: 117b9b7f5bf2c4df799b19d31cd197fa,
         type: 3}
       propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172461193410581077, guid: 117b9b7f5bf2c4df799b19d31cd197fa,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172461193410581077, guid: 117b9b7f5bf2c4df799b19d31cd197fa,
+        type: 3}
+      propertyPath: m_fontSizeBase
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7172461193672811782, guid: 117b9b7f5bf2c4df799b19d31cd197fa,
