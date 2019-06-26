@@ -57,9 +57,7 @@ namespace VRestionnaire {
 				gridLayout.childAlignment = TextAnchor.MiddleCenter;
 			} else {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedColumnCount;
-				
 				int factor = checkQuestion.questions.Length / maxQuestionsVertical;
-				print("factor:" + factor);
 				gridLayout.constraintCount = 2 * (factor == 0? 1 : factor);
 				gridLayout.childAlignment = TextAnchor.MiddleCenter;
 				gridLayout.spacing = spacing;
