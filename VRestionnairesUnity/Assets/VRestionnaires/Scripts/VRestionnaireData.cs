@@ -81,11 +81,10 @@ namespace VRestionnaire {
 		public long startUtcTime;
 		public long endUtcTime;
 
-		public Questionnaire()
-		{
-			startUtcTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-		}
-
+		//public Questionnaire()
+		//{
+		//	//startUtcTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+		//}
 	}
 
 	#region Different Question Classes

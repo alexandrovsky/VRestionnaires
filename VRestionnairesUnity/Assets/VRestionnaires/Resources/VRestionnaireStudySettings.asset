@@ -28,4 +28,6 @@ MonoBehaviour:
   navigationButtonNextLabel: Weiter
   navigationButtonBackLabel: "Zur\xFCck"
   showQuestionId: 0
+  showQuestionnaireHeader: 0
+  questionnaireHeaderAs1stQuestion: 1
   answersOutputFilePath: Assets/VRestionnaires/Resources/Answers/

@@ -12,6 +12,9 @@ namespace VRestionnaire {
 		public delegate void OnQuestionnaireSubmittedEvent(Questionnaire questionnaire);
 		public event OnQuestionnaireSubmittedEvent OnQuestionnaireSubmittedCallback;
 
+		public delegate void OnQuestionnaireStartedEvent(Questionnaire questionnaire);
+		public event OnQuestionnaireStartedEvent OnQuestionnaireStartedCallback;
+
 		public delegate void OnQuestionnaireFinishedEvent(Questionnaire questionnaire);
 		public event OnQuestionnaireFinishedEvent OnQuestionnaireFinishedCallback;
 
@@ -82,6 +85,8 @@ namespace VRestionnaire {
 			//backButton.GetComponent<Button>().interactable = false;
 			//nextButton.GetComponent<Button>().interactable = true;
 			title.text = questionnaires[currentQuestionnaireIdx].title;
+			questionnaires[currentQuestionnaireIdx].startUtcTime = System.DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+
 			instructions.text = questionnaires[currentQuestionnaireIdx].instructions;
 			questionPanels[currentQuestionIdx].ShowPanel(); //.gameObject.SetActive(true);
 			nextButtonLabel.text = studySettings.navigationButtonNextLabel;
@@ -90,6 +95,10 @@ namespace VRestionnaire {
 			topPanel.gameObject.SetActive(studySettings.showQuestionnaireHeader);
 
 			CheckNavigationButtons();
+
+			if(OnQuestionnaireStartedCallback != null) {
+				OnQuestionnaireStartedCallback.Invoke(questionnaires[currentQuestionnaireIdx]);
+			}
 		}
 
 		public void ApplySkin()
@@ -165,6 +174,10 @@ namespace VRestionnaire {
 				acc += questionnaires[i].questions.Length;
 				if(questionIdx >= acc) {
 					qstnrIdx++;
+					if(OnQuestionnaireStartedCallback != null) {
+						
+					}
+					
 				} else {
 					break;
 				}
