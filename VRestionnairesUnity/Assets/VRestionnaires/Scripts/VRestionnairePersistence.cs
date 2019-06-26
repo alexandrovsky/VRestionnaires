@@ -15,20 +15,20 @@ namespace VRestionnaire {
 				+ "_" + questionnaire.condition
 				+ "_" + utcNow
 				+ ".csv";
-		
+
 		}
 
 		public static void WriteFile(string path, string filename, string data)
 		{
 			CreateDirectoryRecursively(path);
 			File.WriteAllText(path + filename,data);
-			
+
 		}
 
 		public static void CreteCSVFromQuestionnaire(string basepath, Questionnaire questionnaire) {
 			string dir = basepath + questionnaire.title + "/";
 			string fullPath = dir + questionnaire.title + ".csv";
-			
+
 			if(!Directory.Exists(dir)) {
 				CreateDirectoryRecursively(dir);
 				//Directory.CreateDirectory(dir);
@@ -41,7 +41,7 @@ namespace VRestionnaire {
 				string values = string.Join(";",columns.Values) + "\n";
 				File.AppendAllText(fullPath,values);
 			}
-			
+
 		}
 
 		public static Dictionary<string, string> CreateDictFromQuestionnaire(Questionnaire questionnaire)

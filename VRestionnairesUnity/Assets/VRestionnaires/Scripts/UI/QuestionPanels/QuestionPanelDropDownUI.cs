@@ -14,7 +14,7 @@ namespace VRestionnaire {
 		public override void InitWithAnswer()
 		{
 			if(downQuestion != null && downQuestion.isAnswered) {
-				dropdown.value = downQuestion.items.IndexOf(downQuestion.answer); 
+				dropdown.value = downQuestion.items.IndexOf(downQuestion.answer);
 			}
 		}
 

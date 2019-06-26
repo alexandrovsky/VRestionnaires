@@ -13,7 +13,7 @@ namespace VRestionnaire {
 
 		public override void InitWithAnswer()
 		{
-			
+
 		}
 
 		public override void SetQuestion(Question q,UnityAction<Question> answeredEvent)

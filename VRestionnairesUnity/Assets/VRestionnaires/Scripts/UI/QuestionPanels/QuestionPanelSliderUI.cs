@@ -72,7 +72,7 @@ namespace VRestionnaire {
 			slider.value = Mathf.Clamp(slider.value, 0,sliderQuestion.tick_count);
 		}
 
-		
+
 	}
 }
 

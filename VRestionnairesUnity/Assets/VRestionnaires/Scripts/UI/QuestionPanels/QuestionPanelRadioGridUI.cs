@@ -159,7 +159,7 @@ namespace VRestionnaire {
 				radioGridQuestion.isAnswered = true;
 				OnQuestionAnswered.Invoke(question);
 			}
-		}		
-		
+		}
+
 	}
 }

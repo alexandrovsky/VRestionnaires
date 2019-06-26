@@ -16,7 +16,7 @@ namespace VRestionnaire {
 		public GameObject radioItemPrefab;
 
 		List<Toggle> toggles;
-		
+
 		[SerializeField] RadioListQuestion radioListQuestion;
 
 
@@ -61,9 +61,9 @@ namespace VRestionnaire {
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
 
-			
+
 			toggles = new List<Toggle>();
-			
+
 
 			if(radioListQuestion.horizontal) {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedRowCount;
@@ -73,7 +73,7 @@ namespace VRestionnaire {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedColumnCount;
 				int factor = radioListQuestion.labels.Length / maxQuestionsVertical;
 				gridLayout.constraintCount = 2 * (factor == 0 ? 1 : factor);
-				
+
 				gridLayout.childAlignment = TextAnchor.UpperCenter;
 			}
 
@@ -81,13 +81,13 @@ namespace VRestionnaire {
 				GameObject label = Instantiate(labelPrefab);
 				TMP_Text text = label.GetComponent<TMP_Text>();
 				text.text = radioListQuestion.labels[i];
-				
-				
+
+
 
 				GameObject radioItem = Instantiate(radioItemPrefab);
 				Toggle toggle = radioItem.GetComponent<Toggle>();
 
-				
+
 				toggle.SetIsOnWithoutNotify(false);
 				toggles.Add(toggle);
 				toggle.onValueChanged.AddListener((val) => {
