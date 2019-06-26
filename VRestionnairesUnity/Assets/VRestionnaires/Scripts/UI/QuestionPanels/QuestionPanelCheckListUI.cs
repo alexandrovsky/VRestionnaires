@@ -16,7 +16,7 @@ namespace VRestionnaire {
 		public GameObject checkItemPrefab;
 		//public GameObject checkItemLabeledPrefab;
 
-		CheckListQuestion checkQuestion;
+		[SerializeField]CheckListQuestion checkQuestion;
 
 		List<Toggle> toggles;
 		public int maxQuestionsVertical = 4;
@@ -50,6 +50,7 @@ namespace VRestionnaire {
 
 			toggles = new List<Toggle>();
 			checkQuestion = (question as CheckListQuestion);
+			gridLayout.startAxis = VariableGridLayoutGroup.Axis.Horizontal;
 			if(checkQuestion.horizontal) {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedRowCount;
 				gridLayout.constraintCount = 1;
@@ -58,7 +59,8 @@ namespace VRestionnaire {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedColumnCount;
 				
 				int factor = checkQuestion.questions.Length / maxQuestionsVertical;
-				gridLayout.constraintCount =  2 * factor;
+				print("factor:" + factor);
+				gridLayout.constraintCount = 2 * (factor == 0? 1 : factor);
 				gridLayout.childAlignment = TextAnchor.MiddleCenter;
 				gridLayout.spacing = spacing;
 			}

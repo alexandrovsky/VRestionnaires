@@ -57,7 +57,8 @@ namespace VRestionnaire {
 			foreach(Question q in questionnaire.questions) {
 				Dictionary<string,string> responses = q.Export();
 				foreach(string key in responses.Keys) {
-					columns.Add(key,responses[key]);
+					string qKey = questionnaire.title + "_" + key;
+					columns.Add(qKey,responses[key]);
 				}
 			}
 			return columns;

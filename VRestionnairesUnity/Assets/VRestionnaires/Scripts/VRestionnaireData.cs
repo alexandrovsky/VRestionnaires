@@ -184,7 +184,7 @@ namespace VRestionnaire {
 		{
 			Dictionary<string,string> responses = new Dictionary<string,string>();
 			for(int i = 0; i < answers.Length; i++) {
-				string key = id + "_" + q_text[i].id;
+				string key =  id + "_" + q_text[i].id;
 				responses.Add(key,answers[i].ToString());
 			}
 			return responses;
