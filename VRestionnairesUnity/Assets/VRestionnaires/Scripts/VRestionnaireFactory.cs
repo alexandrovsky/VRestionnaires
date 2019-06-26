@@ -153,6 +153,20 @@ namespace VRestionnaire {
 		void GenerateQuestionnaireUI(Questionnaire questionnaire)
 		{
 			// TODO: Clear UI
+
+			if(studySettings.questionnaireHeaderAs1stQuestion) {
+				TextViewQuestion textViewQuestion = new TextViewQuestion() {
+					id = "title",
+					title = questionnaire.title,
+					text = questionnaire.instructions
+				};
+
+				var questions = questionnaire.questions.ToList();
+				questions.Insert(0,textViewQuestion);
+				questionnaire.questions = questions.ToArray();
+			}
+			
+
 			foreach(Question question in questionnaire.questions) {
 				QuestionPanelUI panelUI = GeneratePanelForQuestionType(question.questiontype);
 				if(panelUI != null) {

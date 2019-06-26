@@ -37,7 +37,8 @@ namespace VRestionnaire {
 
 		[Space]
 		public bool showQuestionId = false;
-
+		public bool showQuestionnaireHeader = true;
+		public bool questionnaireHeaderAs1stQuestion = true;
 		[Space]
 		public string answersOutputFilePath = "Assets/VRestionnaires/Resources/Answers/";
 

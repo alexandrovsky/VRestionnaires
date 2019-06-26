@@ -86,6 +86,9 @@ namespace VRestionnaire {
 			questionPanels[currentQuestionIdx].ShowPanel(); //.gameObject.SetActive(true);
 			nextButtonLabel.text = studySettings.navigationButtonNextLabel;
 			backButtonLabel.text = studySettings.navigationButtonBackLabel;
+
+			topPanel.gameObject.SetActive(studySettings.showQuestionnaireHeader);
+
 			CheckNavigationButtons();
 		}
 

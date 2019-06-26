@@ -105,7 +105,9 @@ namespace VRestionnaire {
 			set {
 				_isAnswered = value;
 				answerCounter++;
-				answerUtcTime = DateTime.UtcNow;
+				if(_isAnswered) {
+					answerUtcTime = DateTime.UtcNow;
+				}
 			}
 		}
 
@@ -113,6 +115,9 @@ namespace VRestionnaire {
 
 		public int answerCounter; // how often was the an answer picked
 		public DateTime answerUtcTime;
+
+		public Question() {
+		}
 
 		public Question(JSONObject json) {
 			if(json == null) {
@@ -439,9 +444,15 @@ namespace VRestionnaire {
 	public class TextViewQuestion:Question {
 		public string title;
 		public string text;
+		public TextViewQuestion(): base()
+		{
+			questiontype = QuestionType.TextView;
+			datatype = QuestionDataType.String;
+		}
 		public TextViewQuestion(JSONObject json) : base(json)
 		{
 			questiontype = QuestionType.TextView;
+			datatype = QuestionDataType.String;
 			if(json.ContainsKey("title")) {
 				title = json["title"].Str;
 			}
