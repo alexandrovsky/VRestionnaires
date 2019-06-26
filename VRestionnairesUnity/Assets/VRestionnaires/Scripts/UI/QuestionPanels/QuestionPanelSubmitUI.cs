@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
+using TMPro;
 namespace VRestionnaire {
 	public class QuestionPanelSubmitUI:QuestionPanelUI, IQuestionPanelUI {
 
-		public Button submitButton;
+		public TMP_Text submitButtonLabel;
 		UnityAction<Question> submitEvent;
 		public SubmitQuestion submitQuestion;
 

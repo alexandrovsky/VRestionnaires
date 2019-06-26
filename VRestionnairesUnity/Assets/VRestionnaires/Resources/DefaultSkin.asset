@@ -24,5 +24,5 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   toggleSize: {x: 0.65, y: 0.65}
   panelSprite: {fileID: 21300000, guid: 28a4bfbd869bb4bccbc221376737003d, type: 3}
-  backgroundColor: {r: 0.18039216, g: 0.11764706, b: 0.05882353, a: 1}
+  backgroundColor: {r: 0.21568628, g: 0.22352941, b: 0.22745098, a: 1}
   buttonSprite: {fileID: 21300000, guid: ef71ad67339df4588a1f3da62821a917, type: 3}

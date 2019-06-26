@@ -140,13 +140,15 @@ namespace VRestionnaire {
 
 		void GenerateSubmitQuestionnaireUI() {
 
-			QuestionPanelUI submitUI = GeneratePanelForQuestionType(QuestionType.Submit);
+			QuestionPanelSubmitUI submitUI = GeneratePanelForQuestionType(QuestionType.Submit) as QuestionPanelSubmitUI;
 			submitUI.SetQuestion(new SubmitQuestion() {
 				text = "",
 				id = "submit_1234",
 				instructions = "instructions...."
 			}, questionnairePanel.OnQuestionnaireSubmitted);
 			questionnairePanel.questionPanels.Add(submitUI);
+			submitUI.submitButtonLabel.text = studySettings.submitButtonLabel;
+
 			submitUI.HidePanel();
 		}
 

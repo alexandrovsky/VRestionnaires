@@ -34,6 +34,7 @@ namespace VRestionnaire {
 		[Space]
 		public string navigationButtonNextLabel = "Weiter";
 		public string navigationButtonBackLabel = "Zurück";
+		public string submitButtonLabel = "Abschicken";
 
 		[Space]
 		public bool showQuestionId = false;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8225981880375762722}
   - component: {fileID: 2849946955941387670}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: LabelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -359,7 +359,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 3.5, y: 2}
+  m_SizeDelta: {x: 8, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6509995915957890473
 CanvasRenderer:
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 0.3
+  m_PreferredWidth: 8
   m_PreferredHeight: -1
   m_FlexibleWidth: 1
   m_FlexibleHeight: -1
@@ -488,11 +488,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b7c9db561c0428b89d05b81c9c060c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  submitButton: {fileID: 6872951741858552785}
   headerLayout: {fileID: 6242965059165472333}
   bodyLayout: {fileID: 6242965060227380048}
   instructionsText: {fileID: 6242965059849329425}
   idText: {fileID: 6242965061074363307}
-  submitButton: {fileID: 6872951741858552785}
+  submitButtonLabel: {fileID: 2849946955941387670}
   submitQuestion:
     id: 
     questiontype: 8

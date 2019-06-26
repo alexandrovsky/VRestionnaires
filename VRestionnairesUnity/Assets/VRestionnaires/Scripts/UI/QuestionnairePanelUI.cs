@@ -43,9 +43,6 @@ namespace VRestionnaire {
 		public GameObject nextButton;
 		public TMP_Text nextButtonLabel;
 
-		[Tooltip("Number pad for Num field input")]
-		public NumberPad numberPad;
-
 		public List<QuestionPanelUI> questionPanels;
 		[SerializeField] int currentQuestionIdx;
 

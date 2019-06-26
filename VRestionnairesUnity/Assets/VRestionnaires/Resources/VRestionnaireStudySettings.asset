@@ -18,9 +18,10 @@ MonoBehaviour:
   questionnairesFromFiles:
   - condition: a
     filePaths:
-    - /Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires/example.json
+    - /Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires/tlx_german.json
     - /Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires/IMI.json
     - /Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires/Games.json
+    - /Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires/example.json
     currentQuestionnaire: 0
   - condition: b
     filePaths: []

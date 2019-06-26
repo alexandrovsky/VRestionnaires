@@ -20,6 +20,8 @@ namespace VRestionnaire {
 
 	public abstract class QuestionPanelUI:MonoBehaviour{
 
+		public Button submitButton;
+
 		public UnityAction<Question> OnQuestionAnswered;
 
 
