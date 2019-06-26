@@ -8,7 +8,7 @@ namespace VRestionnaire {
 	public class NumberPad:MonoBehaviour {
 
 		public Button deleteButton;
-		public Button confirmButton;
+		public Button decimalButton;
 
 		public delegate void OnNumberSelectedEvent(int number);
 		public event OnNumberSelectedEvent OnNumberSelected;
@@ -16,8 +16,8 @@ namespace VRestionnaire {
 		public delegate void OnDeleteEvent();
 		public event OnDeleteEvent OnDelete;
 
-		public delegate void OnConfirmEvent();
-		public event OnConfirmEvent OnConfirm;
+		//public delegate void OnConfirmEvent();
+		//public event OnConfirmEvent OnConfirm;
 
 		public void OnNumberButtonClicked(int value)
 		{
@@ -25,13 +25,18 @@ namespace VRestionnaire {
 			OnNumberSelected.Invoke(value);
 		}
 
+		public void OnDecimalButtonClicked()
+		{
+
+		}
+
 		public void OnDeleteClicked() {
 			OnDelete.Invoke();
 		}
 
-		public void OnConfirmClicked() {
-			OnConfirm.Invoke();
-		}
+		//public void OnConfirmClicked() {
+		//	OnConfirm.Invoke();
+		//}
 
 
 	}

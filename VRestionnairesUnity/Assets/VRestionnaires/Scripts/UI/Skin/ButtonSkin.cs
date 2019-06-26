@@ -11,7 +11,7 @@ namespace VRestionnaire {
 		{
 			button.transition = Selectable.Transition.ColorTint;
 			button.colors = skin.colorBlock;
-			button.image.sprite = skin.buttonSprite;
+			//button.image.sprite = skin.buttonSprite;
 		}
 	}
 

@@ -58,7 +58,7 @@ namespace VRestionnaire {
 			
 			if(numberPad) {
 				numberPad.OnNumberSelected += NumberPad_OnNumberSelected;
-				numberPad.OnConfirm += NumberPad_OnConfirm;
+				//numberPad.OnConfirm += NumberPad_OnConfirm;
 				numberPad.OnDelete += NumberPad_OnDelete;
 			}
 		}
@@ -66,13 +66,20 @@ namespace VRestionnaire {
 		private void NumberPad_OnDelete()
 		{
 			//inputField.Select();
-			inputField.text = "";
+			string txt = inputField.text;
+			if(txt.Length > 1) {
+				txt = txt.Substring(0,txt.Length - 1);
+			} else {
+				txt = "";
+			}
+			
+			inputField.text = txt;
 		}
 
-		private void NumberPad_OnConfirm()
-		{
-			OnNumFieldSubmitted(inputField.text);
-		}
+		//private void NumberPad_OnConfirm()
+		//{
+		//	OnNumFieldSubmitted(inputField.text);
+		//}
 
 		private void NumberPad_OnNumberSelected(int number)
 		{
