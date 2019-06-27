@@ -31,6 +31,8 @@ namespace VRestionnaire {
 		public float maxHeight = 2.5f;
 		public Vector2 spacing = new Vector2(0.5f,0.5f);
 
+		public float maxTextWidth = 16;
+		public float maxTextHeight = 1.5f;
 
 		public override void InitWithAnswer()
 		{
@@ -58,9 +60,13 @@ namespace VRestionnaire {
 			} else {
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedColumnCount;
 				int factor = checkQuestion.questions.Length / maxQuestionsVertical;
-				gridLayout.constraintCount = 2 * (factor == 0? 1 : factor);
+				factor = (factor == 0 ? 1 : factor);
+				gridLayout.constraintCount = 2 * factor;
 				gridLayout.childAlignment = TextAnchor.MiddleCenter;
 				gridLayout.spacing = spacing;
+				
+				maxWidth = maxTextWidth / factor;
+				maxHeight = maxTextHeight / factor;
 			}
 
 			for(int i = 0; i < checkQuestion.questions.Length; i++) {
@@ -79,6 +85,11 @@ namespace VRestionnaire {
 				TMP_Text text = label.GetComponent<TMP_Text>();
 				text.text = checkQuestion.questions[i].text;
 				text.margin = new Vector4(-spacing.x/4f,0,0,0);
+
+				text.autoSizeTextContainer = true;
+				text.enableAutoSizing = true;
+				text.ForceMeshUpdate(true);
+
 
 				LayoutElement labelLayout = label.GetComponent<LayoutElement>();
 				float w = text.preferredWidth * preferredWidthScaler;

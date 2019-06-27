@@ -20,17 +20,17 @@ namespace VRestionnaire {
 		[SerializeField] RadioListQuestion radioListQuestion;
 
 
-		public int maxQuestionsVertical = 4;
-		[Range(0.1f,2.0f)]
-		public float preferredWidthScaler = 1.5f;
-		[Range(0.1f,2.0f)]
-		public float preferredHeightScaler = 1.5f;
+		//public int maxQuestionsVertical = 4;
+		//[Range(0.1f,2.0f)]
+		//public float preferredWidthScaler = 1.5f;
+		//[Range(0.1f,2.0f)]
+		//public float preferredHeightScaler = 1.5f;
 
-		[Range(0.1f,5.0f)]
-		public float maxWidth = 4.0f;
-		[Range(0.1f,5.0f)]
-		public float maxHeight = 2.5f;
-		public Vector2 spacing = new Vector2(0.5f,0.5f);
+		//[Range(0.1f,5.0f)]
+		//public float maxWidth = 4.0f;
+		//[Range(0.1f,5.0f)]
+		//public float maxHeight = 2.5f;
+		//public Vector2 spacing = new Vector2(0.5f,0.5f);
 
 
 		public override void InitWithAnswer()
@@ -81,7 +81,7 @@ namespace VRestionnaire {
 				layoutGroup.padding.bottom = 1;
 			}
 
-			float maxTextWidth = 0;
+			
 			for(int i = 0; i < radioListQuestion.labels.Length; i++) {
 				GameObject container = new GameObject("container",typeof(RectTransform));
 				container.AddComponent<HorizontalLayoutGroup>();
@@ -91,21 +91,8 @@ namespace VRestionnaire {
 				text.autoSizeTextContainer = true;
 				text.enableAutoSizing = true;
 				text.ForceMeshUpdate(true);
-				//LayoutElement labelLayout = label.GetComponent<LayoutElement>();
-				//if(text.renderedHeight > maxWidth) {
-				//	labelLayout.preferredWidth = maxWidth;
-				//}
-				//labelLayout.preferredWidth = Mathf.Clamp(text.preferredWidth,1,maxWidth);
-				//labelLayout.preferredHeight = Mathf.Clamp(text.preferredHeight,1,maxHeight);
+				
 
-				if(text.preferredWidth > maxTextWidth) {
-					maxTextWidth = text.preferredWidth;
-				}
-
-
-				//if(radioListQuestion.horizontal) {
-					
-				//}
 
 				text.margin = new Vector4(text.fontSize,0,0,0);
 
@@ -140,10 +127,6 @@ namespace VRestionnaire {
 						toggle.isOn = !toggle.isOn;
 					});
 				}
-				
-				//spacing.x = (radioListQuestion.labels.Length * maxTextWidth) / (radioListQuestion.labels.Length - 1);
-				
-				//gridLayout.spacing = spacing;
 			}
 		}
 
