@@ -91,8 +91,8 @@ namespace VRestionnaire {
 				text.autoSizeTextContainer = true;
 				//text.enableAutoSizing = true;
 				text.ForceMeshUpdate(true);
-				
 
+				text.GetComponent<SkinText>().textFormat = TextFormat.Body;
 
 				text.margin = new Vector4(text.fontSize,0,0,0);
 

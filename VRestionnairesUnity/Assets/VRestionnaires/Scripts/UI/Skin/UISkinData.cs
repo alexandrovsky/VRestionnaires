@@ -5,13 +5,20 @@ using UnityEngine.UI;
 using TMPro;
 namespace VRestionnaire {
 
+	public enum TextFormat {
+		Header1,
+		Header2,
+		Body
+	}
 
 	[CreateAssetMenu(menuName = "UI Skin Data")]
 	public class UISkinData:ScriptableObject {
 		[Header("Test Settings")]
 		public TMP_FontAsset font;
 		public Color normalTextColor = new Color(0.0f,0.0f,0.0f,1f);
-		public float fontSize = 0.5f;
+		public float fontSizeH1 = 1.0f;
+		public float fontSizeH2 = 0.8f;
+		public float fontSizeBody = 0.5f;
 
 		//[Header("Selectables Settings")]
 		[Header("Button")]

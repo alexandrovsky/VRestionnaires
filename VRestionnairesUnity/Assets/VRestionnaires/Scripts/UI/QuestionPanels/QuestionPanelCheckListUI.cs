@@ -85,7 +85,7 @@ namespace VRestionnaire {
 				TMP_Text text = label.GetComponent<TMP_Text>();
 				text.text = checkQuestion.questions[i].text;
 				text.margin = new Vector4(-spacing.x/4f,0,0,0);
-
+				
 				text.autoSizeTextContainer = true;
 				//text.enableAutoSizing = true;
 				text.ForceMeshUpdate(true);
@@ -94,6 +94,8 @@ namespace VRestionnaire {
 				LayoutElement labelLayout = label.GetComponent<LayoutElement>();
 				float w = text.preferredWidth * preferredWidthScaler;
 				float h = text.preferredHeight * preferredHeightScaler;
+				//labelLayout.preferredWidth = - 1;
+				//labelLayout.preferredHeight = - 1;
 				labelLayout.preferredWidth = Mathf.Clamp(w,0,maxWidth);
 				labelLayout.preferredHeight = Mathf.Clamp(h,0,maxHeight);
 
