@@ -110,12 +110,13 @@ namespace VRestionnaire {
 				label.transform.parent = container.transform;
 
 
+				container.transform.localPosition = Vector3.zero;
+				container.transform.localRotation = Quaternion.identity;
+				container.transform.localScale = label.transform.parent.localScale;
+
 				label.transform.localPosition = Vector3.zero;
 				label.transform.localRotation = Quaternion.identity;
 				label.transform.localScale = label.transform.parent.localScale;
-
-				
-
 
 				radioItem.transform.localPosition = Vector3.zero;
 				radioItem.transform.localRotation = Quaternion.identity;
