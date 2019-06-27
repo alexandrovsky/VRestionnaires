@@ -112,15 +112,15 @@ namespace VRestionnaire {
 
 				container.transform.localPosition = Vector3.zero;
 				container.transform.localRotation = Quaternion.identity;
-				container.transform.localScale = label.transform.parent.localScale;
+				container.transform.localScale = Vector3.one;
 
 				label.transform.localPosition = Vector3.zero;
 				label.transform.localRotation = Quaternion.identity;
-				label.transform.localScale = label.transform.parent.localScale;
+				label.transform.localScale = Vector3.one; // label.transform.parent.localScale;
 
 				radioItem.transform.localPosition = Vector3.zero;
 				radioItem.transform.localRotation = Quaternion.identity;
-				radioItem.transform.localScale = radioItem.transform.parent.localScale;
+				radioItem.transform.localScale = Vector3.one;// radioItem.transform.parent.localScale;
 
 				if(label.GetComponent<Button>()) {
 					Button btn = label.GetComponent<Button>();
