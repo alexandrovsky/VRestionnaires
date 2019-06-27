@@ -19,12 +19,6 @@ MonoBehaviour:
   - condition: a
     filePaths:
     - Assets/VRestionnaires/Resources/Questions/ipq_german.json
-    - Assets/VRestionnaires/Resources/Questions/fillers.json
-    - Assets/VRestionnaires/Resources/Questions/example.json
-    - Assets/VRestionnaires/Resources/Questions/nps.json
-    - Assets/VRestionnaires/Resources/Questions/umux_german.json
-    - Assets/VRestionnaires/Resources/Questions/readycheck.json
-    - Assets/VRestionnaires/Resources/Questions/tlx_german.json
     currentQuestionnaire: 0
   - condition: b
     filePaths: []

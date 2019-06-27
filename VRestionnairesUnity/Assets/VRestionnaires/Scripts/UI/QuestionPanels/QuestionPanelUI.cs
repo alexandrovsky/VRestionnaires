@@ -43,6 +43,9 @@ namespace VRestionnaire {
 		{
 			OnQuestionAnswered += answeredEvent;
 			question = q;
+			if(q.instructions == null || q.instructions.Length == 0) {
+				headerLayout.gameObject.SetActive(false);
+			}
 		}
 
 		public abstract void InitWithAnswer();
