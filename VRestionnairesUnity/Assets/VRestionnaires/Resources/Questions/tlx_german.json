@@ -1,0 +1,62 @@
+{
+    "title": "NASA TLX",
+    "instructions": "Bitte beantworten Sie die folgenden Fragen dazu, wie Sie das Ausfüllen der vorherigen Fragebögen empfanden.",
+    "code": "tlxgerman",
+    "questions": [
+
+        {
+            "questiontype": "slider",
+	        "instructions": "<b>Geistige Anforderung:</b> Wie viel geistige Anforderung war bei der Informationsaufnahme und bei der Informationsverarbeitung erforderlich (z.B. Denken, Entscheiden, Rechnen, Erinnern, Hinsehen, Suchen ...)? War die Aufgabe leicht oder anspruchsvoll, einfach oder komplex, erfordert sie hohe Genauigkeit oder ist sie fehlertolerant?",
+	        "id": "mentaldemand",
+            "left": "Gering",
+	        "right": "Hoch",
+	        "tick_count": 21
+        },
+
+        {
+            "questiontype": "slider",
+	        "instructions": "<b>Körperliche Anforderung:</b> Wie viel körperliche Aktivität war erforderlich (z.B. ziehen, drücken, drehen, steuern, aktivieren ...)? War die Aufgabe leicht oder schwer, einfach oder anstrengend, erholsam oder mühselig?",
+	        "id": "physicaldemand",
+            "left": "Gering",
+	        "right": "Hoch",
+	        "tick_count": 21
+        },
+
+        {
+            "questiontype": "slider",
+	        "instructions": "<b>Zeitliche Anforderung:</b> Wie viel Zeitdruck empfanden Sie hinsichtlich der Häufigkeit oder dem Takt mit dem die Aufgaben oder Aufgabenelemente auftraten? War die Aufgabe langsam und geruhsam oder schnell und hektisch?",
+	        "id": "temporaldemand",
+            "left": "Gering",
+	        "right": "Hoch",
+	        "tick_count": 21
+        },
+
+        {
+            "questiontype": "slider",
+	        "instructions": "<b>Leistung:</b> Wie erfolgreich haben Sie Ihrer Meinung nach die vom Versuchsleiter (oder Ihnen selbst) gesetzten Ziele erreicht? Wie zufrieden waren Sie mit Ihrer Leistung bei der Verfolgung dieser Ziele?",
+	        "id": "performance",
+            "left": "Gut",
+	        "right": "Schlecht",
+	        "tick_count": 21
+        },
+
+        {
+            "questiontype": "slider",
+	        "instructions": "<b>Anstrengung:</b> Wie hart mussten Sie arbeiten, um Ihren Grad an Aufgabenerfüllung zu erreichen?",
+	        "id": "effort",
+            "left": "Gering",
+	        "right": "Hoch",
+	        "tick_count": 21
+        },
+
+        {
+            "questiontype": "slider",
+	        "instructions": "<b>Frustration:</b> Wie unsicher, entmutigt, irritiert, gestresst und verärgert (versus sicher, bestätigt, zufrieden, entspannt und zufrieden mit sich selbst) fühlten Sie sich während der Aufgabe?",
+	        "id": "frustration",
+            "left": "Gering",
+	        "right": "Hoch",
+	        "tick_count": 21
+        }
+
+    ]
+}

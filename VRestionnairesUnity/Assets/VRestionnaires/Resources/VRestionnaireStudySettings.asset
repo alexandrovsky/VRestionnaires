@@ -18,16 +18,20 @@ MonoBehaviour:
   questionnairesFromFiles:
   - condition: a
     filePaths:
-    - /Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires/tlx_german.json
-    - /Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires/IMI.json
-    - /Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires/Games.json
-    - /Users/dmitryalexandrovsky/development/bride-of-frankensystem_old/examples/CatapultKings/app/questionnaires/example.json
+    - Assets/VRestionnaires/Resources/Questions/example.json
+    - Assets/VRestionnaires/Resources/Questions/fillers.json
+    - Assets/VRestionnaires/Resources/Questions/ipq_german.json
+    - Assets/VRestionnaires/Resources/Questions/nps.json
+    - Assets/VRestionnaires/Resources/Questions/umux_german.json
+    - Assets/VRestionnaires/Resources/Questions/readycheck.json
+    - Assets/VRestionnaires/Resources/Questions/tlx_german.json
     currentQuestionnaire: 0
   - condition: b
     filePaths: []
     currentQuestionnaire: 0
   navigationButtonNextLabel: Weiter
   navigationButtonBackLabel: "Zur\xFCck"
+  submitButtonLabel: Abschicken
   showQuestionId: 0
   showQuestionnaireHeader: 0
   questionnaireHeaderAs1stQuestion: 1

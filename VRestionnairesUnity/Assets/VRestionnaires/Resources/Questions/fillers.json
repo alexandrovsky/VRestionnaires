@@ -1,0 +1,242 @@
+{
+    "title": "Spielbewertung",
+    "instructions": "Bitte bewerten Sie Ihr Spielerlebnis mit unserem kleinen VR Spiel.",
+    "code": "fillers",
+    "questions": [
+
+        {
+            "questiontype": "checklist",
+            "instructions": "Wie fühlten Sie Sich während des Spiels?",
+            "id": "emotions0",
+            "shuffle": false,
+            "horizontal": false,
+            "questions": [
+                {
+                    "id": "0",
+                    "text": "begeistert"
+                },
+                {
+                    "id": "1",
+                    "text": "erstaunt"
+                },
+                {
+                    "id": "2",
+                    "text": "wütend"
+                },
+                {
+                    "id": "3",
+                    "text": "bewundernd"
+                },
+                {
+                    "id": "4",
+                    "text": "betrübt"
+                },
+                {
+                    "id": "5",
+                    "text": "achtsam"
+                },
+                {
+                    "id": "6",
+                    "text": "erschrocken"
+                },
+                {
+                    "id": "7",
+                    "text": "angewidert"
+                },
+                {
+                    "id": "8",
+                    "text": "optimistisch"
+                },
+                {
+                    "id": "9",
+                    "text": "ehrfürchtig"
+                },
+                {
+                    "id": "10",
+                    "text": "hassend"
+                },
+                {
+                    "id": "11",
+                    "text": "verliebt"
+                },
+                {
+                    "id": "12",
+                    "text": "enttäuscht"
+                },
+                {
+                    "id": "13",
+                    "text": "streitlustig"
+                },
+                {
+                    "id": "14",
+                    "text": "fügsam"
+                },
+                {
+                    "id": "15",
+                    "text": "bereuend"
+                }
+            ]
+        },
+
+        {
+            "questiontype": "checklist",
+            "instructions": "Wie fühlten Sie Sich während des Spiels?",
+            "id": "checklisthorizontal1",
+            "shuffle": false,
+            "horizontal": false,
+            "questions": [
+                {
+                    "id": "0",
+                    "text": "verärgert"
+                },
+                {
+                    "id": "1",
+                    "text": "vertrauend"
+                },
+                {
+                    "id": "2",
+                    "text": "traurig"
+                },
+                {
+                    "id": "3",
+                    "text": "bereit"
+                },
+                {
+                    "id": "4",
+                    "text": "ängstlich"
+                },
+                {
+                    "id": "5",
+                    "text": "ablehnend"
+                },
+                {
+                    "id": "6",
+                    "text": "froh"
+                },
+                {
+                    "id": "7",
+                    "text": "überrascht"
+                },
+                {
+                    "id": "8",
+                    "text": "akzeptierend"
+                },
+                {
+                    "id": "9",
+                    "text": "nachdenklich"
+                },
+                {
+                    "id": "10",
+                    "text": "neugierig"
+                },
+                {
+                    "id": "11",
+                    "text": "besorgt"
+                },
+                {
+                    "id": "12",
+                    "text": "gelangweilt"
+                },
+                {
+                    "id": "13",
+                    "text": "gelassen"
+                },
+                {
+                    "id": "14",
+                    "text": "verwirrt"
+                },
+                {
+                    "id": "15",
+                    "text": "gereizt"
+                }
+            ]
+        },
+
+        {
+            "questiontype": "slider",
+            "instructions": "Wie gut hat Ihnen das Spiel insgesamt gefallen?",
+            "id": "like",
+            "left": "überhaupt nicht",
+            "right": "sehr gut",
+            "tick_count": 10
+        },
+
+        {
+            "questiontype": "slider",
+            "instructions": "Wie gut hatten Sie den Bogen unter Kontrolle?",
+            "id": "bowcontrol",
+            "left": "gar nicht",
+            "right": "sehr gut",
+            "tick_count": 10
+        },
+
+        {
+            "questiontype": "checklist",
+            "instructions": "Welchen der folgenden Aussagen stimmen Sie zu?",
+            "id": "praisecritique0",
+            "shuffle": false,
+            "horizontal": false,
+            "questions": [
+                {
+                    "id": "neg0",
+                    "text": "Ich hatte Schwierigkeiten, Ballons zu treffen."
+                },
+                {
+                    "id": "pos1",
+                    "text": "Das Vibrieren der Controller war sehr angenehm."
+                },
+                {
+                    "id": "pos2",
+                    "text": "Ich hätte intuitiv mit der dominanten Hand nach dem Bogen gegriffen."
+                },
+                {
+                    "id": "neg3",
+                    "text": "Der Countdown hat mich gestresst."
+                },
+                {
+                    "id": "pos4",
+                    "text": "Ich hatte genug Zeit."
+                },
+                {
+                    "id": "neg5",
+                    "text": "Das Spiel war frustrierend."
+                }
+            ]
+        },
+
+        {
+            "questiontype": "checklist",
+            "instructions": "Welchen der folgenden Aussagen stimmen Sie zu?",
+            "id": "praisecritique1",
+            "shuffle": false,
+            "horizontal": false,
+            "questions": [
+                {
+                    "id": "pos0",
+                    "text": "Ich hatte keine Schwierigkeiten, Ballons zu treffen."
+                },
+                {
+                    "id": "neg1",
+                    "text": "Das Vibrieren der Controller war störend."
+                },
+                {
+                    "id": "neg2",
+                    "text": "Ich hätte intuitiv nicht mit der dominanten Hand nach dem Bogen gegriffen."
+                },
+                {
+                    "id": "pos3",
+                    "text": "Der Countdown war hilfreich."
+                },
+                {
+                    "id": "neg4",
+                    "text": "Ich hätte gerne mehr Zeit gehabt."
+                },
+                {
+                    "id": "pos5",
+                    "text": "Das Spiel war angenehm."
+                }
+            ]
+        }
+
+    ]
+}

@@ -40,7 +40,7 @@ namespace VRestionnaire {
 			slider.minValue = 0;
 			slider.maxValue = sliderQuestion.tick_count-1;
 			slider.wholeNumbers = question.datatype == QuestionDataType.Integer;
-
+			slider.SetValueWithoutNotify(slider.minValue);
 			valueLabel.text = slider.value.ToString();
 
 			slider.onValueChanged.AddListener(OnSliderValueChanged);

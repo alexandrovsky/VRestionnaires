@@ -1,4 +1,4 @@
-{
+﻿{
     "title":"Example Questionnaire",
     "instructions":"Please rate each video game experience....",
     "code":"001",
@@ -36,15 +36,15 @@
 	                "text": "Cartoons"
 	            },
 	            {
-	                "id": "q_3",
+	                "id": "q_4",
 	                "text": "Batman"
 	            },
 	            {
-	                "id": "q_3",
+	                "id": "q_5",
 	                "text": "Spiderman"
 	            },
 	            {
-	                "id": "q_3",
+	                "id": "q_6",
 	                "text": "Wolverine"
 	            }
 	        ]

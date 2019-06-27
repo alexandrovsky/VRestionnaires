@@ -1,0 +1,17 @@
+{
+    "title": "Net Promoter Score",
+    "instructions": "",
+    "code": "nps",
+    "questions": [
+
+        {
+            "questiontype": "slider",
+            "instructions": "Wie wahrscheinlich ist es, dass Sie die eben verwendete Fragebogendarstellung in VR weiter empfehlen?",
+            "id": "nps",
+            "left": "sehr unwahrscheinlich",
+            "right": "sehr wahrscheinlich",
+            "tick_count": 10
+        }
+
+    ]
+}

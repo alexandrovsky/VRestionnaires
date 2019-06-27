@@ -10,7 +10,7 @@ using TMPro;
 namespace VRestionnaire {
 	public class QuestionPanelRadioListUI:QuestionPanelUI, IQuestionPanelUI {
 		public RectTransform itemsUI;
-		public VariableGridLayoutGroup gridLayout;
+		//public VariableGridLayoutGroup gridLayout;
 
 		public GameObject labelPrefab;
 		public GameObject radioItemPrefab;
@@ -63,26 +63,51 @@ namespace VRestionnaire {
 
 
 			toggles = new List<Toggle>();
-
+			LayoutGroup layoutGroup;
 
 			if(radioListQuestion.horizontal) {
-				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedRowCount;
-				gridLayout.constraintCount = 1;
-				gridLayout.childAlignment = TextAnchor.MiddleCenter;
+				layoutGroup = itemsUI.gameObject.AddComponent<HorizontalLayoutGroup>();
+				layoutGroup.childAlignment = TextAnchor.MiddleCenter;
+				layoutGroup.padding.left = 1;
+				layoutGroup.padding.right = 1;
+				layoutGroup.padding.top = 1;
+				layoutGroup.padding.bottom = 1;
 			} else {
-				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedColumnCount;
-				int factor = radioListQuestion.labels.Length / maxQuestionsVertical;
-				gridLayout.constraintCount = 2 * (factor == 0 ? 1 : factor);
-
-				gridLayout.childAlignment = TextAnchor.UpperCenter;
+				layoutGroup = itemsUI.gameObject.AddComponent<VerticalLayoutGroup>();
+				layoutGroup.childAlignment = TextAnchor.MiddleCenter;
+				layoutGroup.padding.left = 1;
+				layoutGroup.padding.right = 1;
+				layoutGroup.padding.top = 1;
+				layoutGroup.padding.bottom = 1;
 			}
 
+			float maxTextWidth = 0;
 			for(int i = 0; i < radioListQuestion.labels.Length; i++) {
+				GameObject container = new GameObject("container",typeof(RectTransform));
+				container.AddComponent<HorizontalLayoutGroup>();
 				GameObject label = Instantiate(labelPrefab);
 				TMP_Text text = label.GetComponent<TMP_Text>();
 				text.text = radioListQuestion.labels[i];
+				text.autoSizeTextContainer = true;
+				text.enableAutoSizing = true;
+				text.ForceMeshUpdate(true);
+				//LayoutElement labelLayout = label.GetComponent<LayoutElement>();
+				//if(text.renderedHeight > maxWidth) {
+				//	labelLayout.preferredWidth = maxWidth;
+				//}
+				//labelLayout.preferredWidth = Mathf.Clamp(text.preferredWidth,1,maxWidth);
+				//labelLayout.preferredHeight = Mathf.Clamp(text.preferredHeight,1,maxHeight);
+
+				if(text.preferredWidth > maxTextWidth) {
+					maxTextWidth = text.preferredWidth;
+				}
 
 
+				//if(radioListQuestion.horizontal) {
+					
+				//}
+
+				text.margin = new Vector4(text.fontSize,0,0,0);
 
 				GameObject radioItem = Instantiate(radioItemPrefab);
 				Toggle toggle = radioItem.GetComponent<Toggle>();
@@ -93,14 +118,17 @@ namespace VRestionnaire {
 				toggle.onValueChanged.AddListener((val) => {
 					OnItemSelected(toggle,radioListQuestion.id, val);
 				});
-
-				radioItem.transform.parent = itemsUI;
-				label.transform.parent = itemsUI;
+				container.transform.parent = itemsUI;
+				radioItem.transform.parent = container.transform;
+				label.transform.parent = container.transform;
 
 
 				label.transform.localPosition = Vector3.zero;
 				label.transform.localRotation = Quaternion.identity;
 				label.transform.localScale = label.transform.parent.localScale;
+
+				
+
 
 				radioItem.transform.localPosition = Vector3.zero;
 				radioItem.transform.localRotation = Quaternion.identity;
@@ -112,6 +140,10 @@ namespace VRestionnaire {
 						toggle.isOn = !toggle.isOn;
 					});
 				}
+				
+				//spacing.x = (radioListQuestion.labels.Length * maxTextWidth) / (radioListQuestion.labels.Length - 1);
+				
+				//gridLayout.spacing = spacing;
 			}
 		}
 

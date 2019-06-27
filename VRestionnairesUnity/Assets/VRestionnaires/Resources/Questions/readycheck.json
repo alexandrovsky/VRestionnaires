@@ -1,0 +1,14 @@
+{
+    "title": "Sind Sie bereit?",
+    "instructions": "",
+    "code": "readycheck",
+    "questions": [
+        {
+            "questiontype": "textview",
+            "instructions": "",
+            "id": "ready",
+            "title": "",
+            "text": "Bitte klicken Sie auf „Weiter“, wenn Sie bereit sind, den Fragebogen auszufüllen."
+        }
+    ]
+}

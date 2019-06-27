@@ -1,0 +1,254 @@
+{
+    "title": "Fragebogen zum Erleben in Computerwelten",
+    "instructions": "Beantworten Sie bitte alle Fragen in Bezug auf eine Interaktionsepisode mit einer virtuellen Umgebung. Klicken Sie dazu die jeweiligen Felder an.",
+    "code": "ipqgerman",
+    "questions": [
+
+        {
+            "questiontype": "num_field",
+            "instructions": "Schätzen Sie: Wie lange dauerte Ihre aktuelle Interaktion mit der virtuellen Umgebung bisher?",
+            "id": "durationVR",
+            "datatype": "integer",
+            "min": 0,
+            "max": 20
+        },
+
+        {
+            "questiontype": "drop_down",
+            "instructions": "Was hörten Sie von der virtuellen Umgebung?",
+            "id": "audio",
+            "items": [
+                "kein Sound",
+                "Mono Sound",
+                "Stereo Sound",
+                "Surround Sound"
+            ]
+        },
+
+        {
+            "questiontype": "radiolist",
+            "instructions": "Wie war Ihre Perspektive auf die virtuelle Umwelt?",
+            "id": "perspective",
+            "horizontal": false,
+            "labels": [
+                "„Durch die Augen meiner Figur“, sogenannte First-Person Perspective",
+                "„Hinter/Über meiner Figur“, sogenannte Third-Person Perspective"
+            ]
+        },
+
+        {
+            "questiontype": "radiolist",
+            "instructions": "Waren noch andere reale Personen gemeinsam mit Ihnen in der virtuellen Umgebung?",
+            "id": "otherplayers",
+            "horizontal": false,
+            "labels": [
+                "nein",
+                "ja, aber ich interagierte nicht mit ihnen",
+                "ja, und ich interagierte mit ihnen"
+            ]
+        },
+
+        {
+            "questiontype": "radiolist",
+            "instructions": "Waren noch andere simulierte Charaktere (z.B. Computerspielgegner) gemeinsam mit Ihnen in der virtuellen Umgebung?",
+            "id": "npcs",
+            "horizontal": false,
+            "labels": [
+                "nein",
+                "ja, aber ich interagierte nicht mit ihnen",
+                "ja, und ich interagierte mit ihnen"
+            ]
+        },
+
+        {
+            "questiontype": "textview",
+            "instructions": "",
+            "id": "introipq",
+            "text": "Sie sehen nun 14 Fragen bzw. Aussagen darüber, wie und was Sie erlebten. Bitte geben Sie jeweils an, ob die Aussage zutrifft oder nicht. Sie können die gesamte Breite der Antwortmöglichkeiten nutzen. Es gibt keine richtigen oder falschen Antworten, es zählt nur Ihre Meinung.<br><br>Ihnen wird auffallen, dass sich manche Fragen sehr ähneln; das ist aus statistischen Gründen notwendig – wir bitten um Verständnis. Und bitte denken Sie daran: beantworten Sie alle Fragen jeweils in Bezug auf dieses eine Erlebnis.",
+            "title": ""
+        },
+
+        {
+            "questiontype": "radiogrid",
+            "instructions": "Bitte geben Sie jeweils an, ob die Aussage zutrifft oder nicht.",
+            "id": "ipq1",
+            "shuffle": false,
+            "labels": [
+                "trifft gar nicht zu",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "trifft völlig zu"
+            ],
+            "q_text": [
+                {
+                    "id": "SP1",
+                    "text": "Ich hatte das Gefühl, dass die virtuelle Umgebung hinter mir weitergeht."
+                },
+                {
+                    "id": "SP2",
+                    "text": "Ich hatte das Gefühl, nur Bilder zu sehen."
+                },
+                {
+                    "id": "SP4",
+                    "text": "Ich hatte das Gefühl, in dem virtuellen Raum zu handeln statt etwas von außen zu bedienen."
+                },
+                {
+                    "id": "SP5",
+                    "text": "Ich fühlte mich im virtuellen Raum anwesend."
+                },
+                {
+                    "id": "INV2",
+                    "text": "Meine reale Umgebung war mir nicht mehr bewußt."
+                },
+                {
+                    "id": "INV3",
+                    "text": "Ich achtete noch auf die reale Umgebung."
+                },
+                {
+                    "id": "INV4",
+                    "text": "Meine Aufmerksamkeit war von der virtuellen Welt völlig in Bann gezogen."
+                },
+                {
+                    "id": "REAL4",
+                    "text": "Die virtuelle Welt erschien mir wirklicher als die reale Welt."
+                }
+            ]
+        },
+
+        {
+            "questiontype": "radiogrid",
+            "instructions": "Bitte geben Sie jeweils an, ob die Aussage zutrifft oder nicht.",
+            "id": "ipq2",
+            "shuffle": false,
+            "labels": [
+                "hatte nicht das Gefühl",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "hatte das Gefühl"
+            ],
+            "q_text": [
+                {
+                    "id": "SP3",
+                    "text": "Ich hatte nicht das Gefühl, in dem virtuellen Raum zu sein."
+                }
+            ]
+        },
+
+        {
+            "questiontype": "radiogrid",
+            "instructions": "Bitte geben Sie jeweils an, ob die Aussage zutrifft oder nicht.",
+            "id": "ipq3",
+            "shuffle": false,
+            "labels": [
+                "extrem bewusst",
+                "",
+                "",
+                "mittelmäßig bewusst",
+                "",
+                "",
+                "unbewusst"
+            ],
+            "q_text": [
+                {
+                    "id": "INV1",
+                    "text": "Wie bewußt war Ihnen die reale Welt, während Sie sich durch die virtuelle Welt bewegten (z.B. Geräusche, Raumtemperatur, andere Personen etc.)?"
+                }
+            ]
+        },
+
+        {
+            "questiontype": "radiogrid",
+            "instructions": "Bitte geben Sie jeweils an, ob die Aussage zutrifft oder nicht.",
+            "id": "ipq4",
+            "shuffle": false,
+            "labels": [
+                "vollkommen real",
+                "",
+                "",
+                "weder noch",
+                "",
+                "",
+                "gar nicht real"
+            ],
+            "q_text": [
+                {
+                    "id": "REAL1",
+                    "text": "Wie real erschien Ihnen die virtuelle Umgebung?"
+                }
+            ]
+        },
+
+        {
+            "questiontype": "radiogrid",
+            "instructions": "Bitte geben Sie jeweils an, ob die Aussage zutrifft oder nicht.",
+            "id": "ipq5",
+            "shuffle": false,
+            "labels": [
+                "überhaupt nicht",
+                "",
+                "",
+                "etwas",
+                "",
+                "",
+                "vollständig"
+            ],
+            "q_text": [
+                {
+                    "id": "REAL2",
+                    "text": "Wie sehr glich Ihr Erleben der virtuellen Umgebung dem Erleben einer realen Umgebung?"
+                }
+            ]
+        },
+
+        {
+            "questiontype": "radiogrid",
+            "instructions": "Bitte geben Sie jeweils an, ob die Aussage zutrifft oder nicht.",
+            "id": "ipq6",
+            "shuffle": false,
+            "labels": [
+                "wie eine vorgestellte Welt",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "nicht zu unterscheiden von der realen Welt"
+            ],
+            "q_text": [
+                {
+                    "id": "REAL3",
+                    "text": "Wie real erschien Ihnen die virtuelle Welt?"
+                }
+            ]
+        },
+
+        {
+            "questiontype": "radiogrid",
+            "instructions": "Bitte geben Sie jeweils an, ob die Aussage zutrifft oder nicht.",
+            "id": "ipq0",
+            "shuffle": false,
+            "labels": [
+                "überhaupt nicht",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "sehr stark"
+            ],
+            "q_text": [
+                {
+                    "id": "G1",
+                    "text": "In der computererzeugten Welt hatte ich den Eindruck, dort gewesen zu sein..."
+                }
+            ]
+        }
+
+    ]
+}

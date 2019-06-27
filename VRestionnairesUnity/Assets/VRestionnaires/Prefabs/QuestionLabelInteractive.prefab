@@ -220,7 +220,7 @@ PrefabInstance:
     - target: {fileID: 4761780062628531117, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
         type: 3}
       propertyPath: m_enableExtraPadding
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4761780062628531117, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
         type: 3}
@@ -230,7 +230,12 @@ PrefabInstance:
     - target: {fileID: 8727040301197529212, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
         type: 3}
       propertyPath: m_PreferredWidth
-      value: 2.2
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727040301197529212, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
+        type: 3}
+      propertyPath: m_FlexibleWidth
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d3f6dc1fd85d412bb0f085a17ddc066, type: 3}

@@ -30,10 +30,14 @@ namespace VRestionnaire {
 
 		public VRestionnaireStudySettings studySettings;
 
+		public bool buildDebugQuestionnaire = false;
+
 		void Start()
 		{
 			//BuildDefault();
-			BuildFromStudySettings("a","dimi");
+			if(buildDebugQuestionnaire) {
+				BuildFromStudySettings("a","dimi");
+			}
 		}
 
 		public void BuildFromStudySettings(string condition, string participantId) {

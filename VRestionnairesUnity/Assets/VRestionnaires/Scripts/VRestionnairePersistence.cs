@@ -50,15 +50,17 @@ namespace VRestionnaire {
 				{ "participantId", questionnaire.participantId },
 				{ "condition", questionnaire.condition },
 				{ "title", questionnaire.title },
+				{ "code", questionnaire.code },
 				{ "startUtcTime", questionnaire.startUtcTime.ToString() },
 				{ "endUtcTime", questionnaire.endUtcTime.ToString() }
 			};
-
+			int qIdx = 0;
 			foreach(Question q in questionnaire.questions) {
 				Dictionary<string,string> responses = q.Export();
 				foreach(string key in responses.Keys) {
-					string qKey = questionnaire.title + "_" + key;
+					string qKey = qIdx + "_" + questionnaire.title + "_" + questionnaire.code + "_" + key;
 					columns.Add(qKey,responses[key]);
+					qIdx++;
 				}
 			}
 			return columns;
