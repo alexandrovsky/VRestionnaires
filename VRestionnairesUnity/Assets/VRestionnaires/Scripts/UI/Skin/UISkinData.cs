@@ -11,6 +11,7 @@ namespace VRestionnaire {
 		[Header("Test Settings")]
 		public TMP_FontAsset font;
 		public Color normalTextColor = new Color(0.0f,0.0f,0.0f,1f);
+		public float fontSize = 0.5f;
 
 		//[Header("Selectables Settings")]
 		[Header("Button")]

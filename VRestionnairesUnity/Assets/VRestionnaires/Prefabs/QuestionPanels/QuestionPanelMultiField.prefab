@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 2857442277098135386}
   - component: {fileID: 1526566206229187263}
   - component: {fileID: 8804969803139857841}
+  - component: {fileID: 6747967325170455150}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -285,6 +286,18 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6747967325170455150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4469812627920109859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c71e8af660343fe8921d427dc82e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7349758307040103678
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +490,7 @@ GameObject:
   - component: {fileID: 1861133620045223065}
   - component: {fileID: 1312154364426940829}
   - component: {fileID: 527334778960500127}
+  - component: {fileID: 4021556181137502431}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -626,6 +640,18 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4021556181137502431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7609597702412331712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c71e8af660343fe8921d427dc82e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6656367211389311553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,23 +664,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e517ed2c4efb4c35affc77decf6ead1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  submitButton: {fileID: 0}
   headerLayout: {fileID: 8587977618077068320}
   bodyLayout: {fileID: 8587977619155310909}
   instructionsText: {fileID: 8587977619037254012}
   idText: {fileID: 8587977619986041286}
   inputField: {fileID: 6344891159250577622}
   placeholder: {fileID: 527334778960500127}
-  question:
-    id: 
-    questiontype: 0
-    instructions: 
-    required: 0
-    shuffle: 0
-    datatype: 0
-    isAnswered: 0
-    placeholder: 
-    answer: 
-    height: 0
 --- !u!1001 &8476973194788567300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -852,6 +868,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 183207299993110649, guid: 88a4606cdc37c4a11a83697a90a0c83f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183207299993110649, guid: 88a4606cdc37c4a11a83697a90a0c83f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 183207301256360131, guid: 88a4606cdc37c4a11a83697a90a0c83f,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -875,6 +901,11 @@ PrefabInstance:
     - target: {fileID: 183207301256360131, guid: 88a4606cdc37c4a11a83697a90a0c83f,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183207301256360131, guid: 88a4606cdc37c4a11a83697a90a0c83f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

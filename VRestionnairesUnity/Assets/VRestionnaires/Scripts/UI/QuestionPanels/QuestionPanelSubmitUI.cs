@@ -7,6 +7,7 @@ using TMPro;
 namespace VRestionnaire {
 	public class QuestionPanelSubmitUI:QuestionPanelUI, IQuestionPanelUI {
 
+		public TMP_Text thankYouText;
 		public TMP_Text submitButtonLabel;
 		UnityAction<Question> submitEvent;
 		public SubmitQuestion submitQuestion;

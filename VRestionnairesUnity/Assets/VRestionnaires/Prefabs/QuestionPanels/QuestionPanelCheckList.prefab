@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a93f5e7d1d04abba0f669965a40dc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  submitButton: {fileID: 0}
   headerLayout: {fileID: 2819317518513281299}
   bodyLayout: {fileID: 2819317519598873614}
   instructionsText: {fileID: 2819317519481848911}
@@ -22,12 +23,25 @@ MonoBehaviour:
     type: 3}
   checkItemPrefab: {fileID: 7934071903582610391, guid: af0ffe7535c974f1499b719bfde16110,
     type: 3}
+  checkQuestion:
+    id: 
+    questiontype: 0
+    instructions: 
+    required: 0
+    shuffle: 0
+    datatype: 0
+    answerCounter: 0
+    horizontal: 0
+    questions: []
+    answers: 
   maxQuestionsVertical: 4
   preferredWidthScaler: 2
   preferredHeightScaler: 2
   maxWidth: 3
   maxHeight: 3
   spacing: {x: 0.6, y: 0.6}
+  maxTextWidth: 16
+  maxTextHeight: 1.5
 --- !u!1 &7089097753476553457
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,6 +340,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 183207299993110649, guid: 88a4606cdc37c4a11a83697a90a0c83f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183207299993110649, guid: 88a4606cdc37c4a11a83697a90a0c83f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 183207301256360131, guid: 88a4606cdc37c4a11a83697a90a0c83f,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -349,6 +373,11 @@ PrefabInstance:
     - target: {fileID: 183207301256360131, guid: 88a4606cdc37c4a11a83697a90a0c83f,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183207301256360131, guid: 88a4606cdc37c4a11a83697a90a0c83f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

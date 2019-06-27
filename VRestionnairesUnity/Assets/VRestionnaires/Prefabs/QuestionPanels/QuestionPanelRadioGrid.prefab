@@ -771,6 +771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d15019a928b3d461596ffe266ab5618a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  submitButton: {fileID: 0}
   headerLayout: {fileID: 8333490221025807610}
   bodyLayout: {fileID: 8333490222106130919}
   instructionsText: {fileID: 8333490221683970470}
@@ -1094,6 +1095,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 183207299993110649, guid: 88a4606cdc37c4a11a83697a90a0c83f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183207299993110649, guid: 88a4606cdc37c4a11a83697a90a0c83f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 183207301256360131, guid: 88a4606cdc37c4a11a83697a90a0c83f,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1117,6 +1128,11 @@ PrefabInstance:
     - target: {fileID: 183207301256360131, guid: 88a4606cdc37c4a11a83697a90a0c83f,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183207301256360131, guid: 88a4606cdc37c4a11a83697a90a0c83f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:

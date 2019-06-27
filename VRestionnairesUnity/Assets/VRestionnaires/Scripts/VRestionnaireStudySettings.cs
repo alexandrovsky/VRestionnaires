@@ -35,6 +35,7 @@ namespace VRestionnaire {
 		public string navigationButtonNextLabel = "Weiter";
 		public string navigationButtonBackLabel = "Zurück";
 		public string submitButtonLabel = "Abschicken";
+		public string submitThankYouText = "Vielen Dank für Ihre Teilnahme!";
 
 		[Space]
 		public bool showQuestionId = false;

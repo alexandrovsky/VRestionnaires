@@ -87,7 +87,7 @@ namespace VRestionnaire {
 				text.margin = new Vector4(-spacing.x/4f,0,0,0);
 
 				text.autoSizeTextContainer = true;
-				text.enableAutoSizing = true;
+				//text.enableAutoSizing = true;
 				text.ForceMeshUpdate(true);
 
 

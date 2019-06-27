@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 3975344239640088211}
   - component: {fileID: 604024821804849332}
   - component: {fileID: 7376918344376245871}
+  - component: {fileID: 2563663483775540596}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -391,6 +392,18 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2563663483775540596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2270685193636746412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c71e8af660343fe8921d427dc82e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5338507534145168991
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,6 +415,7 @@ GameObject:
   - component: {fileID: 3882042623189582144}
   - component: {fileID: 6758558807440471637}
   - component: {fileID: 310309514578906900}
+  - component: {fileID: 7213371860463234146}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -551,6 +565,18 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7213371860463234146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5338507534145168991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c71e8af660343fe8921d427dc82e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6403972126694686936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,22 +589,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f6542ac75a7421e81ae44d5cbc3a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  submitButton: {fileID: 0}
   headerLayout: {fileID: 6557412628083427410}
   bodyLayout: {fileID: 6557412627003096399}
   instructionsText: {fileID: 6557412627962107150}
   idText: {fileID: 6557412626709228980}
   inputField: {fileID: 8638619531595308916}
   placeholder: {fileID: 7376918344376245871}
-  question:
-    id: 
-    questiontype: 0
-    instructions: 
-    required: 0
-    shuffle: 0
-    datatype: 0
-    isAnswered: 0
-    placeholder: 
-    answer: 
 --- !u!1 &8484115055387635190
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,6 +868,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 183207299993110649, guid: 88a4606cdc37c4a11a83697a90a0c83f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183207299993110649, guid: 88a4606cdc37c4a11a83697a90a0c83f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 183207301256360131, guid: 88a4606cdc37c4a11a83697a90a0c83f,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -874,6 +901,11 @@ PrefabInstance:
     - target: {fileID: 183207301256360131, guid: 88a4606cdc37c4a11a83697a90a0c83f,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183207301256360131, guid: 88a4606cdc37c4a11a83697a90a0c83f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

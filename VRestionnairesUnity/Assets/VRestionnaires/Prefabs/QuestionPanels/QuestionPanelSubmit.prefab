@@ -493,6 +493,7 @@ MonoBehaviour:
   bodyLayout: {fileID: 6242965060227380048}
   instructionsText: {fileID: 6242965059849329425}
   idText: {fileID: 6242965061074363307}
+  thankYouText: {fileID: 312592877019416638}
   submitButtonLabel: {fileID: 2849946955941387670}
   submitQuestion:
     id: 

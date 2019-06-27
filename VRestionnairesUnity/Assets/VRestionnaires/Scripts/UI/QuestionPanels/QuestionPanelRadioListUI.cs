@@ -89,7 +89,7 @@ namespace VRestionnaire {
 				TMP_Text text = label.GetComponent<TMP_Text>();
 				text.text = radioListQuestion.labels[i];
 				text.autoSizeTextContainer = true;
-				text.enableAutoSizing = true;
+				//text.enableAutoSizing = true;
 				text.ForceMeshUpdate(true);
 				
 

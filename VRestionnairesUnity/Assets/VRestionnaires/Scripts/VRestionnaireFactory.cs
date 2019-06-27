@@ -152,7 +152,7 @@ namespace VRestionnaire {
 			}, questionnairePanel.OnQuestionnaireSubmitted);
 			questionnairePanel.questionPanels.Add(submitUI);
 			submitUI.submitButtonLabel.text = studySettings.submitButtonLabel;
-
+			submitUI.thankYouText.text = studySettings.submitThankYouText;
 			submitUI.HidePanel();
 		}
 
