@@ -45,8 +45,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5223100616147369533}
-  - component: {fileID: 4740375138321709025}
-  - component: {fileID: 8875127516621466047}
+  - component: {fileID: 1549030101779301575}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -73,7 +72,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4740375138321709025
+--- !u!114 &1549030101779301575
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,21 +81,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 870835799980446654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
-  m_VerticalFit: 2
---- !u!114 &8875127516621466047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 870835799980446654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a0099d12ffa84f13b4f8d23b9fecd0f, type: 3}
+  m_Script: {fileID: 1297475563, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -105,14 +90,13 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellAlignment: 0
-  m_Spacing: {x: 0.45, y: 0.3}
-  m_Constraint: 0
-  m_ConstraintCount: 3
+  m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
 --- !u!1 &2476430244909382026
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,21 +762,40 @@ MonoBehaviour:
   idText: {fileID: 8333490222869752092}
   layoutElement: {fileID: 8333490222106130919}
   itemsUI: {fileID: 5223100616147369533}
-  gridLayout: {fileID: 8875127516621466047}
+  gridLayout: {fileID: 0}
   labelPrefab: {fileID: 7741861365275477466, guid: 4d3f6dc1fd85d412bb0f085a17ddc066,
     type: 3}
   radioItemPrefab: {fileID: 8110706846887825874, guid: 90d3f898355994e69b363cb4b7d25418,
     type: 3}
   radioGridQuestion:
-    id: 
+    id: IMI
     questiontype: 0
     instructions: 
     required: 0
     shuffle: 0
     datatype: 0
     answerCounter: 0
-    labels: []
-    q_text: []
+    labels:
+    - Strongly disagree
+    - Disagree
+    - Slightly disagree
+    - Neutral
+    - Slightly agree
+    - Agree
+    - Strongly agree
+    q_text:
+    - id: q_1
+      text: I enjoyed this game very much.
+      reversed: 0
+    - id: q_2
+      text: I think I am pretty good at this game.
+      reversed: 0
+    - id: q_3
+      text: I put a lot of effort into this game.
+      reversed: 0
+    - id: q_4
+      text: It was important to me to do well at this game.
+      reversed: 0
     answers: 
 --- !u!1 &8710279166960876955
 GameObject:
@@ -1014,6 +1017,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ChildForceExpandHeight
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 183207299908202367, guid: 88a4606cdc37c4a11a83697a90a0c83f,
+        type: 3}
+      propertyPath: m_Spacing
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 183207300416951590, guid: 88a4606cdc37c4a11a83697a90a0c83f,
         type: 3}

@@ -24,6 +24,27 @@ namespace VRestionnaire {
 		[SerializeField] RadioGridQuestion radioGridQuestion;
 
 
+		//[Range(0.1f,5.0f)]
+		float maxQuestionLabelWidth = 2.5f;
+		//[Range(0.1f,5.0f)]
+		float maxQuestionTextHeight = 1.5f;
+
+		//private void Start()
+		//{
+		//	Generate();
+		//}
+
+		public void Generate()
+		{
+			for(int i = 0; i < itemsUI.childCount; i++) {
+				DestroyImmediate(itemsUI.GetChild(i).gameObject);
+			}
+
+			SetQuestion(radioGridQuestion,(q) => {
+
+			});
+		}
+
 		public override void InitWithAnswer()
 		{
 			if(radioGridQuestion != null) {
@@ -41,43 +62,31 @@ namespace VRestionnaire {
 		public override void SetQuestion(Question q,UnityAction<Question> answeredEvent)
 		{
 			base.SetQuestion(q, answeredEvent);
+
 			radioGridQuestion = question as RadioGridQuestion;
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
 
-			gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedColumnCount;
-			gridLayout.constraintCount = radioGridQuestion.labels.Length + 1; // + 1 for the questions
-																	 //
-			GameObject empty = Instantiate(labelPrefab);
-			empty.GetComponent<TMP_Text>().text = "";
-			empty.transform.parent = itemsUI;
-			empty.transform.position = Vector3.zero;
-			empty.transform.rotation = Quaternion.identity;
-			empty.transform.localScale = Vector3.zero;
-
-			for(int i = 0; i < radioGridQuestion.labels.Length; i++) {
-				GameObject label = Instantiate(labelPrefab);
-				TMP_Text labelText = label.GetComponent<TMP_Text>();
-				labelText.text = radioGridQuestion.labels[i];
-				labelText.alignment = TextAlignmentOptions.Center;
-				label.transform.parent = itemsUI;
-				//label.transform.position = Vector3.zero;
-				label.transform.localPosition = Vector3.zero;
-				label.transform.localRotation = Quaternion.identity;
-				label.transform.localScale = label.transform.parent.localScale;
-			}
 
 			questionItems = new List<List<Toggle>>();
+			VerticalLayoutGroup panelLayout = itemsUI.GetComponent<VerticalLayoutGroup>();
+			panelLayout.spacing = 0.5f;
 
 			for(int i = 0; i < radioGridQuestion.q_text.Length; i++) {
 				GameObject textObj = Instantiate(labelPrefab);
 				LayoutElement layout = textObj.GetComponent<LayoutElement>();
-				TMP_Text labelText = textObj.GetComponent<TMP_Text>();
+				layout.enabled = true;
+				layout.minHeight = 1;
+				layout.minWidth = 1;
+				layout.preferredWidth = 2;
+				layout.preferredHeight = 2;
 
-				labelText.text = radioGridQuestion.q_text[i].text;
-				Vector2 textSize = labelText.GetPreferredValues(radioGridQuestion.q_text[i].text);
-				layout.preferredWidth = textSize.x;
-				layout.preferredHeight = textSize.y;
+
+				TMP_Text questionText = textObj.GetComponent<TMP_Text>();
+				
+				questionText.text = radioGridQuestion.q_text[i].text;
+				questionText.alignment = TextAlignmentOptions.Bottom;
+				Vector2 textSize = questionText.GetPreferredValues(radioGridQuestion.q_text[i].text);
 
 				textObj.transform.parent = itemsUI;
 				textObj.transform.localPosition = Vector3.zero;
@@ -86,9 +95,53 @@ namespace VRestionnaire {
 				//RadioGroup radioGroup = new RadioGroup(radioGridQuestion.q_text[i].id);
 				List<Toggle> toggles = new List<Toggle>();
 				//radioGroup.OnGroupSelected += OnItemSelected;
+				GameObject itemsContainer = new GameObject("itemsContainer",typeof(RectTransform));
+				itemsContainer.transform.parent = itemsUI;
+				itemsContainer.transform.localPosition = Vector3.zero;
+				itemsContainer.transform.localRotation = Quaternion.identity;
+				itemsContainer.transform.localScale = Vector3.one;
+				HorizontalLayoutGroup horizontalLayoutGroup = itemsContainer.AddComponent<HorizontalLayoutGroup>();
+				horizontalLayoutGroup.childControlHeight = true;
+				horizontalLayoutGroup.childControlWidth	= true;
+				horizontalLayoutGroup.spacing = -2;
+
+
 				for(int j = 0; j < radioGridQuestion.labels.Length; j++) {
+
+					GameObject container = new GameObject("container",typeof(RectTransform));
+					VerticalLayoutGroup verticalLayoutGroup = container.AddComponent<VerticalLayoutGroup>();
+					verticalLayoutGroup.childControlWidth = true;
+					verticalLayoutGroup.childControlHeight = true;
+					verticalLayoutGroup.spacing = 0.2f;
+
+					container.transform.parent = itemsContainer.transform;
+					container.transform.parent = container.transform;
+					container.transform.localPosition = Vector3.zero;
+					container.transform.localRotation = Quaternion.identity;
+					container.transform.localScale = Vector3.one;
+
+					GameObject label = Instantiate(labelPrefab);
+					TMP_Text labelText = label.GetComponent<TMP_Text>();
+					labelText.GetComponent<SkinText>().textFormat = TextFormat.Small;
+					labelText.text = radioGridQuestion.labels[j];
+					labelText.alignment = TextAlignmentOptions.Center;
+					label.transform.parent = container.transform;
+
+					LayoutElement labelLayout = labelText.GetComponent<LayoutElement>();
+					labelLayout.enabled = true;
+					labelLayout.minHeight = 1;
+					labelLayout.minWidth = 1;
+					labelLayout.preferredWidth = 2;
+					labelLayout.preferredHeight = 2;
+
 					GameObject item = Instantiate(radioItemPrefab);
 					Toggle toggle = item.GetComponent<Toggle>();
+					LayoutElement toggleLayout = textObj.GetComponent<LayoutElement>();
+					toggleLayout.enabled = true;
+					toggleLayout.minHeight = 1;
+					toggleLayout.minWidth = 1;
+					toggleLayout.preferredWidth = 1;
+					toggleLayout.preferredHeight = 1;
 					//radioGroup.AddToggle(toggle);
 					toggle.SetIsOnWithoutNotify(false);
 					toggle.onValueChanged.AddListener((val) => {
@@ -98,10 +151,10 @@ namespace VRestionnaire {
 					toggles.Add(toggle);
 
 
-					item.transform.parent = itemsUI;
+					item.transform.parent = container.transform;
 					item.transform.localPosition = Vector3.zero;
 					item.transform.localRotation = Quaternion.identity;
-					item.transform.localScale = item.transform.parent.localScale;
+					item.transform.localScale = Vector3.one;
 				}
 				//radioGroup.Init();
 				//questionItems.Add(radioGroup);

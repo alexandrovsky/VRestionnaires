@@ -24,6 +24,9 @@ namespace VRestionnaire {
 			case TextFormat.Body:
 				text.fontSize = skin.fontSizeBody;
 				break;
+			case TextFormat.Small:
+				text.fontSize = skin.fontSizeSmall;
+				break;
 			}
 			print( gameObject.transform.parent.parent.name + ">>" + gameObject.transform.parent.name + ">>" + gameObject.GetInstanceID() + "font size" + text.fontSize);
 		}

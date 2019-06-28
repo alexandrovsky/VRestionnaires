@@ -8,7 +8,8 @@ namespace VRestionnaire {
 	public enum TextFormat {
 		Header1,
 		Header2,
-		Body
+		Body,
+		Small
 	}
 
 	[CreateAssetMenu(menuName = "UI Skin Data")]
@@ -19,6 +20,7 @@ namespace VRestionnaire {
 		public float fontSizeH1 = 1.0f;
 		public float fontSizeH2 = 0.8f;
 		public float fontSizeBody = 0.5f;
+		public float fontSizeSmall = 0.35f;
 
 		//[Header("Selectables Settings")]
 		[Header("Button")]
