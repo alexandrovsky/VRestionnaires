@@ -86,6 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc3cf4543ac042b3a23be77a887a0eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skinData: {fileID: 0}
   submitButton: {fileID: 0}
   headerLayout: {fileID: 7020750856426497470}
   bodyLayout: {fileID: 7020750855346245795}
@@ -107,12 +108,6 @@ MonoBehaviour:
     labels: []
     horizontal: 0
     answer: 0
-  maxQuestionsVertical: 4
-  preferredWidthScaler: 1.5
-  preferredHeightScaler: 1.5
-  maxWidth: 5
-  maxHeight: 2.5
-  spacing: {x: 0.5, y: 0.5}
 --- !u!1001 &7197972273621266586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -289,6 +284,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183207301482586169, guid: 88a4606cdc37c4a11a83697a90a0c83f,
+        type: 3}
+      propertyPath: m_FlexibleHeight
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 183207299993110649, guid: 88a4606cdc37c4a11a83697a90a0c83f,
         type: 3}

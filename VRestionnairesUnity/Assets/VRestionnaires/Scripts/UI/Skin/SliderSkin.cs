@@ -16,6 +16,8 @@ namespace VRestionnaire {
 		{
 			fillImage.color = skin.buttonColorBlock.selectedColor;
 			backgroundImage.color = skin.normalTextColor;
+			Slider slider = GetComponent<Slider>();
+			slider.colors = skin.buttonColorBlock;
 		}
 	}
 
