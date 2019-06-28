@@ -74,7 +74,7 @@ namespace VRestionnaire {
 				JSONObject json = JSONObject.Parse(file);
 
 				questionnairePanel.questionnaires.Add( GenerateQuestionnaire(json) );
-				GenerateQuestionnaireUI(questionnairePanel.questionnaires.Last());
+				GenerateQuestionnaireUI(questionnairePanel.questionnaires.Last(),questionnairePanel.skinData);
 			}
 			GenerateSubmitQuestionnaireUI();
 
@@ -149,14 +149,14 @@ namespace VRestionnaire {
 				text = "",
 				id = "submit_1234",
 				instructions = "instructions...."
-			}, questionnairePanel.OnQuestionnaireSubmitted);
+			}, questionnairePanel.OnQuestionnaireSubmitted, questionnairePanel.skinData);
 			questionnairePanel.questionPanels.Add(submitUI);
 			submitUI.submitButtonLabel.text = studySettings.submitButtonLabel;
 			submitUI.thankYouText.text = studySettings.submitThankYouText;
 			submitUI.HidePanel();
 		}
 
-		void GenerateQuestionnaireUI(Questionnaire questionnaire)
+		void GenerateQuestionnaireUI(Questionnaire questionnaire, UISkinData skin)
 		{
 			// TODO: Clear UI
 
@@ -176,7 +176,7 @@ namespace VRestionnaire {
 			foreach(Question question in questionnaire.questions) {
 				QuestionPanelUI panelUI = GeneratePanelForQuestionType(question.questiontype);
 				if(panelUI != null) {
-					panelUI.SetQuestion(question, questionnairePanel.OnQuestionAnswered);
+					panelUI.SetQuestion(question, questionnairePanel.OnQuestionAnswered, skin);
 					panelUI.SetQuestionIDVisibility(studySettings.showQuestionId);
 					questionnairePanel.questionPanels.Add(panelUI);
 					panelUI.HidePanel();

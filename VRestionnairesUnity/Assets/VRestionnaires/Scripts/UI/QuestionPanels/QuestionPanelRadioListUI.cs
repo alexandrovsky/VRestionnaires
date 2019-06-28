@@ -54,9 +54,9 @@ namespace VRestionnaire {
 			base.ShowPanel();
 		}
 
-		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent)
+		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent,UISkinData skinData)
 		{
-			base.SetQuestion(q, answeredEvent);
+			base.SetQuestion(q, answeredEvent, skinData);
 			radioListQuestion = question as RadioListQuestion;
 			instructionsText.text = question.instructions;
 			idText.text = question.id;

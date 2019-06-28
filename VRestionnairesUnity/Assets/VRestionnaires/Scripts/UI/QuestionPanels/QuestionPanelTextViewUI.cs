@@ -17,9 +17,9 @@ namespace VRestionnaire {
 
 		}
 
-		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent)
+		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent,UISkinData skinData)
 		{
-			base.SetQuestion(q, answeredEvent);
+			base.SetQuestion(q, answeredEvent, skinData);
 
 			textViewQuestion = question as TextViewQuestion;
 

@@ -20,6 +20,7 @@ namespace VRestionnaire {
 
 	public abstract class QuestionPanelUI:MonoBehaviour{
 
+		public UISkinData skinData;
 		public Button submitButton;
 
 		public UnityAction<Question> OnQuestionAnswered;
@@ -39,13 +40,14 @@ namespace VRestionnaire {
 			idText.gameObject.SetActive(visible);
 		}
 
-		public virtual void SetQuestion(Question q, UnityAction<Question> answeredEvent)
+		public virtual void SetQuestion(Question q, UnityAction<Question> answeredEvent, UISkinData skinData)
 		{
 			OnQuestionAnswered += answeredEvent;
 			question = q;
 			if(q.instructions == null || q.instructions.Length == 0) {
 				headerLayout.gameObject.SetActive(false);
 			}
+			this.skinData = skinData;
 		}
 
 		public abstract void InitWithAnswer();

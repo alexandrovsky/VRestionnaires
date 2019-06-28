@@ -43,9 +43,9 @@ namespace VRestionnaire {
 			}
 		}
 
-		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent)
+		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent, UISkinData skinData)
 		{
-			base.SetQuestion(q, answeredEvent);
+			base.SetQuestion(q, answeredEvent,skinData);
 
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
@@ -78,7 +78,14 @@ namespace VRestionnaire {
 				Toggle toggle = checkItem.GetComponent<Toggle>();
 				toggle.isOn = false;
 				toggle.onValueChanged.AddListener(HandleToggleValueChanged);
+
+				LayoutElement toggleLayout = toggle.GetComponent<LayoutElement>();
+				toggleLayout.enabled = true;
+				toggleLayout.minWidth = skinData.toggleSize.x;
+				toggleLayout.minHeight = skinData.toggleSize.y;
+
 				toggles.Add(toggle);
+
 
 				//GameObject label = labeledItem.transform.Find("QuestionLabelInteractive").gameObject;
 				GameObject label = Instantiate(labelPrefab);
@@ -92,12 +99,12 @@ namespace VRestionnaire {
 
 
 				LayoutElement labelLayout = label.GetComponent<LayoutElement>();
-				float w = text.preferredWidth * preferredWidthScaler;
-				float h = text.preferredHeight * preferredHeightScaler;
-				//labelLayout.preferredWidth = - 1;
-				//labelLayout.preferredHeight = - 1;
-				labelLayout.preferredWidth = Mathf.Clamp(w,0,maxWidth);
-				labelLayout.preferredHeight = Mathf.Clamp(h,0,maxHeight);
+				//float w = text.preferredWidth * preferredWidthScaler;
+				//float h = text.preferredHeight * preferredHeightScaler;
+				////labelLayout.preferredWidth = - 1;
+				////labelLayout.preferredHeight = - 1;
+				labelLayout.preferredWidth = -1; //Mathf.Clamp(w,0,maxWidth);
+				labelLayout.preferredHeight = -1; // Mathf.Clamp(h,0,maxHeight);
 
 
 

@@ -59,9 +59,9 @@ namespace VRestionnaire {
 			}
 		}
 
-		public override void SetQuestion(Question q,UnityAction<Question> answeredEvent)
+		public override void SetQuestion(Question q,UnityAction<Question> answeredEvent, UISkinData skinData = null)
 		{
-			base.SetQuestion(q, answeredEvent);
+			base.SetQuestion(q, answeredEvent, skinData);
 
 			radioGridQuestion = question as RadioGridQuestion;
 			instructionsText.text = question.instructions;
@@ -134,10 +134,10 @@ namespace VRestionnaire {
 
 					LayoutElement labelLayout = labelText.GetComponent<LayoutElement>();
 					labelLayout.enabled = true;
-					labelLayout.minHeight = 0.5f;
-					labelLayout.minWidth = 0.5f;
-					labelLayout.preferredWidth = 1;
-					labelLayout.preferredHeight = 1;
+					labelLayout.minWidth= skinData.toggleSize.x;
+					labelLayout.minHeight = skinData.toggleSize.y;
+					labelLayout.preferredWidth = skinData.toggleSize.x;
+					labelLayout.preferredHeight = skinData.toggleSize.y;
 
 					GameObject item = Instantiate(radioItemPrefab);
 					Toggle toggle = item.GetComponent<Toggle>();

@@ -90,7 +90,27 @@
 	            {
 	                "id":"cl_3",
 	                "text":"Option 3"
-	            }
+	            },
+              {
+                  "id": "cl_4",
+                  "text": "Option 5"
+              },
+              {
+                  "id": "cl_5",
+                  "text": "Option 5"
+              },
+              {
+                  "id": "cl_6",
+                  "text": "Option 6"
+              },
+              {
+                  "id": "cl_7",
+                  "text": "Option 7"
+              },
+              {
+                  "id": "cl_8",
+                  "text": "Option 8"
+              }
 	        ]
 	    },
 	    {
