@@ -17,10 +17,10 @@ namespace VRestionnaire {
 		[Header("Test Settings")]
 		public TMP_FontAsset font;
 		public Color normalTextColor = new Color(0.0f,0.0f,0.0f,1f);
-		public float fontSizeH1 = 1.0f;
-		public float fontSizeH2 = 0.8f;
-		public float fontSizeBody = 0.5f;
-		public float fontSizeSmall = 0.35f;
+		public float fontSizeH1 = 0.5f;
+		public float fontSizeH2 = 0.4f;
+		public float fontSizeBody = 0.3f;
+		public float fontSizeSmall = 0.18f;
 
 		//[Header("Selectables Settings")]
 		[Header("Button")]
@@ -34,6 +34,18 @@ namespace VRestionnaire {
 			colorMultiplier = 1,
 			fadeDuration = 0.1f
 		};
+
+		[Header("SubmitButton")]
+		public ColorBlock submitColorBlock  = new ColorBlock{
+			normalColor = new Color(1f,1f,1f,1f),
+			highlightedColor = new Color(0.96f,0.96f,0.96f,1f),
+			pressedColor = new Color(0.78f,0.78f,0.78f,1),
+			selectedColor = new Color(0.96f,0.96f,0.96f,1f),
+			disabledColor = new Color(0.78f,0.78f,0.78f,0.5f),
+			colorMultiplier = 1,
+			fadeDuration = 0.1f
+		};
+
 
 		[Header("Toggle")]
 		public Vector2 toggleSize = new Vector2(0.6f,0.6f);

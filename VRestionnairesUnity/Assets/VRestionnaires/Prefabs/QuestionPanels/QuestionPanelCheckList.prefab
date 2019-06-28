@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a93f5e7d1d04abba0f669965a40dc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skinData: {fileID: 0}
   submitButton: {fileID: 0}
   headerLayout: {fileID: 2819317518513281299}
   bodyLayout: {fileID: 2819317519598873614}
@@ -134,7 +135,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 1
+  m_ChildAlignment: 3
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellAlignment: 0
