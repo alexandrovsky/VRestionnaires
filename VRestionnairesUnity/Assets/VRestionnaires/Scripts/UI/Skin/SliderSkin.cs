@@ -14,7 +14,7 @@ namespace VRestionnaire {
 
 		void ISkinHandler.ApplySkin(UISkinData skin)
 		{
-			fillImage.color = skin.colorBlock.selectedColor;
+			fillImage.color = skin.buttonColorBlock.selectedColor;
 			backgroundImage.color = skin.normalTextColor;
 		}
 	}

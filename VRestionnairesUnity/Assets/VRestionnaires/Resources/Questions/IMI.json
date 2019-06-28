@@ -1,0 +1,95 @@
+{
+   "title":"IMI",
+   "instructions":"A number of statements which people have used to describe the previous task are given below. Read each statement and indicate your agreement with that statement. There are no right or wrong answers. Do not spend too much time on any one statement. Remember, give the answer which seems to describe how you thought during the game.",
+   "code":"",
+   "questions":[
+      {
+         "questiontype":"radiogrid",
+         "id":"IMI",
+         "shuffle": "true",
+         "labels":[
+            "Strongly disagree",
+            "Disagree",
+            "Slightly disagree",
+            "Neutral",
+            "Slightly agree",
+            "Agree",
+            "Strongly agree"
+         ],
+         "q_text":[
+            {
+               "id":"q_1",
+               "text":"I enjoyed this game very much."
+            },
+            {
+               "id":"q_2",
+               "text":"I think I am pretty good at this game."
+            },
+            {
+               "id":"q_3",
+               "text":"I put a lot of effort into this game."
+            },
+            {
+               "id":"q_4",
+               "text":"It was important to me to do well at this game."
+            },
+            {
+               "id":"q_5",
+               "text":"I felt tense while playing the game."
+            },
+            {
+               "id":"q_6",
+               "text":"I tried very hard while playing the game."
+            },
+            {
+               "id":"q_7",
+               "text":"Playing the game was fun."
+            },
+            {
+               "id":"q_8",
+               "text":"I would describe this game as very interesting."
+            },
+            {
+               "id":"q_9",
+               "text":"I am satisfied with my performance at this game."
+            },
+            {
+               "id":"q_10",
+               "text":"I felt pressured while playing the game."
+            },
+            {
+               "id":"q_11",
+               "text":"I was anxious while playing the game."
+            },
+            {
+               "id":"q_12",
+               "text":"I didn’t try very hard at playing the game."
+            },
+            {
+               "id":"q_13",
+               "text":"While playing the game, I was thinking about how much I enjoyed it."
+            },
+            {
+               "id":"q_14",
+               "text":"After playing the game for a while, I felt pretty competent."
+            },
+            {
+               "id":"q_15",
+               "text":"I was very relaxed while playing the game. "
+            },
+            {
+               "id":"q_16",
+               "text":"I am pretty skilled at the game."
+            },
+            {
+               "id":"q_17",
+               "text":"This game did not hold my attention."
+            },
+            {
+               "id":"q_18",
+               "text":"I couldn't play this game very well."
+            }
+         ]
+      }
+   ]
+}

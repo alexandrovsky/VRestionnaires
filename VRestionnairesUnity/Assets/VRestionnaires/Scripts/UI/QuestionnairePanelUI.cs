@@ -105,11 +105,6 @@ namespace VRestionnaire {
 			}
 
 
-			Toggle[] toggles = GetComponentsInChildren<Toggle>(true);
-			foreach(Toggle toggle in toggles) {
-				toggle.GetComponent<RectTransform>().sizeDelta = skinData.toggleSize;
-			}
-
 			ISkinHandler[] handlers = GetComponentsInChildren<ISkinHandler>(true);
 			foreach(ISkinHandler handler in handlers) {
 				handler.ApplySkin(skinData);

@@ -80,13 +80,14 @@ namespace VRestionnaire {
 				layout.minWidth = 1;
 				layout.preferredWidth = 2;
 				layout.preferredHeight = 2;
-
+				
 
 				TMP_Text questionText = textObj.GetComponent<TMP_Text>();
 				
 				questionText.text = radioGridQuestion.q_text[i].text;
 				questionText.alignment = TextAlignmentOptions.Bottom;
 				Vector2 textSize = questionText.GetPreferredValues(radioGridQuestion.q_text[i].text);
+				questionText.margin = new Vector4(0,0,1,-0.75f);
 
 				textObj.transform.parent = itemsUI;
 				textObj.transform.localPosition = Vector3.zero;

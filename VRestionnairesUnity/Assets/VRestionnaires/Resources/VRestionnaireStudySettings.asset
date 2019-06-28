@@ -18,7 +18,7 @@ MonoBehaviour:
   questionnairesFromFiles:
   - condition: a
     filePaths:
-    - Assets/VRestionnaires/Resources/Questions/IMI.json
+    - Assets/VRestionnaires/Resources/Questions/example.json
     currentQuestionnaire: 0
   - condition: b
     filePaths: []

@@ -24,7 +24,8 @@ namespace VRestionnaire {
 
 		//[Header("Selectables Settings")]
 		[Header("Button")]
-		public ColorBlock colorBlock = new ColorBlock {
+		public Color buttonTextColor = Color.black;
+		public ColorBlock buttonColorBlock = new ColorBlock {
 			normalColor = new Color(1f,1f,1f,1f),
 			highlightedColor = new Color(0.96f,0.96f,0.96f,1f),
 			pressedColor = new Color(0.78f,0.78f,0.78f,1),
