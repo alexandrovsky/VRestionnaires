@@ -132,12 +132,12 @@ namespace VRestionnaire {
 					label.transform.localScale = Vector3.one;
 
 
-					//LayoutElement labelLayout = labelText.GetComponent<LayoutElement>();
-					//labelLayout.enabled = true;
-					//labelLayout.minHeight = 1;
-					//labelLayout.minWidth = 1;
-					//labelLayout.preferredWidth = 2;
-					//labelLayout.preferredHeight = 2;
+					LayoutElement labelLayout = labelText.GetComponent<LayoutElement>();
+					labelLayout.enabled = true;
+					labelLayout.minHeight = 0.5f;
+					labelLayout.minWidth = 0.5f;
+					labelLayout.preferredWidth = 1;
+					labelLayout.preferredHeight = 1;
 
 					GameObject item = Instantiate(radioItemPrefab);
 					Toggle toggle = item.GetComponent<Toggle>();
