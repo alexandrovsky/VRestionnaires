@@ -127,6 +127,10 @@ namespace VRestionnaire {
 					labelText.text = radioGridQuestion.labels[j];
 					labelText.alignment = TextAlignmentOptions.Center;
 					label.transform.parent = container.transform;
+					label.transform.localPosition = Vector3.zero;
+					label.transform.localRotation = Quaternion.identity;
+					label.transform.localScale = Vector3.one;
+
 
 					LayoutElement labelLayout = labelText.GetComponent<LayoutElement>();
 					labelLayout.enabled = true;
