@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   normalTextColor: {r: 1, g: 1, b: 1, a: 1}
-  fontSizeH1: 1
-  fontSizeH2: 0.8
-  fontSizeBody: 0.5
-  fontSizeSmall: 0.35
+  fontSizeH1: 0.5
+  fontSizeH2: 0.4
+  fontSizeBody: 0.25
+  fontSizeSmall: 0.175
   buttonTextColor: {r: 0, g: 0, b: 0, a: 1}
   buttonColorBlock:
     m_NormalColor: {r: 0, g: 0.34901962, b: 0.6392157, a: 1}

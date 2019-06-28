@@ -18,7 +18,7 @@ MonoBehaviour:
   questionnairesFromFiles:
   - condition: a
     filePaths:
-    - Assets/VRestionnaires/Resources/Questions/example.json
+    - Assets/VRestionnaires/Resources/Questions/IMI.json
     currentQuestionnaire: 0
   - condition: b
     filePaths: []
@@ -29,5 +29,5 @@ MonoBehaviour:
   submitThankYouText: "Vielen Dank f\xFCr Ihre Teilnahme!"
   showQuestionId: 0
   showQuestionnaireHeader: 0
-  questionnaireHeaderAs1stQuestion: 1
+  questionnaireHeaderAs1stQuestion: 0
   answersOutputFilePath: Assets/VRestionnaires/Resources/Answers/

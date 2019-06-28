@@ -87,7 +87,7 @@ namespace VRestionnaire {
 				questionText.text = radioGridQuestion.q_text[i].text;
 				questionText.alignment = TextAlignmentOptions.Bottom;
 				Vector2 textSize = questionText.GetPreferredValues(radioGridQuestion.q_text[i].text);
-				questionText.margin = new Vector4(0,0,1,-0.75f);
+				//questionText.margin = new Vector4(0,0,1,-0.75f);
 
 				textObj.transform.parent = itemsUI;
 				textObj.transform.localPosition = Vector3.zero;
@@ -104,7 +104,7 @@ namespace VRestionnaire {
 				HorizontalLayoutGroup horizontalLayoutGroup = itemsContainer.AddComponent<HorizontalLayoutGroup>();
 				horizontalLayoutGroup.childControlHeight = true;
 				horizontalLayoutGroup.childControlWidth	= true;
-				horizontalLayoutGroup.spacing = -2;
+				//horizontalLayoutGroup.spacing = -2;
 
 
 				for(int j = 0; j < radioGridQuestion.labels.Length; j++) {
@@ -113,7 +113,7 @@ namespace VRestionnaire {
 					VerticalLayoutGroup verticalLayoutGroup = container.AddComponent<VerticalLayoutGroup>();
 					verticalLayoutGroup.childControlWidth = true;
 					verticalLayoutGroup.childControlHeight = true;
-					verticalLayoutGroup.spacing = 0.2f;
+					//verticalLayoutGroup.spacing = 0.2f;
 
 					container.transform.parent = itemsContainer.transform;
 					container.transform.parent = container.transform;
@@ -132,21 +132,21 @@ namespace VRestionnaire {
 					label.transform.localScale = Vector3.one;
 
 
-					LayoutElement labelLayout = labelText.GetComponent<LayoutElement>();
-					labelLayout.enabled = true;
-					labelLayout.minHeight = 1;
-					labelLayout.minWidth = 1;
-					labelLayout.preferredWidth = 2;
-					labelLayout.preferredHeight = 2;
+					//LayoutElement labelLayout = labelText.GetComponent<LayoutElement>();
+					//labelLayout.enabled = true;
+					//labelLayout.minHeight = 1;
+					//labelLayout.minWidth = 1;
+					//labelLayout.preferredWidth = 2;
+					//labelLayout.preferredHeight = 2;
 
 					GameObject item = Instantiate(radioItemPrefab);
 					Toggle toggle = item.GetComponent<Toggle>();
-					LayoutElement toggleLayout = textObj.GetComponent<LayoutElement>();
-					toggleLayout.enabled = true;
-					toggleLayout.minHeight = 1;
-					toggleLayout.minWidth = 1;
-					toggleLayout.preferredWidth = 1;
-					toggleLayout.preferredHeight = 1;
+					//LayoutElement toggleLayout = textObj.GetComponent<LayoutElement>();
+					//toggleLayout.enabled = true;
+					//toggleLayout.minHeight = 1;
+					//toggleLayout.minWidth = 1;
+					//toggleLayout.preferredWidth = 1;
+					//toggleLayout.preferredHeight = 1;
 					//radioGroup.AddToggle(toggle);
 					toggle.SetIsOnWithoutNotify(false);
 					toggle.onValueChanged.AddListener((val) => {
