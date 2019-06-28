@@ -100,7 +100,7 @@ namespace VRestionnaire {
 				itemsContainer.transform.parent = itemsUI;
 				itemsContainer.transform.localPosition = Vector3.zero;
 				itemsContainer.transform.localRotation = Quaternion.identity;
-				itemsContainer.transform.localScale = Vector3.one;
+				itemsContainer.transform.localScale = itemsContainer.transform.parent.localScale;
 				HorizontalLayoutGroup horizontalLayoutGroup = itemsContainer.AddComponent<HorizontalLayoutGroup>();
 				horizontalLayoutGroup.childControlHeight = true;
 				horizontalLayoutGroup.childControlWidth	= true;
@@ -119,7 +119,7 @@ namespace VRestionnaire {
 					container.transform.parent = container.transform;
 					container.transform.localPosition = Vector3.zero;
 					container.transform.localRotation = Quaternion.identity;
-					container.transform.localScale = Vector3.one;
+					container.transform.localScale = container.transform.parent.localScale;
 
 					GameObject label = Instantiate(labelPrefab);
 					TMP_Text labelText = label.GetComponent<TMP_Text>();
