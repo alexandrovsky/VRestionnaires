@@ -76,7 +76,7 @@ namespace VRestionnaire {
 			if(Input.GetKeyDown(nextKey)) {
 				OnNextButtonClicked();
 			}
-			if(Input.GetKey(backKey)) {
+			if(Input.GetKeyDown(backKey)) {
 				OnBackButtonClicked();
 			}
 			if(Input.GetKey(submitKey)) {

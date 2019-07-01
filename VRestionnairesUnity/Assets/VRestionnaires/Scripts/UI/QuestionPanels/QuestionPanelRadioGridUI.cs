@@ -70,7 +70,7 @@ namespace VRestionnaire {
 
 			questionItems = new List<List<Toggle>>();
 			VerticalLayoutGroup panelLayout = itemsUI.GetComponent<VerticalLayoutGroup>();
-			panelLayout.spacing = 0.5f;
+			panelLayout.spacing = 0.0f;
 
 			for(int i = 0; i < radioGridQuestion.q_text.Length; i++) {
 				GameObject textObj = Instantiate(labelPrefab);
@@ -126,6 +126,7 @@ namespace VRestionnaire {
 					labelText.GetComponent<SkinText>().textFormat = TextFormat.Small;
 					labelText.text = radioGridQuestion.labels[j];
 					labelText.alignment = TextAlignmentOptions.Center;
+					labelText.fontStyle = FontStyles.Italic;
 					label.transform.parent = container.transform;
 					label.transform.localPosition = Vector3.zero;
 					label.transform.localRotation = Quaternion.identity;
