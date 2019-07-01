@@ -113,7 +113,7 @@ namespace VRestionnaire {
 					VerticalLayoutGroup verticalLayoutGroup = container.AddComponent<VerticalLayoutGroup>();
 					verticalLayoutGroup.childControlWidth = true;
 					verticalLayoutGroup.childControlHeight = true;
-					//verticalLayoutGroup.spacing = 0.2f;
+					verticalLayoutGroup.spacing = 0.2f;
 
 					container.transform.parent = itemsContainer.transform;
 					container.transform.parent = container.transform;
@@ -138,6 +138,7 @@ namespace VRestionnaire {
 					labelLayout.minHeight = skinData.toggleSize.y;
 					labelLayout.preferredWidth = skinData.toggleSize.x;
 					labelLayout.preferredHeight = skinData.toggleSize.y;
+					
 
 					GameObject item = Instantiate(radioItemPrefab);
 					Toggle toggle = item.GetComponent<Toggle>();
