@@ -124,8 +124,8 @@ namespace VRestionnaire {
 				label.transform.localRotation = Quaternion.identity;
 				label.transform.localScale = label.transform.parent.localScale;
 
-
-				checkItem.transform.localPosition = Vector3.zero;
+				checkItem.transform.localPosition = new Vector3(0,0,-0.01f);
+				//checkItem.transform.localPosition = Vector3.zero;
 				checkItem.transform.localRotation = Quaternion.identity;
 				checkItem.transform.localScale = label.transform.parent.localScale;
 			}
