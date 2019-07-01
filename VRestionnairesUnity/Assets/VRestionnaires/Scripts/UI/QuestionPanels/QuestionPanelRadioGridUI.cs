@@ -134,10 +134,10 @@ namespace VRestionnaire {
 
 					LayoutElement labelLayout = labelText.GetComponent<LayoutElement>();
 					labelLayout.enabled = true;
-					labelLayout.minWidth= skinData.toggleSize.x;
-					labelLayout.minHeight = skinData.toggleSize.y;
+					labelLayout.minWidth = skinData.toggleSize.x;
+					labelLayout.minHeight = 0.5f;// skinData.toggleSize.y;
 					labelLayout.preferredWidth = skinData.toggleSize.x;
-					labelLayout.preferredHeight = skinData.toggleSize.y;
+					labelLayout.preferredHeight = 1.0f; // skinData.toggleSize.y;
 					
 
 					GameObject item = Instantiate(radioItemPrefab);
