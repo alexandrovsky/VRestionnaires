@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21793a2d33e1247ca8f1ec24d53fa925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skinData: {fileID: 0}
   submitButton: {fileID: 0}
   headerLayout: {fileID: 1922228504709251605}
   bodyLayout: {fileID: 1922228505793246984}
@@ -198,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c71e8af660343fe8921d427dc82e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textFormat: 1
+  textFormat: 2
 --- !u!1001 &1740573866562885425
 PrefabInstance:
   m_ObjectHideFlags: 0
