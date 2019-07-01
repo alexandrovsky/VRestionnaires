@@ -71,7 +71,10 @@ namespace VRestionnaire {
 			questionItems = new List<List<Toggle>>();
 			VerticalLayoutGroup panelLayout = itemsUI.GetComponent<VerticalLayoutGroup>();
 			panelLayout.spacing = 0.0f;
-
+			panelLayout.padding.left = 0;
+			panelLayout.padding.right = 0;
+			panelLayout.padding.top = 0;
+			panelLayout.padding.bottom = 1;
 			for(int i = 0; i < radioGridQuestion.q_text.Length; i++) {
 				GameObject textObj = Instantiate(labelPrefab);
 				LayoutElement layout = textObj.GetComponent<LayoutElement>();
