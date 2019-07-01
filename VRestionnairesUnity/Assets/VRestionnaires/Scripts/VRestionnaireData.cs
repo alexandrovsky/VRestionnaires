@@ -285,8 +285,9 @@ namespace VRestionnaire {
 
 			left = json["left"].Str;
 			right = json["right"].Str;
-
-			tick_count = (int) json["tick_count"].Number;
+			if(json.ContainsKey("tick_count")) {
+				tick_count = (int)json["tick_count"].Number;
+			}
 			if(json.ContainsKey("min_value")) {
 				min_value = (float)json["min_value"].Number;
 			}else {

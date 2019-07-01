@@ -16,8 +16,8 @@ MonoBehaviour:
   normalTextColor: {r: 1, g: 1, b: 1, a: 1}
   fontSizeH1: 0.5
   fontSizeH2: 0.4
-  fontSizeBody: 0.25
-  fontSizeSmall: 0.175
+  fontSizeBody: 0.37
+  fontSizeSmall: 0.3
   buttonTextColor: {r: 0, g: 0, b: 0, a: 1}
   buttonColorBlock:
     m_NormalColor: {r: 0, g: 0.34901962, b: 0.6392157, a: 1}

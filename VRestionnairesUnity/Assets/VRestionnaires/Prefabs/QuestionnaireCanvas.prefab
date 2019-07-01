@@ -778,6 +778,9 @@ MonoBehaviour:
   backButtonLabel: {fileID: 5290341928944129240}
   nextButton: {fileID: 5948915010806156270}
   nextButtonLabel: {fileID: 8929348295953024409}
+  nextKey: 110
+  backKey: 98
+  submitKey: 115
   questionPanels: []
   currentQuestionIdx: 0
 --- !u!1 &7172461193644266077
@@ -929,8 +932,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 3.75, y: 0}
-  m_SizeDelta: {x: 7.5, y: 0}
+  m_AnchoredPosition: {x: 8, y: 0}
+  m_SizeDelta: {x: 16, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7172461193672812027
 CanvasRenderer:
@@ -1213,9 +1216,7 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4035955745440394065, guid: d0de96f896e644147ba10f474565989e, type: 3}
-    - {fileID: 4035955745440394065, guid: d0de96f896e644147ba10f474565989e, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0de96f896e644147ba10f474565989e, type: 3}
 --- !u!1 &6921665031168055983 stripped
 GameObject:
