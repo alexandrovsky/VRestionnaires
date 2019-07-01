@@ -99,6 +99,7 @@ namespace VRestionnaire {
 
 				LayoutElement labelLayout = label.GetComponent<LayoutElement>();
 				labelLayout.flexibleWidth = 10;
+				labelLayout.preferredWidth = 12;
 				labelLayout.minWidth = -1;
 				labelLayout.minHeight = -1;
 
