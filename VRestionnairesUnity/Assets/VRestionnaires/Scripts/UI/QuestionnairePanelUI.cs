@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 namespace VRestionnaire {
 
@@ -42,6 +43,10 @@ namespace VRestionnaire {
 		[Tooltip("Go to next question")]
 		public GameObject nextButton;
 		public TMP_Text nextButtonLabel;
+		[Header("Keyboard Interaction, in case of emergency")]
+		public KeyCode nextKey = KeyCode.N;
+		public KeyCode backKey = KeyCode.B;
+		public KeyCode submitKey = KeyCode.S;
 
 		public List<QuestionPanelUI> questionPanels;
 		[SerializeField] int currentQuestionIdx;
@@ -63,6 +68,20 @@ namespace VRestionnaire {
 		private void OnDisable()
 		{
 			OnQuestionnaireFinishedCallback -= QuestionnairePanelUI_OnQuestionnaireFinishedCallback;
+		}
+
+
+		private void Update()
+		{
+			if(Input.GetKeyDown(nextKey)) {
+				OnNextButtonClicked();
+			}
+			if(Input.GetKey(backKey)) {
+				OnBackButtonClicked();
+			}
+			if(Input.GetKey(submitKey)) {
+				OnQuestionnaireSubmitted(questionnaires[currentQuestionnaireIdx].questions.Last());
+			}
 		}
 
 		private void QuestionnairePanelUI_OnQuestionnaireFinishedCallback(Questionnaire questionnaire)

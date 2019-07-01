@@ -27,7 +27,15 @@ namespace VRestionnaire {
 
 		public static void CreteCSVFromQuestionnaire(string basepath, Questionnaire questionnaire) {
 			string dir = basepath + questionnaire.code + "/";
-			string fullPath = dir + questionnaire.code + ".csv";
+
+			string qName = "no_title";
+			if(questionnaire.code.Length > 0) {
+				qName = questionnaire.code;
+			} else if(questionnaire.title.Length > 0) {
+				qName = questionnaire.title;
+			}
+
+			string fullPath = dir + qName + ".csv";
 
 			if(!Directory.Exists(dir)) {
 				CreateDirectoryRecursively(dir);
