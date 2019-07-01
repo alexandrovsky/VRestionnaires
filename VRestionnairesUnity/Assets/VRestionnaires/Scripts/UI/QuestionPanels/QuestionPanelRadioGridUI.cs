@@ -98,7 +98,7 @@ namespace VRestionnaire {
 				//radioGroup.OnGroupSelected += OnItemSelected;
 				GameObject itemsContainer = new GameObject("itemsContainer",typeof(RectTransform));
 				itemsContainer.transform.parent = itemsUI;
-				itemsContainer.transform.localPosition =  new Vector3(0,0, -0.1f);
+				itemsContainer.transform.localPosition = Vector3.zero;
 				itemsContainer.transform.localRotation = Quaternion.identity;
 				itemsContainer.transform.localScale = itemsContainer.transform.parent.localScale;
 				HorizontalLayoutGroup horizontalLayoutGroup = itemsContainer.AddComponent<HorizontalLayoutGroup>();
@@ -158,7 +158,8 @@ namespace VRestionnaire {
 
 
 					item.transform.parent = container.transform;
-					item.transform.localPosition = Vector3.zero;
+					item.transform.localPosition = new Vector3(0,0,-0.01f);
+					//item.transform.localPosition = Vector3.zero;
 					item.transform.localRotation = Quaternion.identity;
 					item.transform.localScale = Vector3.one;
 				}
