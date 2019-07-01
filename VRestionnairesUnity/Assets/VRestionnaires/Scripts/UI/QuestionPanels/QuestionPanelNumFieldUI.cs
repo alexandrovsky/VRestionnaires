@@ -28,6 +28,7 @@ namespace VRestionnaire {
 		public override void SetQuestion(Question q, UnityAction<Question> answeredEvent,UISkinData skinData)
 		{
 			base.SetQuestion(q,answeredEvent,skinData);
+			inputField.enableWordWrapping = false;
 			numFieldQuestion = question as NumFieldQuestion;
 			instructionsText.text = question.instructions;
 			idText.text = question.id;
