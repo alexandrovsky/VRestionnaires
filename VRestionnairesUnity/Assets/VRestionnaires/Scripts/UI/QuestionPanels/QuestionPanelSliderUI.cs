@@ -62,14 +62,14 @@ namespace VRestionnaire {
 		void IncrementValue()
 		{
 			slider.value++;
-			slider.value = Mathf.Clamp(slider.value, 0,sliderQuestion.tick_count);
+			slider.value = Mathf.Clamp(slider.value, 0,sliderQuestion.tick_count-1);
 
 		}
 
 		void DecrementValue()
 		{
 			slider.value--;
-			slider.value = Mathf.Clamp(slider.value, 0,sliderQuestion.tick_count);
+			slider.value = Mathf.Clamp(slider.value, 0,sliderQuestion.tick_count-1);
 		}
 
 
