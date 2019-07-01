@@ -82,7 +82,7 @@ namespace VRestionnaire {
 				layout.minHeight = 1;
 				layout.minWidth = 1;
 				layout.preferredWidth = 2;
-				layout.preferredHeight = 2;
+				layout.preferredHeight = 1.5f;
 				
 
 				TMP_Text questionText = textObj.GetComponent<TMP_Text>();

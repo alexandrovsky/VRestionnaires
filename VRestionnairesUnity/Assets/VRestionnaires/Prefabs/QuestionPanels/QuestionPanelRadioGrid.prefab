@@ -755,6 +755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d15019a928b3d461596ffe266ab5618a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skinData: {fileID: 0}
   submitButton: {fileID: 0}
   headerLayout: {fileID: 8333490221025807610}
   bodyLayout: {fileID: 8333490222106130919}
@@ -1141,6 +1142,11 @@ PrefabInstance:
     - target: {fileID: 183207301256360131, guid: 88a4606cdc37c4a11a83697a90a0c83f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183207300416951589, guid: 88a4606cdc37c4a11a83697a90a0c83f,
+        type: 3}
+      propertyPath: m_Padding.m_Bottom
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
