@@ -37,8 +37,8 @@ namespace VRestionnaire {
 			minLabel.text = sliderQuestion.left;
 			maxLabel.text = sliderQuestion.right;
 
-			slider.minValue = 0;
-			slider.maxValue = sliderQuestion.tick_count-1;
+			slider.minValue = sliderQuestion.min_value;
+			slider.maxValue = sliderQuestion.max_value;
 			slider.wholeNumbers = question.datatype == QuestionDataType.Integer;
 			slider.SetValueWithoutNotify(slider.minValue);
 			valueLabel.text = slider.value.ToString();

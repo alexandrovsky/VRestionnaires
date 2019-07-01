@@ -269,6 +269,8 @@ namespace VRestionnaire {
 		public string left;
 		public string right;
 		public int tick_count;
+		public float min_value = float.NaN;
+		public float max_value = float.NaN;
 		public int width = 400;
 		public float answer;
 
@@ -285,6 +287,16 @@ namespace VRestionnaire {
 			right = json["right"].Str;
 
 			tick_count = (int) json["tick_count"].Number;
+			if(json.ContainsKey("min_value")) {
+				min_value = (float)json["min_value"].Number;
+			}else {
+				min_value = 0;
+			}
+			if(json.ContainsKey("max_value")) {
+				max_value = (float)json["max_value"].Number;
+			} else {
+				max_value = tick_count - 1;
+			}
 		}
 
 

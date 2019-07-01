@@ -140,6 +140,8 @@
 	        "id": "slider_1",
 	        "left": "left",
 	        "right": "right",
+          "min_value": 1,
+          "max_value": 5,
 	        "tick_count": 5
 	    },
 	    {
