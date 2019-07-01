@@ -26,6 +26,7 @@ namespace VRestionnaire {
 			idText.text = question.id;
 			text.text = textViewQuestion.text;
 			instructionsText.text = textViewQuestion.title;
+			instructionsText.fontSize = skinData.fontSizeBody;
 			question.isAnswered = true;
 		}
 	}
