@@ -128,8 +128,8 @@ namespace VRestionnaire {
 				checkItem.transform.localPosition = Vector3.zero;
 				checkItem.transform.localRotation = Quaternion.identity;
 				checkItem.transform.localScale = label.transform.parent.localScale;
-
 			}
+			LayoutRebuilder.ForceRebuildLayoutImmediate(itemsUI);
 		}
 
 

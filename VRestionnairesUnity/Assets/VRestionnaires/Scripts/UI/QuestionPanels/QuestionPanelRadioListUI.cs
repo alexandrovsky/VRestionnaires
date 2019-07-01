@@ -63,32 +63,48 @@ namespace VRestionnaire {
 
 
 			toggles = new List<Toggle>();
-			LayoutGroup layoutGroup;
+			//VariableGridLayoutGroup gridLayout;
+			//LayoutGroup layoutGroup;
 
-			if(radioListQuestion.horizontal) {
-				layoutGroup = itemsUI.gameObject.AddComponent<HorizontalLayoutGroup>();
-				layoutGroup.childAlignment = TextAnchor.MiddleCenter;
-				layoutGroup.padding.left = 1;
-				layoutGroup.padding.right = 1;
-				layoutGroup.padding.top = 1;
-				layoutGroup.padding.bottom = 1;
-			} else {
-				layoutGroup = itemsUI.gameObject.AddComponent<VerticalLayoutGroup>();
-				layoutGroup.childAlignment = TextAnchor.MiddleCenter;
-				layoutGroup.padding.left = 1;
-				layoutGroup.padding.right = 1;
-				layoutGroup.padding.top = 1;
-				layoutGroup.padding.bottom = 1;
-			}
+			//if(radioListQuestion.horizontal) {
+			//	layoutGroup = itemsUI.gameObject.AddComponent<HorizontalLayoutGroup>();
+			//	layoutGroup.childAlignment = TextAnchor.MiddleCenter;
+			//	layoutGroup.padding.left = 1;
+			//	layoutGroup.padding.right = 1;
+			//	layoutGroup.padding.top = 1;
+			//	layoutGroup.padding.bottom = 1;
+			//} else {
+			//	layoutGroup = itemsUI.gameObject.AddComponent<VerticalLayoutGroup>();
+			//	layoutGroup.childAlignment = TextAnchor.MiddleCenter;
+			//	layoutGroup.padding.left = 1;
+			//	layoutGroup.padding.right = 1;
+			//	layoutGroup.padding.top = 1;
+			//	layoutGroup.padding.bottom = 1;
+			//}
+			VariableGridLayoutGroup gridLayoutGroup = itemsUI.gameObject.AddComponent<VariableGridLayoutGroup>();
+			gridLayoutGroup.childAlignment = TextAnchor.MiddleCenter;
+			gridLayoutGroup.padding.left = 1;
+			gridLayoutGroup.padding.right = 1;
+			gridLayoutGroup.padding.top = 1;
+			gridLayoutGroup.padding.bottom = 1;
+			gridLayoutGroup.spacing = new Vector2(0,skinData.fontSizeBody);
+			gridLayoutGroup.constraint = VariableGridLayoutGroup.Constraint.FixedColumnCount;
+			gridLayoutGroup.constraintCount = 2;
 
-			
+
 			for(int i = 0; i < radioListQuestion.labels.Length; i++) {
-				GameObject container = new GameObject("container",typeof(RectTransform));
-				container.AddComponent<HorizontalLayoutGroup>();
+				//GameObject container = new GameObject("container",typeof(RectTransform));
+				//container.AddComponent<HorizontalLayoutGroup>();
 				GameObject label = Instantiate(labelPrefab);
+
+				LayoutElement labelLayout = label.GetComponent<LayoutElement>();
+				labelLayout.flexibleWidth = 10;
+				labelLayout.minWidth = -1;
+				labelLayout.minHeight = -1;
+
 				TMP_Text text = label.GetComponent<TMP_Text>();
 				text.text = radioListQuestion.labels[i];
-				text.autoSizeTextContainer = true;
+				//text.autoSizeTextContainer = true;
 				//text.enableAutoSizing = true;
 				text.ForceMeshUpdate(true);
 
@@ -98,21 +114,22 @@ namespace VRestionnaire {
 
 				GameObject radioItem = Instantiate(radioItemPrefab);
 				Toggle toggle = radioItem.GetComponent<Toggle>();
-
+				LayoutElement toggleLayout = toggle.GetComponent<LayoutElement>();
+				toggleLayout.flexibleWidth = 1;
 
 				toggle.SetIsOnWithoutNotify(false);
 				toggles.Add(toggle);
 				toggle.onValueChanged.AddListener((val) => {
 					OnItemSelected(toggle,radioListQuestion.id, val);
 				});
-				container.transform.parent = itemsUI;
-				radioItem.transform.parent = container.transform;
-				label.transform.parent = container.transform;
+				//container.transform.parent = itemsUI;
+				radioItem.transform.parent = itemsUI;
+				label.transform.parent = itemsUI;
 
 
-				container.transform.localPosition = Vector3.zero;
-				container.transform.localRotation = Quaternion.identity;
-				container.transform.localScale = Vector3.one;
+				//container.transform.localPosition = Vector3.zero;
+				//container.transform.localRotation = Quaternion.identity;
+				//container.transform.localScale = Vector3.one;
 
 				label.transform.localPosition = Vector3.zero;
 				label.transform.localRotation = Quaternion.identity;
@@ -129,6 +146,8 @@ namespace VRestionnaire {
 					});
 				}
 			}
+			LayoutRebuilder.ForceRebuildLayoutImmediate(itemsUI);
+			//Canvas.ForceUpdateCanvases();
 		}
 
 		void OnItemSelected(Toggle toggle, string qId, bool value)
