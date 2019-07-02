@@ -44,6 +44,7 @@ namespace VRestionnaire {
 		{
 			OnQuestionAnswered += answeredEvent;
 			question = q;
+			gameObject.name = "QurstionPanel" + question.questiontype + "_" + question.id;
 			if(q.instructions == null || q.instructions.Length == 0) {
 				headerLayout.gameObject.SetActive(false);
 			}

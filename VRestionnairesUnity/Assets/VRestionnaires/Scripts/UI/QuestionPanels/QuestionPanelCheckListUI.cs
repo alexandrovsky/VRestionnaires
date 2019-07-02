@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 namespace VRestionnaire {
 
@@ -53,21 +54,25 @@ namespace VRestionnaire {
 			toggles = new List<Toggle>();
 			checkQuestion = (question as CheckListQuestion);
 			gridLayout.startAxis = VariableGridLayoutGroup.Axis.Horizontal;
-			if(checkQuestion.horizontal) {
-				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedRowCount;
-				gridLayout.constraintCount = 1;
-				gridLayout.childAlignment = TextAnchor.MiddleCenter;
-			} else {
+
+
+			int factor = checkQuestion.questions.Length / maxQuestionsVertical;
+			factor = (factor == 0 ? 1 : factor);
+
+			//if(checkQuestion.horizontal) {
+			//	gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedRowCount;
+			//	gridLayout.constraintCount = 1;
+			//	gridLayout.childAlignment = TextAnchor.MiddleCenter;
+			//}else{
 				gridLayout.constraint = VariableGridLayoutGroup.Constraint.FixedColumnCount;
-				int factor = checkQuestion.questions.Length / maxQuestionsVertical;
-				factor = (factor == 0 ? 1 : factor);
+				
 				gridLayout.constraintCount = 2 * factor;
 				gridLayout.childAlignment = TextAnchor.MiddleCenter;
 				gridLayout.spacing = spacing;
 				
 				maxWidth = maxTextWidth / factor;
 				maxHeight = maxTextHeight / factor;
-			}
+			//}
 
 			for(int i = 0; i < checkQuestion.questions.Length; i++) {
 
@@ -103,9 +108,15 @@ namespace VRestionnaire {
 				//float h = text.preferredHeight * preferredHeightScaler;
 				////labelLayout.preferredWidth = - 1;
 				////labelLayout.preferredHeight = - 1;
-				labelLayout.preferredWidth = -1; //Mathf.Clamp(w,0,maxWidth);
-				labelLayout.preferredHeight = -1; // Mathf.Clamp(h,0,maxHeight);
-
+				//labelLayout.preferredWidth = -1; //Mathf.Clamp(w,0,maxWidth);
+				//labelLayout.preferredHeight = -1; // Mathf.Clamp(h,0,maxHeight);
+				if(factor == 1) {
+					labelLayout.flexibleWidth = 10;
+					labelLayout.preferredWidth = 12;
+					labelLayout.minWidth = -1;
+					labelLayout.minHeight = -1;
+				}
+				
 
 
 
@@ -144,7 +155,13 @@ namespace VRestionnaire {
 
 		}
 
-
+		public override bool CheckMandatory()
+		{
+			if(checkQuestion.required) {
+				return checkQuestion.answers.All((a) => a);
+			}
+			return base.CheckMandatory();
+		}
 	}
 }
 

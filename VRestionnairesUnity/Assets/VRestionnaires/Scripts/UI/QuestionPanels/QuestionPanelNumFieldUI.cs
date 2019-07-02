@@ -143,7 +143,10 @@ namespace VRestionnaire {
 				break;
 			}
 			question.isAnswered = validAnswer;
-			print(question.id + " " + numFieldQuestion.answer);
+			if(validAnswer) {
+				OnQuestionAnswered.Invoke(numFieldQuestion);
+			}
+			
 		}
 
 	}

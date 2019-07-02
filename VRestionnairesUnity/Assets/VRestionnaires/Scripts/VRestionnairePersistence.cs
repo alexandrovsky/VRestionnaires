@@ -94,8 +94,9 @@ namespace VRestionnaire {
 				if(i > 0)
 					pathParts[i] = Path.Combine(pathParts[i - 1],pathParts[i]);
 
-				if(!Directory.Exists(pathParts[i]))
+				if(!Directory.Exists(pathParts[i])) {
 					Directory.CreateDirectory(pathParts[i]);
+				}
 			}
 		}
 

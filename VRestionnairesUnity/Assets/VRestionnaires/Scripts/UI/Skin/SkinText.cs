@@ -28,7 +28,7 @@ namespace VRestionnaire {
 				text.fontSize = skin.fontSizeSmall;
 				break;
 			}
-			print( gameObject.transform.parent.parent.name + ">>" + gameObject.transform.parent.name + ">>" + gameObject.GetInstanceID() + "font size" + text.fontSize);
+			//print( gameObject.transform.parent.parent.name + ">>" + gameObject.transform.parent.name + ">>" + gameObject.GetInstanceID() + "font size" + text.fontSize);
 		}
 	}
 

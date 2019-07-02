@@ -1,0 +1,19 @@
+{
+    "title": "Sind Sie bereit?",
+    "instructions": "",
+    "code": "readycheckA",
+    "questions": [
+        {
+            "questiontype": "checklist",
+            "instructions": "Die nachfolgenden Fragen beziehen sich auf die Nutzung des Fragebogentools. Bitte bestätigen Sie, dass sie das verstanden haben.",
+            "required": true,
+            "id": "readyA",
+            "questions": [
+                {
+                    "id": "y",
+                    "text": "Ja, ich habe verstanden, dass die folgenden Fragen sich auf die Nutzung des Fragebogentools beziehen."
+                }
+            ]
+        }
+    ]
+}
