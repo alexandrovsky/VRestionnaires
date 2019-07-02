@@ -189,15 +189,31 @@ namespace VRestionnaire {
 		{
 
 			QuestionPanelUI panelUI = questionPanels[currentQuestionIdx];
-			nextButton.GetComponent<Button>().interactable = panelUI.CheckMandatory();
+			bool nextAvailible = panelUI.CheckMandatory();
+			bool nextWasInteractive = nextButton.GetComponent<Button>().interactable;
+			nextButton.GetComponent<Button>().interactable = nextAvailible;
+			
 			backButton.GetComponent<Button>().interactable = true;
-
+			
 			// next button
 			if(currentQuestionIdx < questionPanels.Count-1) {
-				nextButton.GetComponent<Button>().interactable = panelUI.CheckMandatory();
+				nextButton.GetComponent<Button>().interactable = nextAvailible;
+
+				if(nextAvailible && !nextWasInteractive) {
+					Hashtable ht = new Hashtable();
+
+					//ht.Add(iT.ScaleBy.looptype,iTween.LoopType.pingPong);
+					ht.Add(iT.ShakeScale.time,2);
+
+					iTween.PunchScale(nextButton.gameObject,Vector3.one * 0.25f,1);
+				}
+
 			} else {
 				nextButton.GetComponent<Button>().interactable = false;
 			}
+
+
+			
 
 			//back button
 			if(currentQuestionIdx > 0) {

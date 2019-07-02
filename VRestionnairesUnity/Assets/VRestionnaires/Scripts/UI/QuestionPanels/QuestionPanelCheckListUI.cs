@@ -111,8 +111,8 @@ namespace VRestionnaire {
 				//labelLayout.preferredWidth = -1; //Mathf.Clamp(w,0,maxWidth);
 				//labelLayout.preferredHeight = -1; // Mathf.Clamp(h,0,maxHeight);
 				if(factor == 1) {
-					labelLayout.flexibleWidth = 10;
-					labelLayout.preferredWidth = 12;
+					labelLayout.flexibleWidth = skinData.canvasSize.x * 0.6f; // 10;
+					labelLayout.preferredWidth = skinData.canvasSize.x * 0.75f;
 					labelLayout.minWidth = -1;
 					labelLayout.minHeight = -1;
 				}

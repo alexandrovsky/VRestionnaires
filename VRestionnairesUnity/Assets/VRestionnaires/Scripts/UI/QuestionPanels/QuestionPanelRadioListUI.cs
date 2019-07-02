@@ -98,10 +98,16 @@ namespace VRestionnaire {
 				GameObject label = Instantiate(labelPrefab);
 
 				LayoutElement labelLayout = label.GetComponent<LayoutElement>();
-				labelLayout.flexibleWidth = 10;
-				labelLayout.preferredWidth = 12;
+				labelLayout.flexibleWidth = skinData.canvasSize.x * 0.6f; // 10;
+				labelLayout.preferredWidth = skinData.canvasSize.x * 0.75f;
 				labelLayout.minWidth = -1;
 				labelLayout.minHeight = -1;
+
+
+				//labelLayout.flexibleWidth = 10;
+				//labelLayout.preferredWidth = 12;
+				//labelLayout.minWidth = -1;
+				//labelLayout.minHeight = -1;
 
 				TMP_Text text = label.GetComponent<TMP_Text>();
 				text.text = radioListQuestion.labels[i];

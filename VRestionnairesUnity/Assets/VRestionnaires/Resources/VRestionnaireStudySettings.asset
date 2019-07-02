@@ -22,7 +22,7 @@ MonoBehaviour:
     - Assets/VRestionnaires/Resources/Questions/fillers.json
     - Assets/VRestionnaires/Resources/Questions/IMI.json
     - Assets/VRestionnaires/Resources/Questions/ipq_german.json
-    - Assets/VRestionnaires/Resources/Questions/readycheck.json
+    - Assets/VRestionnaires/Resources/Questions/readycheck_A.json
     - Assets/VRestionnaires/Resources/Questions/tlx_german.json
     - Assets/VRestionnaires/Resources/Questions/umux_german.json
     currentQuestionnaire: 0

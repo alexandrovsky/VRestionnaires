@@ -14,6 +14,10 @@ namespace VRestionnaire {
 
 	[CreateAssetMenu(menuName = "UI Skin Data")]
 	public class UISkinData:ScriptableObject {
+		[Header("Canvas")]
+		public Vector2 canvasSize = new Vector2(16,16);
+		public Vector3 canvasScale = Vector3.one;
+
 		[Header("Test Settings")]
 		public TMP_FontAsset font;
 		public Color normalTextColor = new Color(0.0f,0.0f,0.0f,1f);
