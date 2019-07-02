@@ -85,6 +85,7 @@ namespace VRestionnaire {
 		private void NumberPad_OnNumberSelected(int number)
 		{
 			inputField.text += number.ToString();
+			OnQuestionAnswered.Invoke(this.question);
 			OnNumFieldSubmitted(inputField.text);
 		}
 

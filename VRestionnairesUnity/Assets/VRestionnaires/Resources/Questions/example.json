@@ -154,6 +154,7 @@
 	        "questiontype": "num_field",
 	        "datatype": "integer",
 	        "instructions": "enter an integer",
+          "required":  true,
 	        "id": "num_field_1",
 	        "min": -5,
 	        "max": 5
