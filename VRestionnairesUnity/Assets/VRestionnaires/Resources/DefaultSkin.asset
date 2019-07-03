@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbf099f8c4ee4978bdb176eb72336c9, type: 3}
   m_Name: DefaultSkin
   m_EditorClassIdentifier: 
+  canvasSize: {x: 16, y: 16}
+  canvasScale: {x: 1, y: 1, z: 1}
   font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   normalTextColor: {r: 1, g: 1, b: 1, a: 1}
+  requiredAsterixColor: {r: 0.7735849, g: 0.09122462, b: 0.09122462, a: 1}
   fontSizeH1: 0.5
   fontSizeH2: 0.4
   fontSizeBody: 0.37
@@ -38,3 +41,4 @@ MonoBehaviour:
   toggleSize: {x: 0.5, y: 0.5}
   panelSprite: {fileID: 21300000, guid: 28a4bfbd869bb4bccbc221376737003d, type: 3}
   backgroundColor: {r: 0.21568628, g: 0.22352941, b: 0.22745098, a: 1}
+  questionTransitionTime: 0.5

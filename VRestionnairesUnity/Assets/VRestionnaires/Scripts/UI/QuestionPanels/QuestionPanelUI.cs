@@ -44,6 +44,12 @@ namespace VRestionnaire {
 		{
 			OnQuestionAnswered += answeredEvent;
 			question = q;
+
+			if(question.required) {
+				string strAterixColor = "#"+ColorUtility.ToHtmlStringRGB(skinData.requiredAsterixColor);
+				question.instructions += "<" + strAterixColor +"><b>*</b></color>";
+			}
+
 			gameObject.name = "QurstionPanel" + question.questiontype + "_" + question.id;
 			if(q.instructions == null || q.instructions.Length == 0) {
 				headerLayout.gameObject.SetActive(false);

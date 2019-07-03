@@ -18,9 +18,10 @@ namespace VRestionnaire {
 		public Vector2 canvasSize = new Vector2(16,16);
 		public Vector3 canvasScale = Vector3.one;
 
-		[Header("Test Settings")]
+		[Header("Text Settings")]
 		public TMP_FontAsset font;
 		public Color normalTextColor = new Color(0.0f,0.0f,0.0f,1f);
+		public Color requiredAsterixColor = new Color(1.0f,0.0f,0.0f,1f);
 		public float fontSizeH1 = 0.5f;
 		public float fontSizeH2 = 0.4f;
 		public float fontSizeBody = 0.3f;
