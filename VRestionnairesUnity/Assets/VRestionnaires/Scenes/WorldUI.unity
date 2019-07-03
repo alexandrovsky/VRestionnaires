@@ -767,6 +767,21 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5926907618551325670, guid: 117b9b7f5bf2c4df799b19d31cd197fa,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926907618551325670, guid: 117b9b7f5bf2c4df799b19d31cd197fa,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926907618551325670, guid: 117b9b7f5bf2c4df799b19d31cd197fa,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5290341928944129240, guid: 117b9b7f5bf2c4df799b19d31cd197fa,
         type: 3}
       propertyPath: m_havePropertiesChanged

@@ -796,6 +796,7 @@ GameObject:
   - component: {fileID: 7172461193644266078}
   - component: {fileID: 7172461193644266079}
   - component: {fileID: 631010151}
+  - component: {fileID: 1199637681}
   m_Layer: 5
   m_Name: QuestionsPanel
   m_TagString: Untagged
@@ -892,6 +893,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 7172461193644266078}
+--- !u!114 &1199637681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7172461193644266077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1200242548, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &7172461193672811783
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,12 +1168,12 @@ PrefabInstance:
     - target: {fileID: 110638991305079134, guid: d0de96f896e644147ba10f474565989e,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 110638991305079134, guid: d0de96f896e644147ba10f474565989e,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1919267315012390496, guid: d0de96f896e644147ba10f474565989e,
         type: 3}
@@ -1252,7 +1266,7 @@ PrefabInstance:
     - target: {fileID: 3731015878180257815, guid: d0de96f896e644147ba10f474565989e,
         type: 3}
       propertyPath: m_Name
-      value: Next
+      value: NextButton
       objectReference: {fileID: 0}
     - target: {fileID: 110638991305079134, guid: d0de96f896e644147ba10f474565989e,
         type: 3}
@@ -1352,12 +1366,12 @@ PrefabInstance:
     - target: {fileID: 110638991305079134, guid: d0de96f896e644147ba10f474565989e,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 110638991305079134, guid: d0de96f896e644147ba10f474565989e,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1919267315012390496, guid: d0de96f896e644147ba10f474565989e,
         type: 3}

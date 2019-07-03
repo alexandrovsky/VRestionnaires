@@ -47,7 +47,7 @@ namespace VRestionnaire {
 
 			if(question.required) {
 				string strAterixColor = "#"+ColorUtility.ToHtmlStringRGB(skinData.requiredAsterixColor);
-				question.instructions += "<" + strAterixColor +"><b>*</b></color>";
+				question.instructions += " " + "<" + strAterixColor +"><b>*</b></color>";
 			}
 
 			gameObject.name = "QurstionPanel" + question.questiontype + "_" + question.id;
