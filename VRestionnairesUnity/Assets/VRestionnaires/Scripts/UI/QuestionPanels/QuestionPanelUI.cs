@@ -66,8 +66,8 @@ namespace VRestionnaire {
 			gameObject.SetActive(true);
 			InitWithAnswer();
 		}
-		public virtual void HidePanel()
-		{
+
+		public virtual void HidePanel() {
 			gameObject.SetActive(false);
 		}
 

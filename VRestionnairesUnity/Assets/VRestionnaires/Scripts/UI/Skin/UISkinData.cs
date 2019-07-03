@@ -58,7 +58,9 @@ namespace VRestionnaire {
 		public Sprite panelSprite;
 		public Color backgroundColor = new Color(0.5f, 0.5f, 0.5f, 1);
 
-		
+		[Header("Animation")]
+		public float questionTransitionTime = 0.5f;
+
 		//public Sprite buttonSprite;
 
 

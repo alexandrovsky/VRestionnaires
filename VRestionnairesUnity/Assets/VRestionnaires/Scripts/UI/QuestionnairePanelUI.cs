@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using System;
 
 namespace VRestionnaire {
 
@@ -128,14 +129,63 @@ namespace VRestionnaire {
 			foreach(ISkinHandler handler in handlers) {
 				handler.ApplySkin(skinData);
 			}
-
 		}
+
+		void QuestionTransitionHide(bool next)
+		{
+			Vector3 to = questionsPanel.position;
+			if(next) {
+				
+				to.x -= skinData.canvasSize.x * skinData.canvasScale.x;
+			} else {
+				to.x += 2 * skinData.canvasSize.x * skinData.canvasScale.x;
+			}
+			Hashtable htHide = new Hashtable();
+
+			htHide.Add(iT.MoveTo.position,to);
+			htHide.Add(iT.MoveTo.time,skinData.questionTransitionTime);
+			int tmpId = currentQuestionIdx;
+			htHide.Add(iT.MoveTo.oncomplete,(Action<object>)(newVal => {
+				questionPanels[tmpId].transform.position = questionsPanel.position;
+				questionPanels[tmpId].HidePanel();
+			}));
+			iTween.MoveTo(questionPanels[tmpId].gameObject,htHide);
+		}
+
+		void QuestionTransitionShow(bool next) {
+			
+
+				
+			Vector3 from = questionsPanel.position;
+			
+			if(next) {
+				from.x += 2 * skinData.canvasSize.x * skinData.canvasScale.x;
+			} else {
+				from.x -= skinData.canvasSize.x * skinData.canvasScale.x;
+			}
+
+			
+
+			Hashtable htShow = new Hashtable();
+			htShow.Add(iT.MoveFrom.position,from);
+			htShow.Add(iT.MoveFrom.time,skinData.questionTransitionTime);
+			//htShow.Add(iT.MoveFrom.oncomplete,(Action<object>)(newVal => {
+			//	questionPanels[currentQuestionIdx].transform.position = questionsPanel.position;
+			//}));
+			iTween.MoveFrom(questionPanels[currentQuestionIdx].gameObject,htShow);
+		}
+
 		public void OnNextButtonClicked()
 		{
 			if(currentQuestionIdx < questionPanels.Count-1) {
-				questionPanels[currentQuestionIdx].HidePanel();
+
+
+				//-----
+				//questionPanels[currentQuestionIdx].HidePanel();
+				QuestionTransitionHide(true);
 
 				currentQuestionIdx++;
+				QuestionTransitionShow(true);
 				UpdateQuestionnaireIdxForQuestionIdx(currentQuestionIdx);
 
 				questionPanels[currentQuestionIdx].ShowPanel();
@@ -146,9 +196,10 @@ namespace VRestionnaire {
 		public void OnBackButtonClicked()
 		{
 			if(currentQuestionIdx > 0) {
-				questionPanels[currentQuestionIdx].HidePanel();
-
+				//questionPanels[currentQuestionIdx].HidePanel();
+				QuestionTransitionHide(false);
 				currentQuestionIdx--;
+				QuestionTransitionShow(false);
 				UpdateQuestionnaireIdxForQuestionIdx(currentQuestionIdx);
 
 				questionPanels[currentQuestionIdx].ShowPanel();
