@@ -46,6 +46,8 @@ namespace VRestionnaire {
 			slider.onValueChanged.AddListener(OnSliderValueChanged);
 			incrementValueButton.onClick.AddListener(IncrementValue);
 			decrementValueButton.onClick.AddListener(DecrementValue);
+
+			sliderQuestion.answer = !float.IsNaN(sliderQuestion.min_value) ? sliderQuestion.min_value : 0;
 		}
 
 

@@ -1,7 +1,7 @@
 ﻿{
     "title":"Example Questionnaire",
     "instructions":"Please rate each video game experience....",
-    "code":"001",
+    "code":"example_001",
     "questions":[
     	{
 	    	"id": "textview_1",

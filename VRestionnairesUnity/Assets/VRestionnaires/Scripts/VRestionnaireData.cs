@@ -125,14 +125,15 @@ namespace VRestionnaire {
 
 		public Dictionary<string, string> BaseExportDict()
 		{
+			
 			Dictionary<string,string> dict = new Dictionary<string,string>() {
-				{ "questiontype", questiontype.ToString() },
-				{ "required", required.ToString()},
-				{ "answerCounter", answerCounter.ToString() },
-				{ "isAnswered", isAnswered.ToString() },
-				{ "answerUtcTime", answerUtcTime.ToString() },
-				{ "showUtcTime", showUtcTime.ToString() },
-				{ "hideUtcTime", showUtcTime.ToString() }
+				{ id +  "_questiontype", questiontype.ToString() },
+				{ id +  "_required", required.ToString()},
+				{ id +  "_answerCounter", answerCounter.ToString() },
+				{ id +  "_isAnswered", isAnswered.ToString() },
+				{ id +  "_answerUtcTime", answerUtcTime.ToString() },
+				{ id +  "_showUtcTime", showUtcTime.ToString() },
+				{ id +  "_hideUtcTime", showUtcTime.ToString() }
 			};
 			return dict;
 		}
