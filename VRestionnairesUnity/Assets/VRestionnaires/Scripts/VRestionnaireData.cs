@@ -108,11 +108,11 @@ namespace VRestionnaire {
 			get {
 				return _isAnswered; }
 			set {
-				_isAnswered = value;
-				answerCounter++;
-				if(_isAnswered) {
+				if(!_isAnswered && value) {
 					answerUtcTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 				}
+				_isAnswered = value;
+				answerCounter++;
 			}
 		}
 
@@ -129,6 +129,7 @@ namespace VRestionnaire {
 				{ "questiontype", questiontype.ToString() },
 				{ "required", required.ToString()},
 				{ "answerCounter", answerCounter.ToString() },
+				{ "isAnswered", isAnswered.ToString() },
 				{ "answerUtcTime", answerUtcTime.ToString() },
 				{ "showUtcTime", showUtcTime.ToString() },
 				{ "hideUtcTime", showUtcTime.ToString() }
@@ -511,7 +512,6 @@ namespace VRestionnaire {
 		public override Dictionary<string,string> Export()
 		{
 			Dictionary<string,string> dict = BaseExportDict();
-			dict.Add(id,isAnswered.ToString());
 			return dict;
 		}
 	}
