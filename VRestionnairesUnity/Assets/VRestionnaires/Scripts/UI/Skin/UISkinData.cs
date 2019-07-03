@@ -17,6 +17,8 @@ namespace VRestionnaire {
 		[Header("Canvas")]
 		public Vector2 canvasSize = new Vector2(16,16);
 		public Vector3 canvasScale = Vector3.one;
+		public float radioZOffset = -0.01f;
+
 
 		[Header("Text Settings")]
 		public TMP_FontAsset font;

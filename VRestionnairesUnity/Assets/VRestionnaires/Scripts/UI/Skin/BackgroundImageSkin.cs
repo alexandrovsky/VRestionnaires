@@ -8,11 +8,8 @@ namespace VRestionnaire {
 
 		public Image image;
 
-
-
 		public void ApplySkin(UISkinData skin)
 		{
-
 			image.sprite = skin.panelSprite;
 			image.color = skin.backgroundColor;
 		}

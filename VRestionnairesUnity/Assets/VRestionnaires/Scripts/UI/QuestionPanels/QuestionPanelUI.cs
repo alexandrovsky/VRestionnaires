@@ -70,11 +70,13 @@ namespace VRestionnaire {
 
 		public virtual void ShowPanel() {
 			gameObject.SetActive(true);
+			question.showUtcTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 			InitWithAnswer();
 		}
 
 		public virtual void HidePanel() {
 			gameObject.SetActive(false);
+			question.hideUtcTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 		}
 
 

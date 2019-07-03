@@ -162,7 +162,7 @@ namespace VRestionnaire {
 
 
 					item.transform.parent = container.transform;
-					item.transform.localPosition = new Vector3(0,0,-0.01f);
+					item.transform.localPosition = new Vector3(0,0, skinData.radioZOffset);
 					//item.transform.localPosition = Vector3.zero;
 					item.transform.localRotation = Quaternion.identity;
 					item.transform.localScale = Vector3.one;

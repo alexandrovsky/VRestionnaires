@@ -99,6 +99,11 @@ namespace VRestionnaire {
 		public QuestionDataType datatype;
 		bool _isAnswered;
 
+		public int answerCounter; // how often was the an answer picked
+		public long answerUtcTime;
+		public long showUtcTime;
+		public long hideUtcTime;
+
 		public bool isAnswered {
 			get {
 				return _isAnswered; }
@@ -106,17 +111,29 @@ namespace VRestionnaire {
 				_isAnswered = value;
 				answerCounter++;
 				if(_isAnswered) {
-					answerUtcTime = DateTime.UtcNow;
+					answerUtcTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 				}
 			}
 		}
 
 		public abstract Dictionary<string,string> Export();
 
-		public int answerCounter; // how often was the an answer picked
-		public DateTime answerUtcTime;
+		
 
 		public Question() {
+		}
+
+		public Dictionary<string, string> BaseExportDict()
+		{
+			Dictionary<string,string> dict = new Dictionary<string,string>() {
+				{ "questiontype", questiontype.ToString() },
+				{ "required", required.ToString()},
+				{ "answerCounter", answerCounter.ToString() },
+				{ "answerUtcTime", answerUtcTime.ToString() },
+				{ "showUtcTime", showUtcTime.ToString() },
+				{ "hideUtcTime", showUtcTime.ToString() }
+			};
+			return dict;
 		}
 
 		public Question(JSONObject json) {
@@ -187,7 +204,7 @@ namespace VRestionnaire {
 
 		public override Dictionary<string,string> Export()
 		{
-			Dictionary<string,string> responses = new Dictionary<string,string>();
+			Dictionary<string,string> responses = BaseExportDict();
 			for(int i = 0; i < answers.Length; i++) {
 				string key =  id + "_" + q_text[i].id;
 				responses.Add(key,answers[i].ToString());
@@ -219,7 +236,7 @@ namespace VRestionnaire {
 
 		public override Dictionary<string,string> Export()
 		{
-			Dictionary<string,string> response = new Dictionary<string,string>();
+			Dictionary<string,string> response = BaseExportDict();
 			string key = id;
 			string val = isAnswered ? labels[answer] : "-1";
 			response.Add(key,val);
@@ -255,7 +272,7 @@ namespace VRestionnaire {
 
 		public override Dictionary<string,string> Export()
 		{
-			Dictionary<string,string> responses = new Dictionary<string,string>();
+			Dictionary<string,string> responses = BaseExportDict();
 			for(int i = 0; i < answers.Length; i++) {
 				string key = id + "_" + questions[i].id;
 				responses.Add(key,answers[i].ToString());
@@ -303,7 +320,7 @@ namespace VRestionnaire {
 
 		public override Dictionary<string,string> Export()
 		{
-			Dictionary<string,string> response = new Dictionary<string,string>();
+			Dictionary<string,string> response = BaseExportDict();
 			string key = id;
 			string val = "";
 			if(datatype == QuestionDataType.Float) {
@@ -331,7 +348,7 @@ namespace VRestionnaire {
 
 		public override Dictionary<string,string> Export()
 		{
-			Dictionary<string,string> response = new Dictionary<string,string>();
+			Dictionary<string,string> response = BaseExportDict();
 			string key = id;
 
 			response.Add(key,answer);
@@ -391,7 +408,7 @@ namespace VRestionnaire {
 
 		public override Dictionary<string,string> Export()
 		{
-			Dictionary<string,string> response = new Dictionary<string,string>();
+			Dictionary<string,string> response = BaseExportDict();
 			string key = id;
 			string val = "";
 			if(datatype == QuestionDataType.Float) {
@@ -421,9 +438,9 @@ namespace VRestionnaire {
 
 		public override Dictionary<string,string> Export()
 		{
-			return new Dictionary<string,string> {
-				{ id, answer}
-			};
+			Dictionary<string,string> dict = BaseExportDict();
+			dict.Add(id,answer);
+			return dict;
 		}
 	}
 
@@ -447,9 +464,9 @@ namespace VRestionnaire {
 
 		public override Dictionary<string,string> Export()
 		{
-			return new Dictionary<string,string> {
-				{ id, answer}
-			};
+			Dictionary<string,string> dict = BaseExportDict();
+			dict.Add(id,answer);
+			return dict;
 		}
 	}
 
@@ -476,9 +493,8 @@ namespace VRestionnaire {
 
 		public override Dictionary<string,string> Export()
 		{
-			return new Dictionary<string,string> {
-				{ id, text}
-			};
+			Dictionary<string,string> dict = BaseExportDict();
+			return dict;
 		}
 	}
 
@@ -494,9 +510,9 @@ namespace VRestionnaire {
 
 		public override Dictionary<string,string> Export()
 		{
-			return new Dictionary<string,string> {
-				{ id, isAnswered.ToString()}
-			};
+			Dictionary<string,string> dict = BaseExportDict();
+			dict.Add(id,isAnswered.ToString());
+			return dict;
 		}
 	}
 
