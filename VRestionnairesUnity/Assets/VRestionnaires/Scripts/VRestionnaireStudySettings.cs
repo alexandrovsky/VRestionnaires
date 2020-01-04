@@ -10,8 +10,9 @@ namespace VRestionnaire {
 		[Serializable]
 		public class QuestionnaireFromFile {
 			public string condition;
-			public string[] filePaths;
+			//public string[] filePaths;
 			public int currentQuestionnaire;
+			public TextAsset[] questionnaires;
 		}
 
 
@@ -32,10 +33,10 @@ namespace VRestionnaire {
 		//public QuestionnaireFromEditor[] questionnairesFromEditor;
 
 		[Space]
-		public string navigationButtonNextLabel = "Weiter";
-		public string navigationButtonBackLabel = "Zurück";
-		public string submitButtonLabel = "Abschicken";
-		public string submitThankYouText = "Vielen Dank für Ihre Teilnahme!";
+		public string navigationButtonNextLabel = "Next";
+		public string navigationButtonBackLabel = "Back";
+		public string submitButtonLabel = "Submit";
+		public string submitThankYouText = "Thank you for your participation!";
 
 		[Space]
 		public bool showQuestionId = false;
@@ -47,14 +48,24 @@ namespace VRestionnaire {
 
 
 
-		public string[] FilePathsForCondition(string conditon) {
+		public TextAsset[] QuestionnaireFilesForCondition(string condition)
+		{
 			for(int i = 0; i < questionnairesFromFiles.Length; i++) {
-				if(questionnairesFromFiles[i].condition == conditon) {
-					return questionnairesFromFiles[i].filePaths;
+				if(questionnairesFromFiles[i].condition == condition) {
+					return questionnairesFromFiles[i].questionnaires;
 				}
 			}
 			return null;
 		}
+
+		//public string[] FilePathsForCondition(string condition) {
+		//	for(int i = 0; i < questionnairesFromFiles.Length; i++) {
+		//		if(questionnairesFromFiles[i].condition == condition) {
+		//			return questionnairesFromFiles[i].filePaths;
+		//		}
+		//	}
+		//	return null;
+		//}
 
 		private void OnValidate()
 		{
@@ -65,7 +76,8 @@ namespace VRestionnaire {
 				if(questionnairesFromFiles[i] == null) {
 					QuestionnaireFromFile fromFile = new QuestionnaireFromFile();
 					fromFile.condition = conditions[i];
-					fromFile.filePaths = new string[] { };
+					//fromFile.filePaths = new string[] { };
+					fromFile.questionnaires = new TextAsset[] { };
 				} else {
 					questionnairesFromFiles[i].condition = conditions[i];
 				}

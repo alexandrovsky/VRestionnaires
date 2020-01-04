@@ -43,8 +43,10 @@ namespace VRestionnaire {
 		public void BuildFromStudySettings(string condition, string participantId) {
 			questionnairePanel.ClearQuestionPanels();
 			questionnairePanel.studySettings = studySettings;
-			string[] filenames = studySettings.FilePathsForCondition(condition);
-			OpenAction(filenames);
+			TextAsset[] textAssets = studySettings.QuestionnaireFilesForCondition(condition);
+			OpenAction(textAssets);
+			//string[] filenames = studySettings.FilePathsForCondition(condition);
+			//OpenAction(filenames);
 			foreach(Questionnaire questionnaire in questionnairePanel.questionnaires) {
 				questionnaire.condition = condition;
 				questionnaire.participantId = participantId;
@@ -63,6 +65,22 @@ namespace VRestionnaire {
 			FileBrowser.OpenFilesAsync(OpenAction,"open questionnaire file",dir,false,fileExtensions);
 		}
 
+		void OpenAction(TextAsset[] textAssets)
+		{
+			for(int i = 0; i < textAssets.Length; i++) {
+				TextAsset asset  = textAssets[i];
+				print("open: " + asset.name);
+				//string file = File.ReadAllText(filename);
+				JSONObject json = JSONObject.Parse(asset.text);
+
+				questionnairePanel.questionnaires.Add(GenerateQuestionnaire(json));
+				GenerateQuestionnaireUI(questionnairePanel.questionnaires.Last(),questionnairePanel.skinData);
+			}
+			GenerateSubmitQuestionnaireUI();
+
+			questionnairePanel.ApplySkin();
+		}
+
 		void OpenAction(string[] filenames)
 		{
 			questionnairePanel.questionnaires = new List<Questionnaire>();
@@ -73,7 +91,7 @@ namespace VRestionnaire {
 				string file = File.ReadAllText(filename);
 				JSONObject json = JSONObject.Parse(file);
 
-				questionnairePanel.questionnaires.Add( GenerateQuestionnaire(json) );
+				questionnairePanel.questionnaires.Add(GenerateQuestionnaire(json) );
 				GenerateQuestionnaireUI(questionnairePanel.questionnaires.Last(),questionnairePanel.skinData);
 			}
 			GenerateSubmitQuestionnaireUI();

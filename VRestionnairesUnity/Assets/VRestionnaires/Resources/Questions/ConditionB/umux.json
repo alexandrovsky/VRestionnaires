@@ -1,0 +1,42 @@
+{
+    "title": "Usability Metric for User Experience",
+    "instructions": "Bitte beantworten Sie die folgenden Fragen.",
+    "code": "umux",
+    "questions": [
+
+        {
+            "questiontype": "radiogrid",
+            "instructions": "",
+            "id": "umux",
+            "shuffle": false,
+            "labels": [
+                "Stimme stark nicht zu",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "Stimme stark zu"
+            ],
+            "q_text": [
+                {
+                    "id": "0",
+                    "text": "Der präsentierte Fragebogen erfüllt meine Anforderungen."
+                },
+                {
+                    "id": "1",
+                    "text": "Die Benutzung des Fragebogens ist eine frustrierende Erfahrung."
+                },
+                {
+                    "id": "2",
+                    "text": "Der Fragebogen ist einfach zu nutzen."
+                },
+                {
+                    "id": "3",
+                    "text": "Ich verbrachte zu viel Zeit damit, Korrekturen während des Fragebogen vorzunehmen."
+                }
+            ]
+        }
+
+    ]
+}

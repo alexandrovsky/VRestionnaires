@@ -17,18 +17,15 @@ MonoBehaviour:
   - b
   questionnairesFromFiles:
   - condition: a
-    filePaths:
-    - Assets/VRestionnaires/Resources/Questions/example.json
-    - Assets/VRestionnaires/Resources/Questions/fillers.json
-    - Assets/VRestionnaires/Resources/Questions/IMI.json
-    - Assets/VRestionnaires/Resources/Questions/ipq_german.json
-    - Assets/VRestionnaires/Resources/Questions/readycheck_A.json
-    - Assets/VRestionnaires/Resources/Questions/tlx_german.json
-    - Assets/VRestionnaires/Resources/Questions/umux_german.json
     currentQuestionnaire: 0
+    questionnaires:
+    - {fileID: 4900000, guid: 1185f996c0f3f4a8d917cf88474eab51, type: 3}
+    - {fileID: 4900000, guid: 5d882a64261fa487791c4f215898a519, type: 3}
+    - {fileID: 4900000, guid: ac1f74f1320264be2954c6279a90db6e, type: 3}
+    - {fileID: 4900000, guid: 5692b2a928d714adab5fcb85f3881d6e, type: 3}
   - condition: b
-    filePaths: []
     currentQuestionnaire: 0
+    questionnaires: []
   navigationButtonNextLabel: Weiter
   navigationButtonBackLabel: "Zur\xFCck"
   submitButtonLabel: Abschicken

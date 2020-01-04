@@ -20,6 +20,8 @@ namespace VRestionnaire {
 		public delegate void OnQuestionnaireFinishedEvent(Questionnaire questionnaire);
 		public event OnQuestionnaireFinishedEvent OnQuestionnaireFinishedCallback;
 
+		
+		
 
 		public int currentQuestionnaireIdx;
 		public List<Questionnaire> questionnaires;
