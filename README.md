@@ -22,7 +22,7 @@ The JSON format for the questions is comaptible with https://github.com/colbyj/b
 
 
 
-If you decide to implement VRestionnaires in user studies, plese refere to our publications
+If you decide to implement VRestionnaires in user studies, plese refer to our publications:
 
 
 *Susanne Putze, Dmitry Alexandrovsky, Felix Putze, Sebastian Höffner, Jan David Smeddinck, and Rainer Malaka. 2020. Breaking The Experience: Effects of Questionnaires in VR User Studies. In Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems (CHI ’20). Association for Computing Machinery, New York, NY, USA, 1–15. DOI:https://doi.org/10.1145/3313831.3376144*
