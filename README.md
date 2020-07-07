@@ -1,6 +1,9 @@
 # VRestionnaires
 A questionnaire tool for VR studies.
+The tool generates a questionnaire UI dynamically from questionnaire files in JSON format.
 ![VRestionnairesTool](pics/VRestionnairesTool.jpg)
+The JSON format for the questions is comaptible with https://github.com/colbyj/bride-of-frankensystem/.
+
 
 ## Usage
  - Drag the `VRESTIONNAIRES` or `VRESTIONNAIRES_WORLD` Prefab into your scene.
