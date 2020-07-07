@@ -1,6 +1,6 @@
 # VRestionnaires
 A questionnaire tool for VR studies.
-[[pics/VRestionnairesTool.jpg]]
+![VRestionnairesTool](pics/VRestionnairesTool.jpg)
 
 ## Usage
  - Drag the `VRESTIONNAIRES` or `VRESTIONNAIRES_WORLD` Prefab into your scene.
