@@ -147,10 +147,9 @@ namespace VRestionnaire {
 			htHide.Add(iT.MoveTo.position,to);
 			htHide.Add(iT.MoveTo.time,skinData.questionTransitionTime);
 			int tmpId = currentQuestionIdx;
-			htHide.Add(iT.MoveTo.oncomplete,(Action<object>)(newVal => {
-				questionPanels[tmpId].transform.position = questionsPanel.position;
-				questionPanels[tmpId].HidePanel();
-			}));
+            htHide.Add(iT.MoveTo.oncomplete, "Done");
+			questionPanels[tmpId].transform.position = questionsPanel.position;
+			questionPanels[tmpId].HidePanel();
 			iTween.MoveTo(questionPanels[tmpId].gameObject,htHide);
 		}
 
