@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using Boomlagoon.JSON;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class JSONObjectTester : MonoBehaviour {
 
-	public GUIText infoText;
+	public Text infoText;
 
 	private string stringToEvaluate = @"{""web-app"": {
   ""servlet"": [
